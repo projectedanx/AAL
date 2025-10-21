@@ -3,6 +3,13 @@ import type { GeneratedImage } from '../types';
 import LoadingSpinner from './LoadingSpinner';
 import Tooltip from './Tooltip';
 
+/**
+ * Props for the ImageGrid component.
+ * @property images - An array of generated images to display.
+ * @property isLoading - A boolean indicating whether the images are currently being loaded.
+ * @property onRateImage - A function to call when an image is rated.
+ * @property error - An error message to display if an error occurred, or null if there was no error.
+ */
 interface ImageGridProps {
   images: GeneratedImage[];
   isLoading: boolean;
@@ -10,6 +17,10 @@ interface ImageGridProps {
   error: string | null;
 }
 
+/**
+ * A component that displays a welcome message when there are no images to display.
+ * @returns {JSX.Element} The rendered component.
+ */
 const WelcomeMessage: React.FC = () => (
   <div className="flex flex-col items-center justify-center text-center p-8 bg-slate-800/50 rounded-lg border-2 border-dashed border-slate-700">
     <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-slate-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -22,6 +33,12 @@ const WelcomeMessage: React.FC = () => (
   </div>
 );
 
+/**
+ * A component that displays an error message.
+ * @param {object} props - The props for the component.
+ * @param {string} props.message - The error message to display.
+ * @returns {JSX.Element} The rendered component.
+ */
 const ErrorMessage: React.FC<{ message: string }> = ({ message }) => (
   <div className="flex flex-col items-center justify-center text-center p-8 bg-red-900/20 rounded-lg border-2 border-dashed border-red-500/50 text-red-300">
     <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-red-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -32,7 +49,13 @@ const ErrorMessage: React.FC<{ message: string }> = ({ message }) => (
   </div>
 );
 
-
+/**
+ * A component that displays a star icon for rating.
+ * @param {object} props - The props for the component.
+ * @param {boolean} props.filled - Whether the star should be filled.
+ * @param {() => void} props.onClick - The function to call when the star is clicked.
+ * @returns {JSX.Element} The rendered component.
+ */
 const StarIcon: React.FC<{ filled: boolean; onClick: () => void }> = ({ filled, onClick }) => (
   <svg
     onClick={onClick}
@@ -46,7 +69,13 @@ const StarIcon: React.FC<{ filled: boolean; onClick: () => void }> = ({ filled, 
   </svg>
 );
 
-
+/**
+ * A component that displays a single image card with its prompt and rating.
+ * @param {object} props - The props for the component.
+ * @param {GeneratedImage} props.image - The image to display.
+ * @param {(rating: number) => void} props.onRate - The function to call when the image is rated.
+ * @returns {JSX.Element} The rendered component.
+ */
 const ImageCard: React.FC<{ image: GeneratedImage; onRate: (rating: number) => void }> = ({ image, onRate }) => (
   <div className="group relative overflow-hidden rounded-lg bg-slate-800 shadow-lg border border-slate-700/50 transition-all duration-300 hover:shadow-cyan-500/20 hover:border-brand-cyan/50">
     <img src={image.src} alt={image.prompt} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
@@ -73,6 +102,11 @@ const ImageCard: React.FC<{ image: GeneratedImage; onRate: (rating: number) => v
   </div>
 );
 
+/**
+ * A component that displays a grid of generated images.
+ * @param {ImageGridProps} props - The props for the component.
+ * @returns {JSX.Element} The rendered component.
+ */
 const ImageGrid: React.FC<ImageGridProps> = ({ images, isLoading, onRateImage, error }) => {
   if (isLoading) {
     return (

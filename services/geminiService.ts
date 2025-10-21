@@ -5,6 +5,15 @@ import type { GeneratedImage } from '../types';
 // Initialize GoogleGenAI with apiKey from environment variables.
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
+/**
+ * Generates a set of aesthetic images based on a base prompt and a set of variations.
+ * @param basePrompt - The base prompt for the images.
+ * @param variations - The variations to apply to the base prompt.
+ * @param parameter - The parameter to vary (e.g., 'Style', 'Lighting').
+ * @param temperature - The temperature to use for the image generation.
+ * @param seed - The seed to use for the image generation.
+ * @returns A promise that resolves to an array of generated images.
+ */
 export const generateAestheticImages = async (
   basePrompt: string,
   variations: string[],

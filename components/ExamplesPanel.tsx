@@ -2,11 +2,21 @@ import React from 'react';
 import type { PromptPreset } from '../types';
 import Tooltip from './Tooltip';
 
+/**
+ * Props for the ExamplesPanel component.
+ * @property examples - An array of example presets to display.
+ * @property onSelect - A function to call when an example is selected.
+ */
 interface ExamplesPanelProps {
   examples: Omit<PromptPreset, 'id'>[];
   onSelect: (example: Omit<PromptPreset, 'id'>) => void;
 }
 
+/**
+ * A component that displays a panel of example prompts.
+ * @param {ExamplesPanelProps} props - The props for the component.
+ * @returns {JSX.Element} The rendered component.
+ */
 const ExamplesPanel: React.FC<ExamplesPanelProps> = ({ examples, onSelect }) => {
   return (
     <div className="bg-slate-800/50 rounded-lg p-6 border border-slate-700/50">

@@ -1,3 +1,8 @@
+/**
+ * @file This file contains the configuration for Vite.
+ * It is used to configure the development server, build process, and plugins.
+ * @see https://vitejs.dev/config/
+ */
 import path from 'path';
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';

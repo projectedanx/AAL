@@ -1,5 +1,9 @@
 import { AestheticParameter, type PromptPreset } from '../types';
 
+/**
+ * An array of example prompts to display in the UI.
+ * These are used to provide users with starting points for their own creations.
+ */
 export const examplePrompts: Omit<PromptPreset, 'id'>[] = [
   {
     name: "Cyberpunk City Lighting",
