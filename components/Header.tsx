@@ -1,5 +1,9 @@
 import React from 'react';
 
+/**
+ * A component that displays the header of the application.
+ * @returns {JSX.Element} The rendered component.
+ */
 const Header: React.FC = () => {
   return (
     <header className="bg-slate-900/80 backdrop-blur-sm p-4 border-b border-slate-700/50 sticky top-0 z-20">

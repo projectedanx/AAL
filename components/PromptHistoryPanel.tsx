@@ -2,12 +2,23 @@ import React, { useState } from 'react';
 import type { PromptHistoryEntry } from '../types';
 import Tooltip from './Tooltip';
 
+/**
+ * Props for the PromptHistoryPanel component.
+ * @property prompts - An array of prompt history entries.
+ * @property onSelect - A function to call when a prompt is selected from the history.
+ * @property onDelete - A function to call when a prompt is deleted from the history.
+ */
 interface PromptHistoryPanelProps {
   prompts: PromptHistoryEntry[];
   onSelect: (prompt: PromptHistoryEntry) => void;
   onDelete: (id: string) => void;
 }
 
+/**
+ * A component that displays a panel with the history of user-submitted prompts.
+ * @param {PromptHistoryPanelProps} props - The props for the component.
+ * @returns {JSX.Element | null} The rendered component, or null if there is no prompt history.
+ */
 const PromptHistoryPanel: React.FC<PromptHistoryPanelProps> = ({ prompts, onSelect, onDelete }) => {
   const [searchTerm, setSearchTerm] = useState('');
 

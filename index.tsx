@@ -1,4 +1,8 @@
 
+/**
+ * @file This is the entry point of the application.
+ * It renders the App component to the root element of the HTML page.
+ */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';

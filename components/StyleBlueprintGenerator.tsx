@@ -2,10 +2,19 @@ import React, { useState, useMemo } from 'react';
 import type { GenerationResult } from '../types';
 import Tooltip from './Tooltip';
 
+/**
+ * Props for the StyleBlueprintGenerator component.
+ * @property generation - The generation result to generate a blueprint from, or null if there is no generation.
+ */
 interface StyleBlueprintGeneratorProps {
   generation: GenerationResult | null;
 }
 
+/**
+ * A component that generates a style blueprint based on user-rated images.
+ * @param {StyleBlueprintGeneratorProps} props - The props for the component.
+ * @returns {JSX.Element | null} The rendered component, or null if there is no generation.
+ */
 const StyleBlueprintGenerator: React.FC<StyleBlueprintGeneratorProps> = ({ generation }) => {
   const [isCopied, setIsCopied] = useState(false);
 

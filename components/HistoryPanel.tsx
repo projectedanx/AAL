@@ -2,12 +2,23 @@
 import React from 'react';
 import type { GenerationResult } from '../types';
 
+/**
+ * Props for the HistoryPanel component.
+ * @property generations - An array of previous generation results.
+ * @property onSelect - A function to call when a generation is selected from the history.
+ * @property currentGenerationId - The ID of the currently displayed generation.
+ */
 interface HistoryPanelProps {
   generations: GenerationResult[];
   onSelect: (id: string) => void;
   currentGenerationId: string | null;
 }
 
+/**
+ * A component that displays a panel with the history of generated images.
+ * @param {HistoryPanelProps} props - The props for the component.
+ * @returns {JSX.Element | null} The rendered component, or null if there are no generations.
+ */
 const HistoryPanel: React.FC<HistoryPanelProps> = ({ generations, onSelect, currentGenerationId }) => {
   if (generations.length === 0) {
     return null;

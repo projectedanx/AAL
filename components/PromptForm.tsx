@@ -4,31 +4,53 @@ import { AESTHETIC_OPTIONS } from '../constants';
 import { AestheticParameter } from '../types';
 import Tooltip from './Tooltip';
 
+/**
+ * Props for the PromptForm component.
+ * @property isLoading - A boolean indicating if the form is currently in a loading state.
+ * @property basePrompt - The base prompt string.
+ * @property selectedParam - The currently selected aesthetic parameter.
+ * @property selectedVariations - An array of selected variations.
+ * @property temperature - The current temperature value for generation.
+ * @property seed - The current seed value for generation.
+ * @property onBasePromptChange - Callback for when the base prompt changes.
+ * @property onSelectedParamChange - Callback for when the selected parameter changes.
+ * @property onVariationChange - Callback for when a variation is changed.
+ * @property onTemperatureChange - Callback for when the temperature changes.
+ * @property onSeedChange - Callback for when the seed changes.
+ * @property onSubmit - Callback for when the form is submitted.
+ * @property onSavePreset - Callback for when the save preset button is clicked.
+ */
 interface PromptFormProps {
   isLoading: boolean;
-  // State values
   basePrompt: string;
   selectedParam: AestheticParameter;
   selectedVariations: string[];
   temperature: number;
   seed: string;
-  // Change handlers
   onBasePromptChange: (value: string) => void;
   onSelectedParamChange: (param: AestheticParameter) => void;
   onVariationChange: (variation: string) => void;
   onTemperatureChange: (value: number) => void;
   onSeedChange: (value: string) => void;
-  // Actions
   onSubmit: () => void;
   onSavePreset: () => void;
 }
 
+/**
+ * A component that displays an info icon.
+ * @returns {JSX.Element} The rendered component.
+ */
 const InfoIcon: React.FC = () => (
   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
   </svg>
 );
 
+/**
+ * A component that displays a form for generating images.
+ * @param {PromptFormProps} props - The props for the component.
+ * @returns {JSX.Element} The rendered component.
+ */
 const PromptForm: React.FC<PromptFormProps> = ({
   isLoading,
   basePrompt,

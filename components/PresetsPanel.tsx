@@ -2,12 +2,23 @@ import React from 'react';
 import type { PromptPreset } from '../types';
 import Tooltip from './Tooltip';
 
+/**
+ * Props for the PresetsPanel component.
+ * @property presets - An array of saved prompt presets.
+ * @property onSelect - A function to call when a preset is selected.
+ * @property onDelete - A function to call when the delete button for a preset is clicked.
+ */
 interface PresetsPanelProps {
   presets: PromptPreset[];
   onSelect: (preset: PromptPreset) => void;
   onDelete: (id: string) => void;
 }
 
+/**
+ * A component that displays a panel of saved prompt presets.
+ * @param {PresetsPanelProps} props - The props for the component.
+ * @returns {JSX.Element | null} The rendered component, or null if there are no presets.
+ */
 const PresetsPanel: React.FC<PresetsPanelProps> = ({ presets, onSelect, onDelete }) => {
   if (presets.length === 0) {
     return null;

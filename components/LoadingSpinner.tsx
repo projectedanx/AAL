@@ -1,5 +1,9 @@
 import React from 'react';
 
+/**
+ * A component that displays a loading spinner.
+ * @returns {JSX.Element} The rendered component.
+ */
 const LoadingSpinner: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center text-center p-8">

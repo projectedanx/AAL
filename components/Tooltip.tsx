@@ -1,5 +1,12 @@
 import React from 'react';
 
+/**
+ * Props for the Tooltip component.
+ * @property text - The text to display in the tooltip.
+ * @property children - The content that the tooltip is for.
+ * @property position - The position of the tooltip relative to the content.
+ * @property className - Additional classes to apply to the tooltip container.
+ */
 interface TooltipProps {
   text: string;
   children: React.ReactNode;
@@ -7,6 +14,11 @@ interface TooltipProps {
   className?: string;
 }
 
+/**
+ * A component that displays a tooltip when the user hovers over its content.
+ * @param {TooltipProps} props - The props for the component.
+ * @returns {JSX.Element} The rendered component.
+ */
 const Tooltip: React.FC<TooltipProps> = ({ text, children, position = 'top', className = '' }) => {
   const getPositionClasses = () => {
     switch (position) {
