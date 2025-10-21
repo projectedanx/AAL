@@ -1,0 +1,5 @@
+{
+  "name": "Aesthetic Alchemy Lab",
+  "description": "A visual, iterative prompt development environment to systematically test prompt variations across various parameters and harness controlled randomness for creative output using AI image generation.",
+  "requestFramePermissions": []
+}

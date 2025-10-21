@@ -1,0 +1,43 @@
+// FIX: Populate file with image generation logic using @google/genai.
+import { GoogleGenAI } from "@google/genai";
+import type { GeneratedImage } from '../types';
+
+// Initialize GoogleGenAI with apiKey from environment variables.
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+
+export const generateAestheticImages = async (
+  basePrompt: string,
+  variations: string[],
+  parameter: string, // e.g., 'Style', 'Lighting'
+  temperature: number,
+  seed?: number,
+): Promise<Omit<GeneratedImage, 'id' | 'rating'>[]> => {
+  const imagePromises = variations.map(async (variation) => {
+    const fullPrompt = `${basePrompt}, ${parameter}: ${variation}`;
+    
+    // Use 'imagen-4.0-generate-001' for high-quality image generation as per guidelines.
+    // FIX: The 'temperature' property is not a valid parameter for the 'generateImages' config.
+    // NOTE: The 'seed' parameter is not currently supported by the 'imagen-4.0-generate-001' model API.
+    const response = await ai.models.generateImages({
+      model: 'imagen-4.0-generate-001',
+      prompt: fullPrompt,
+      config: {
+        numberOfImages: 1,
+        outputMimeType: 'image/jpeg',
+        aspectRatio: '1:1',
+      },
+    });
+
+    // Correctly access the base64 image data from the response.
+    const base64ImageBytes = response.generatedImages[0].image.imageBytes;
+    const imageUrl = `data:image/jpeg;base64,${base64ImageBytes}`;
+    
+    return {
+      src: imageUrl,
+      prompt: fullPrompt,
+      variation: variation,
+    };
+  });
+
+  return Promise.all(imagePromises);
+};
