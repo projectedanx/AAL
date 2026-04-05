@@ -1,4 +1,3 @@
-// FIX: Populate file with image generation logic using @google/genai.
 import { GoogleGenAI } from "@google/genai";
 import type { GeneratedImage } from '../types';
 
@@ -25,7 +24,7 @@ export const generateAestheticImages = async (
     const fullPrompt = `${basePrompt}, ${parameter}: ${variation}`;
     
     // Use 'imagen-4.0-generate-001' for high-quality image generation as per guidelines.
-    // FIX: The 'temperature' property is not a valid parameter for the 'generateImages' config.
+    // NOTE: The 'temperature' property is not a valid parameter for the 'generateImages' config.
     // NOTE: The 'seed' parameter is not currently supported by the 'imagen-4.0-generate-001' model API.
     const response = await ai.models.generateImages({
       model: 'imagen-4.0-generate-001',
