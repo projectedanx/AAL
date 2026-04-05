@@ -1,0 +1,7 @@
+# scars.yaml
+- id: SCAR-000
+  timestamp: 2025-04-05T20:45:00Z
+  rejected_approach: "N/A"
+  failure_mode: "Initialization"
+  geometric_coordinates: "Origin"
+  alternative_applied: "Baseline established"
