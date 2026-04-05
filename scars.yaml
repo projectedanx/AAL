@@ -1,6 +1,14 @@
+# scars.yaml
 - id: SCAR-001
   timestamp: 2024-04-05T20:45:00Z
   rejected_approach: "temperature parameter in geminiService.ts generateImages"
   failure_mode: "The 'temperature' property is not a valid parameter for the 'generateImages' config of @google/genai"
   geometric_coordinates: "[-0.8, 0.4, 0.2]"
   alternative_applied: "Removed temperature parameter from the model config payload"
+
+- id: SCAR-002
+  timestamp: 2025-04-05T20:45:00Z
+  rejected_approach: "N/A"
+  failure_mode: "Initialization"
+  geometric_coordinates: "Origin"
+  alternative_applied: "Baseline established"

@@ -1,12 +1,12 @@
 Root: React/Vite
-├── Auth: None — Local
-├── DB: LocalStorage — JSON
-├── API: Google GenAI — REST
-├── UI: TailwindCSS — Custom
-└── Infra: Local — None
+├── Auth: None — N/A
+├── DB: LocalStorage — Browser API
+├── API: Gemini API — REST via @google/genai
+├── UI: Tailwind CSS — Utility classes
+└── Infra: Node — Vite Dev Server
 
 DATA FLOWS:
-User → [UI] → [API] → [UI] → [LocalStorage]
+User → [UI] → [API] → [UI] → [DB]
 
 MEREOLOGICAL MAP:
-[React Components] ∈ [Gemini Service] ∈ [App Module] ∈ [React/Vite]
+Component ∈ Service ∈ Module ∈ Root
