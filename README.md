@@ -15,6 +15,12 @@ View your app in AI Studio: https://ai.studio/apps/drive/1dZuGRJmxlIyKPy_XGCpFf5
 *   **Prompt History and Presets:** The application keeps a history of your prompts and allows you to save your favorite prompt configurations as presets.
 *   **Example Prompts:** A curated list of example prompts is provided to help you get started.
 
+## Advanced Product Roadmap (Upcoming Features)
+
+*   **Node-based Prompt Chaining:** Move beyond linear forms to a visual canvas for mapping out complex, branching aesthetic pipelines.
+*   **Evolutionary Image Generation:** "Breed" multiple generated images to interpolate styles and create novel visual offspring using genetic algorithms.
+*   **Collaborative Style Blueprints:** Publish, share, and remix Style Blueprints with the community or team.
+
 ## Run Locally
 
 **Prerequisites:**
