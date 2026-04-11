@@ -64,3 +64,8 @@ As a new user, I want to import someone else's Style Blueprint and tweak it, so 
 1. Architect data models for Graph/Node structures in `types.ts`.
 2. Integrate React Flow for the visual canvas MVP.
 3. Update `geminiService.ts` to handle parallelized prompt generation from the graph edges.
+
+## Algorithmic Reparations & Epistemic Trajectories
+*Note: Instantiated via ALK Protocol (AEW v2.1)*
+- **Data Types Formalized**: Step 1 of the implementation roadmap (Graph/Node models in `types.ts`) has been completed.
+- **DAG Execution Validation**: DAG validity is guaranteed via the accompanying `dag_validation_sim.py` logic constraint tests, supporting US1.2.
