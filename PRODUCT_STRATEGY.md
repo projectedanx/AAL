@@ -5,22 +5,22 @@ To evolve Aesthetic Alchemy Lab from a linear prompt exploration tool into an in
 
 ## Epics
 
-### Epic 1: Node-based Prompt Chaining
+### Epic 1: Node-based Prompt Chaining (COMPLETED)
 **Description:** Transition from a linear form to a node-based interface where users can visually map out prompt parameters, link multiple generations, and create complex aesthetic pipelines.
 
 #### User Stories & Acceptance Criteria
-**US1.1: Node Interface Canvas**
+**US1.1: Node Interface Canvas (COMPLETED)**
 As an artist, I want a visual canvas to drag and drop prompt parameters, so I can see the relationship between different aesthetic components.
 *Acceptance Criteria:*
-- Implement a zoomable/pannable canvas using a library like React Flow.
-- Users can create nodes for Base Prompts, Style, Lighting, Composition, and Generation Output.
-- Nodes can be connected via edges to form a generation pipeline.
+- Implement a zoomable/pannable canvas using a library like React Flow. (DONE via `@xyflow/react`)
+- Users can create nodes for Base Prompts, Style, Lighting, Composition, and Generation Output. (DONE via `NodeCanvas.tsx`)
+- Nodes can be connected via edges to form a generation pipeline. (DONE)
 
-**US1.2: Branching Variations**
+**US1.2: Branching Variations (COMPLETED)**
 As an experimental creator, I want to split a single base prompt into multiple variation branches visually, so I can simultaneously generate and compare contrasting aesthetics.
 *Acceptance Criteria:*
-- A single text node can connect to multiple parameter nodes (e.g., one prompt -> cyberpunk lighting, one prompt -> volumetric lighting).
-- The "Generate" action executes all paths leading to an Output node.
+- A single text node can connect to multiple parameter nodes (e.g., one prompt -> cyberpunk lighting, one prompt -> volumetric lighting). (DONE)
+- The "Generate" action executes all paths leading to an Output node. (DONE via `services/graphExecutor.ts`)
 
 ### Epic 2: Evolutionary Image Generation (Genetic Algorithm)
 **Description:** Allow users to use generated images as "parents" to breed new variations, utilizing image-to-image capabilities or semantic prompt blending.
@@ -61,11 +61,30 @@ As a new user, I want to import someone else's Style Blueprint and tweak it, so 
 - **Dev Team (Human & AI):** Need clear data structures. The shift to nodes and lineages requires updating `types.ts` to support directed acyclic graphs (DAGs) and parent-child entity relationships.
 
 ## Implementation Roadmap (Near Term)
-1. Architect data models for Graph/Node structures in `types.ts`.
-2. Integrate React Flow for the visual canvas MVP.
-3. Update `geminiService.ts` to handle parallelized prompt generation from the graph edges.
+1. Architect data models for Graph/Node structures in `types.ts`. (COMPLETED)
+2. Integrate React Flow for the visual canvas MVP. (COMPLETED)
+3. Update `geminiService.ts` / `graphExecutor.ts` to handle parallelized prompt generation from the graph edges. (COMPLETED)
 
 ## Algorithmic Reparations & Epistemic Trajectories
-*Note: Instantiated via ALK Protocol (AEW v2.1)*
+*Note: Instantiated via ALK Protocol (AEW v2.2)*
 - **Data Types Formalized**: Step 1 of the implementation roadmap (Graph/Node models in `types.ts`) has been completed.
-- **DAG Execution Validation**: DAG validity is guaranteed via the accompanying `dag_validation_sim.py` logic constraint tests, supporting US1.2.
+- **DAG Execution Validation**: DAG validity is guaranteed via `services/graphExecutor.ts`, rejecting topological collapse and supporting US1.2.
+Root: React/Vite
+├── Auth: None — N/A
+├── DB: LocalStorage — Browser API
+├── API: Gemini API — REST via @google/genai
+├── UI: Tailwind CSS — Utility classes + React Flow
+└── Infra: Node — Vite Dev Server
+
+DATA FLOWS:
+User → [UI (NodeCanvas)] → [Graph Executor] → [API] → [UI] → [DB]
+
+MEREOLOGICAL MAP:
+Component ∈ Service ∈ Module ∈ Root
+
+UPCOMING STRATEGIC SHIFTS:
+- Data: Expanding types to support Directed Acyclic Graphs (DAGs) for prompt lineage and evolutionary tracking. (IN PROGRESS - Epic 2)
+- Sharing: Introducing import/export mechanisms for Collaborative Blueprints.
+
+### Pluriversal Topological Shift (AEW v2.2)
+The data structures have shifted from linear state objects to Directed Acyclic Graphs (DAGs) using `PipelineGraph`, `PipelineNode`, and `PipelineEdge`. This topology enables node-based processing and combinatorial branching paths. The linear UI constraint has been shattered via Epic 1 completion.

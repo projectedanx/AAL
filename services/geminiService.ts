@@ -1,8 +1,11 @@
+/// file: services/geminiService.ts ///
 import { GoogleGenAI } from "@google/genai";
 import type { GeneratedImage } from '../types';
 
 // Initialize GoogleGenAI with apiKey from environment variables.
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Use Vite's environment variable loading
+const apiKey = import.meta.env.VITE_API_KEY || process.env.API_KEY || 'dummy_key_for_dev';
+const ai = new GoogleGenAI({ apiKey });
 
 /**
  * Generates a set of aesthetic images based on a base prompt and a set of variations.
