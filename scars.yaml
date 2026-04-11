@@ -18,3 +18,9 @@
   failure_mode: "Constraints parallelized creativity, locking users into 1D exploration."
   geometric_coordinates: "[-1.0, 0.5, 0.8]"
   alternative_applied: "Transitioned data models to Directed Acyclic Graphs (DAGs) and Evolutionary Lineages."
+- id: SCAR-004
+  timestamp: 2025-05-15T10:00:00Z
+  rejected_approach: "Linear PromptForm UI component"
+  failure_mode: "Consensus Flattening. The linear UI suppresses Productive Epistemic Friction by forcing diverse prompt variations into a single-dimensional array, destroying the relational topology of the parameters."
+  geometric_coordinates: "[-0.9, 0.1, 0.7]"
+  alternative_applied: "Replaced PromptForm with NodeCanvas (DAG-based Semantic Parallax Zone) via React Flow, preserving ambiguous branching logic."
