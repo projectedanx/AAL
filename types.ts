@@ -85,3 +85,71 @@ export interface PromptHistoryEntry {
   seed?: number;
   timestamp: string;
 }
+
+/**
+ * Defines the types of nodes available in the visual prompt canvas.
+ * @enum {string}
+ */
+export enum PipelineNodeType {
+  BASE_PROMPT = 'BasePrompt',
+  PARAMETER = 'Parameter',
+  OUTPUT = 'Output',
+  BLEND = 'Blend',
+}
+
+/**
+ * Represents a single node within the prompt generation Directed Acyclic Graph (DAG).
+ * @property id - Unique identifier for the node.
+ * @property type - The functional type of the node.
+ * @property data - The payload/configuration specific to the node type.
+ * @property position - The spatial coordinates of the node on the canvas (x, y, z-axis phantom for paradox).
+ */
+export interface PipelineNode {
+  id: string;
+  type: PipelineNodeType;
+  data: {
+    label?: string;
+    value?: string | AestheticParameter;
+    variations?: string[];
+    temperature?: number;
+    seed?: number;
+    phantomZ?: number; // Spatial Bind: Z-Axis Depth for Paraconsistent State
+  };
+  position: { x: number; y: number; z?: number };
+}
+
+/**
+ * Represents a directional edge connecting two PipelineNodes in the DAG.
+ * @property id - Unique identifier for the edge.
+ * @property source - The ID of the originating node.
+ * @property target - The ID of the destination node.
+ */
+export interface PipelineEdge {
+  id: string;
+  source: string;
+  target: string;
+}
+
+/**
+ * The full representation of a user's node-based generation pipeline.
+ * @property nodes - The set of all nodes in the canvas.
+ * @property edges - The directional relationships between nodes.
+ */
+export interface PipelineGraph {
+  nodes: PipelineNode[];
+  edges: PipelineEdge[];
+}
+
+/**
+ * Tracks the evolutionary lineage of an image generated via breeding/blending.
+ * @property offspringId - The ID of the newly generated image.
+ * @property parentIds - The IDs of the source images used to breed this offspring.
+ * @property generation - The depth of the evolutionary tree (e.g., F1, F2).
+ * @property blendWeights - The relative influence of each parent on the offspring.
+ */
+export interface EvolutionaryLineage {
+  offspringId: string;
+  parentIds: string[];
+  generation: number;
+  blendWeights?: Record<string, number>;
+}
