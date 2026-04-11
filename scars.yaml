@@ -12,3 +12,10 @@
   failure_mode: "Initialization"
   geometric_coordinates: "Origin"
   alternative_applied: "Baseline established"
+
+- id: SCAR-003
+  timestamp: 2024-04-11T14:20:00Z
+  rejected_approach: "Euclidean linear generation arrays (PromptHistoryEntry, GenerationResult)"
+  failure_mode: "Topological collapse when merging overlapping or branching prompt variations"
+  geometric_coordinates: "Z=0.0"
+  alternative_applied: "Z-Axis DAG topology (GraphNode, GraphEdge) for Paraconsistent Prompt Breeding"

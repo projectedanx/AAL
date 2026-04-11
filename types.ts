@@ -85,3 +85,30 @@ export interface PromptHistoryEntry {
   seed?: number;
   timestamp: string;
 }
+
+/**
+ * Represents a directed edge connecting nodes in the aesthetic generation graph.
+ * Supports the Z-Axis inference and evolutionary breeding models.
+ * @property id - Unique identifier for the edge.
+ * @property sourceId - The ID of the parent node.
+ * @property targetId - The ID of the child/offspring node.
+ */
+export interface GraphEdge {
+  id: string;
+  sourceId: string;
+  targetId: string;
+}
+
+/**
+ * Represents a singular generation instance or synthesized state within the paraconsistent DAG.
+ * @property id - A unique identifier for the node.
+ * @property type - The node's topological function ('base', 'variation', 'synthesis').
+ * @property data - The underlying generative configuration and results.
+ * @property zIndex - The inferred Z-Axis depth used during synthesis.
+ */
+export interface GraphNode {
+  id: string;
+  type: 'base' | 'variation' | 'synthesis';
+  data: Partial<GenerationResult | PromptHistoryEntry>;
+  zIndex: number;
+}

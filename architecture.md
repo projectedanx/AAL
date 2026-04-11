@@ -15,3 +15,8 @@ UPCOMING STRATEGIC SHIFTS:
 - UI: Transitioning to Graph/Node-based canvas (e.g., React Flow).
 - Data: Expanding types to support Directed Acyclic Graphs (DAGs) for prompt lineage and evolutionary tracking.
 - Sharing: Introducing import/export mechanisms for Collaborative Blueprints.
+
+## Z-Axis Topology & DAG Data Flows
+To support Node-based Prompt Chaining and Evolutionary Generation, the architecture employs a Directed Acyclic Graph (DAG) structural topology.
+Data is mapped not just temporally (X-axis), but compositionally. Synthesized generations are promoted to an inferred Z-Axis, allowing contradictory aesthetic paradigms to coalesce without destructively altering the base (`Constitutional Austenite`) nodes.
+Data Types `GraphNode` and `GraphEdge` facilitate this topological leap, ensuring mereological traceability.
