@@ -1,12 +1,13 @@
-
+/// file: components/HistoryPanel.tsx ///
 import React from 'react';
 import type { GenerationResult } from '../types';
 
 /**
- * Props for the HistoryPanel component.
- * @property generations - An array of previous generation results.
- * @property onSelect - A function to call when a generation is selected from the history.
- * @property currentGenerationId - The ID of the currently displayed generation.
+ * Interface defining the properties for the HistoryPanel component.
+ * @interface HistoryPanelProps
+ * @property {GenerationResult[]} generations - An array representing the chronological history of completed generation requests.
+ * @property {(id: string) => void} onSelect - Callback executed when a historical generation item is selected for review.
+ * @property {string | null} currentGenerationId - The ID of the currently focused/active generation result, used for styling.
  */
 interface HistoryPanelProps {
   generations: GenerationResult[];
@@ -15,9 +16,11 @@ interface HistoryPanelProps {
 }
 
 /**
- * A component that displays a panel with the history of generated images.
- * @param {HistoryPanelProps} props - The props for the component.
- * @returns {JSX.Element | null} The rendered component, or null if there are no generations.
+ * A sidebar component that lists the user's past generation trajectories.
+ * Facilitates review and selection of previously generated Pluriversal graph outputs.
+ *
+ * @param {HistoryPanelProps} props - The configuration parameters.
+ * @returns {JSX.Element | null} The rendered HistoryPanel component, or null if the generation history is empty.
  */
 const HistoryPanel: React.FC<HistoryPanelProps> = ({ generations, onSelect, currentGenerationId }) => {
   if (generations.length === 0) {

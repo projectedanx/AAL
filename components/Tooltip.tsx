@@ -1,11 +1,13 @@
+/// file: components/Tooltip.tsx ///
 import React from 'react';
 
 /**
- * Props for the Tooltip component.
- * @property text - The text to display in the tooltip.
- * @property children - The content that the tooltip is for.
- * @property position - The position of the tooltip relative to the content.
- * @property className - Additional classes to apply to the tooltip container.
+ * Interface defining the properties for the Tooltip component.
+ * @interface TooltipProps
+ * @property {string} text - The informational text to display inside the tooltip hover state.
+ * @property {React.ReactNode} children - The target DOM elements wrapped by the tooltip.
+ * @property {'top' | 'bottom' | 'left' | 'right'} [position] - The spatial orientation of the tooltip relative to its children.
+ * @property {string} [className] - Optional Tailwind classes to extend the tooltip's container styling.
  */
 interface TooltipProps {
   text: string;
@@ -15,9 +17,11 @@ interface TooltipProps {
 }
 
 /**
- * A component that displays a tooltip when the user hovers over its content.
- * @param {TooltipProps} props - The props for the component.
- * @returns {JSX.Element} The rendered component.
+ * A utility component that renders a stylized, directional tooltip on hover.
+ * Encapsulates contextual hints for UI elements across the canvas without cluttering the layout.
+ *
+ * @param {TooltipProps} props - The configuration parameters for the tooltip.
+ * @returns {JSX.Element} The rendered Tooltip component wrapping the provided children.
  */
 const Tooltip: React.FC<TooltipProps> = ({ text, children, position = 'top', className = '' }) => {
   const getPositionClasses = () => {

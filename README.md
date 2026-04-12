@@ -4,64 +4,67 @@
 
 # Aesthetic Alchemy Lab
 
-This repository contains the source code for the Aesthetic Alchemy Lab, a web application that allows you to explore the creative potential of generative AI. By systematically varying aesthetic parameters such as style, lighting, and composition, you can discover unique visual styles and generate a "style blueprint" to guide future creative work.
+The **Aesthetic Alchemy Lab** is a generative exploration environment designed for structural isomorphism and multi-causal creative discovery. Rejecting linear, parsimonious workflows, it utilizes Pluriversal Node-based Directed Acyclic Graphs (DAGs) to map, branch, and evolve visual aesthetics systemically.
 
 View your app in AI Studio: https://ai.studio/apps/drive/1dZuGRJmxlIyKPy_XGCpFf5NHAE5c6r0a
 
-## Features
+## Purpose & Architecture
 
-*   **Systematic Exploration:** Instead of relying on trial-and-error, the Aesthetic Alchemy Lab allows you to systematically explore the effect of different aesthetic parameters on a base prompt.
-*   **Style Blueprint Generation:** By rating the generated images, you can create a "style blueprint" that captures the essence of a particular aesthetic. This blueprint can be used as a starting point for future creative work.
-*   **Prompt History and Presets:** The application keeps a history of your prompts and allows you to save your favorite prompt configurations as presets.
-*   **Example Prompts:** A curated list of example prompts is provided to help you get started.
+This repository shifts from Euclidean, linear prompt generation to a topological, node-based system (AEW v2.2). It allows users to visually map out prompt parameters, link multiple generations, and create complex aesthetic pipelines, resolving the "Algorithmic Trauma" of consensus flattening documented in `scars.yaml`.
 
-## Advanced Product Roadmap (Upcoming Features)
+*   **Node-Based Topology (DAGs):** The core interface uses `@xyflow/react` to allow users to build and execute prompt branches concurrently, enabling "Semantic Parallax" in visual design.
+*   **Evolutionary Lineage:** Data structures (`types.ts`) are formalized to support future genetic algorithmic "breeding" of images, tracking multi-parent relationships and blend weights.
+*   **Systematic Exploration:** Instead of trial-and-error, systematically vary parameters (Style, Lighting, Composition) across independent branches.
+*   **Style Blueprints:** Rate and save generated matrices as "blueprints" for consistent aesthetic scaffolding.
 
-*   **Node-based Prompt Chaining:** Move beyond linear forms to a visual canvas for mapping out complex, branching aesthetic pipelines.
-*   **Evolutionary Image Generation:** "Breed" multiple generated images to interpolate styles and create novel visual offspring using genetic algorithms.
-*   **Collaborative Style Blueprints:** Publish, share, and remix Style Blueprints with the community or team.
-
-## Run Locally
+## Developer Setup
 
 **Prerequisites:**
-
-*   Node.js
+*   Node.js (v18+ recommended)
 *   npm
 
-**Instructions:**
+**Installation:**
 
 1.  Clone the repository:
-    `git clone https://github.com/your-username/aesthetic-alchemy-lab.git`
+    ```
+    git clone https://github.com/your-username/aesthetic-alchemy-lab.git
+    cd aesthetic-alchemy-lab
+    ```
 2.  Install dependencies:
-    `npm install`
-3.  Create a `.env.local` file in the root of the project and add your Gemini API key:
-    `GEMINI_API_KEY=your-api-key`
-4.  Run the app:
-    `npm run dev`
+    ```
+    npm install
+    ```
+3.  Configure Environment: Create a `.env.local` file in the project root and add your Google Gemini API key:
+    ```
+    VITE_API_KEY=your_gemini_api_key_here
+    ```
+4.  Run Development Server:
+    ```
+    npm run dev &
+    ```
+    The application will be available at `http://localhost:5173` (or port 3000 depending on Vite config).
 
-The application will be available at `http://localhost:3000`.
+## Build & Validation
 
-## Usage
+To build the project for production:
+```
+npm run build
+```
 
-1.  Enter a base prompt in the "Enter your core subject" text area.
-2.  Choose a parameter to vary from the "Choose a parameter to vary" dropdown.
-3.  Select one or more variations from the list of available options.
-4.  Adjust the creativity (temperature) and seed (optional) to your liking.
-5.  Click the "Generate" button to generate the images.
-6.  Rate the generated images to create a style blueprint.
-7.  Copy the style blueprint to your clipboard to use in other applications.
+*Note: The project tracks technical debt and rejected approaches in `scars.yaml` and `SymbolicScar.json`. Mathematical validation of DAG structures is historically documented via Python simulation tools (e.g., `dag_validation_sim.py`) as outlined in `COGNITIVE_CONTRACT.md`.*
+
+## Usage Guide
+
+1.  **Canvas Interaction:** Use the visual canvas to drag and drop prompt parameters.
+2.  **Base Prompting:** Create a "Base Prompt" node to establish the core subject.
+3.  **Branching Parameters:** Connect the base node to multiple "Parameter" nodes (e.g., mapping one base prompt to both "Cyberpunk Lighting" and "Volumetric Lighting" branches).
+4.  **Execution:** Ensure paths lead to an "Output" node. Click "Generate Pipeline" to execute the graph concurrently.
+5.  **Curation:** Review the generated image grid, apply ratings, and extract cohesive Style Blueprints.
 
 ## Project Structure
 
-The project is structured as follows:
-
-*   `src/components`: Contains the React components that make up the UI.
-*   `src/data`: Contains the example prompts.
-*   `src/services`: Contains the logic for interacting with the Gemini API.
-*   `src/types`: Contains the TypeScript types used throughout the application.
-*   `public`: Contains the static assets for the application.
-*   `index.html`: The entry point of the application.
-*   `vite.config.ts`: The configuration for Vite.
-*   `tsconfig.json`: The configuration for TypeScript.
-*   `package.json`: The project's dependencies and scripts.
-*   `README.md`: This file.
+*   `components/`: React UI components, primarily featuring the `NodeCanvas.tsx` for graph interaction.
+*   `services/`: Core logic, including `graphExecutor.ts` for traversing and executing the DAG against the Gemini API (`geminiService.ts`).
+*   `data/`: Curated templates and example prompts.
+*   `types.ts`: Centralized TypeScript definitions representing the DAG topology (`PipelineGraph`, `PipelineNode`, `EvolutionaryLineage`).
+*   `COGNITIVE_CONTRACT.md` / `PRODUCT_STRATEGY.md`: Epistemic documentation governing architectural intent and product epics.
