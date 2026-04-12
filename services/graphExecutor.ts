@@ -5,6 +5,7 @@ import { generateAestheticImages } from './geminiService';
 
 /**
  * Interface representing a path traversed through the DAG.
+ * Used internally to resolve topological paths from output to base prompt.
  */
 export interface TraversalPath {
     basePrompt: string;
@@ -17,6 +18,10 @@ export interface TraversalPath {
 /**
  * Traverses the graph backwards from Output nodes to find all valid generative paths.
  * Enforces Productive Epistemic Friction by preserving contradictory branches.
+ *
+ * @param {Node[]} nodes - The array of nodes present in the current canvas graph.
+ * @param {Edge[]} edges - The array of edges defining connections between nodes.
+ * @returns {TraversalPath[]} An array containing all resolved paths, tracing from base prompts through aesthetic parameters.
  */
 const findPaths = (nodes: Node[], edges: Edge[]): TraversalPath[] => {
     const paths: TraversalPath[] = [];
@@ -66,9 +71,11 @@ const findPaths = (nodes: Node[], edges: Edge[]): TraversalPath[] => {
 
 /**
  * Executes the Pluriversal DAG, mapping semantic trajectories to the Synthesis Engine.
- * @param nodes - Nodes in the DAG.
- * @param edges - Edges mapping the topology.
- * @returns An array of GenerationResult objects embodying the diverse epistemic states.
+ * This function resolves the graph topology into discrete generation requests and invokes the Gemini service.
+ *
+ * @param {Node[]} nodes - The array of nodes representing the current state of the generative graph.
+ * @param {Edge[]} edges - The array of edges mapping the topological relationships between nodes.
+ * @returns {Promise<GenerationResult[]>} A promise resolving to an array of GenerationResult objects embodying the diverse epistemic states produced by the graph.
  */
 export const executeGraph = async (nodes: Node[], edges: Edge[]): Promise<GenerationResult[]> => {
     const paths = findPaths(nodes, edges);

@@ -1,8 +1,11 @@
+/// file: data/examplePrompts.ts ///
 import { AestheticParameter, type PromptPreset } from '../types';
 
 /**
- * An array of example prompts to display in the UI.
- * These are used to provide users with starting points for their own creations.
+ * An array of curated example prompts to display in the UI.
+ * These are used to provide users with starting points for their own generative creations,
+ * demonstrating how different aesthetic parameters and variations can be applied.
+ * @type {Omit<PromptPreset, 'id'>[]}
  */
 export const examplePrompts: Omit<PromptPreset, 'id'>[] = [
   {

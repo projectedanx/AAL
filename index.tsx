@@ -1,7 +1,6 @@
-
 /**
- * @file This is the entry point of the application.
- * It renders the App component to the root element of the HTML page.
+ * Application entry point.
+ * Mounts the root React component (`App`) to the DOM and enforces StrictMode.
  */
 import React from 'react';
 import ReactDOM from 'react-dom/client';

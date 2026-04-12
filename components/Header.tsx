@@ -1,8 +1,10 @@
+/// file: components/Header.tsx ///
 import React from 'react';
 
 /**
- * A component that displays the header of the application.
- * @returns {JSX.Element} The rendered component.
+ * A component that displays the application header.
+ * Provides consistent branding and navigation anchoring across the topological canvas.
+ * @returns {JSX.Element} The rendered Header component.
  */
 const Header: React.FC = () => {
   return (

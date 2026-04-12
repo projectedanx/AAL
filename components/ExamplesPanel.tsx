@@ -1,11 +1,13 @@
+/// file: components/ExamplesPanel.tsx ///
 import React from 'react';
 import type { PromptPreset } from '../types';
 import Tooltip from './Tooltip';
 
 /**
- * Props for the ExamplesPanel component.
- * @property examples - An array of example presets to display.
- * @property onSelect - A function to call when an example is selected.
+ * Interface defining the properties for the ExamplesPanel component.
+ * @interface ExamplesPanelProps
+ * @property {Omit<PromptPreset, 'id'>[]} examples - An array of curated generative examples to display as quick-starts.
+ * @property {(example: Omit<PromptPreset, 'id'>) => void} onSelect - Callback executed when an example preset is clicked, populating the canvas/form.
  */
 interface ExamplesPanelProps {
   examples: Omit<PromptPreset, 'id'>[];
@@ -13,9 +15,11 @@ interface ExamplesPanelProps {
 }
 
 /**
- * A component that displays a panel of example prompts.
- * @param {ExamplesPanelProps} props - The props for the component.
- * @returns {JSX.Element} The rendered component.
+ * A sidebar component presenting curated generative presets.
+ * Allows users to bootstrap complex aesthetic parameters quickly without manual entry.
+ *
+ * @param {ExamplesPanelProps} props - The configuration parameters.
+ * @returns {JSX.Element} The rendered ExamplesPanel component.
  */
 const ExamplesPanel: React.FC<ExamplesPanelProps> = ({ examples, onSelect }) => {
   return (

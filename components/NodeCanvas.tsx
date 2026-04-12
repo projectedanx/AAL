@@ -1,3 +1,16 @@
+/**
+ * Interface defining the properties for the NodeCanvas component.
+ * @interface NodeCanvasProps
+ * @property {Node[]} nodes - The array of topological nodes currently present on the canvas.
+ * @property {Edge[]} edges - The array of edges defining the directional connections between nodes.
+ * @property {(nodes: Node[] | ((nds: Node[]) => Node[])) => void} onNodesChange - Callback to handle spatial or state changes to the nodes.
+ * @property {(edges: Edge[] | ((eds: Edge[]) => Edge[])) => void} onEdgesChange - Callback to handle creation or modification of edges.
+ * @property {(connection: Connection) => void} onConnect - Callback fired when a user successfully connects two nodes via handles.
+ * @property {boolean} isGenerating - Flag indicating if the DAG is currently being resolved and executed via the API.
+ * @property {() => void} onGenerate - Callback to trigger the Pluriversal generation pipeline derived from the graph topology.
+ * @property {() => void} onAddNode - Callback to spawn a new Parameter node onto the canvas.
+ * @property {() => void} onClear - Callback to reset the canvas to its default, empty state.
+ */
 /// file: components/NodeCanvas.tsx ///
 import React, { useState, useCallback } from 'react';
 import {

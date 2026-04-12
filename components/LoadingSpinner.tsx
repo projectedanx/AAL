@@ -1,8 +1,10 @@
+/// file: components/LoadingSpinner.tsx ///
 import React from 'react';
 
 /**
- * A component that displays a loading spinner.
- * @returns {JSX.Element} The rendered component.
+ * A component that displays an animated loading spinner.
+ * Used to indicate asynchronous generative processes mapping via the Gemini API.
+ * @returns {JSX.Element} The rendered LoadingSpinner component.
  */
 const LoadingSpinner: React.FC = () => {
   return (
