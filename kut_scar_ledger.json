@@ -1,0 +1,17 @@
+/// file: kut_scar_ledger.json ///
+{
+  "Creator_Profile": {
+    "creator_id": "",
+    "display_name": "",
+    "nle_primary": "DaVinci",
+    "nle_secondary": null,
+    "platform_targets": [],
+    "genre_classification": "Other",
+    "session_count": 0,
+    "dominant_failure_mode": null,
+    "pacing_baseline_cpm": null,
+    "target_cpm": 15
+  },
+  "Scar_Ledger": [],
+  "Session_History": []
+}

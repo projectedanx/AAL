@@ -218,7 +218,120 @@ server.registerTool(
   }
 );
 
+
+// TOOL 3: retrieve_kut_ledger
+server.registerTool(
+  "retrieve_kut_ledger",
+  {
+    title: "Retrieve KUT Scar Ledger",
+    description: [
+      "PURPOSE: Retrieves the contents of the KUT Scar Ledger (kut_scar_ledger.json).",
+      "This is the stateful memory of a creator's structural failure patterns used by The Retention Architect.",
+      "GUIDELINES: Invoke to check creator profile, past scars, and session history.",
+      "LIMITATIONS: Read-only operation.",
+    ].join(" "),
+    inputSchema: z.object({}).strict(),
+  },
+  async () => {
+    try {
+      const data = await fs.readFile("kut_scar_ledger.json", "utf-8");
+      return {
+        content: [{
+          type: "text",
+          text: JSON.stringify({ status: "RETRIEVED", target: "kut_scar_ledger.json", data: data }),
+        }],
+      };
+    } catch (err) {
+      return {
+        content: [{
+          type: "text",
+          text: JSON.stringify({
+            error_code: "TOOL_FAULT_GENERAL_PROGRAMMING",
+            fault_category: "GENERAL_PROGRAMMING",
+            structured_detail: {
+              violation: "FS_READ_ERROR",
+              error: String(err),
+            },
+            retry_viable: true,
+            suggested_decomposition: "Verify kut_scar_ledger.json exists.",
+          }),
+        }],
+        isError: true,
+      };
+    }
+  }
+);
+
+// TOOL 4: update_kut_ledger
+server.registerTool(
+  "update_kut_ledger",
+  {
+    title: "Update KUT Scar Ledger",
+    description: [
+      "PURPOSE: Updates the contents of the KUT Scar Ledger (kut_scar_ledger.json).",
+      "GUIDELINES: Invoke after a session to log new scars, resolve existing ones, or update session history.",
+      "PARAMETERS: data — the new ledger JSON object (must conform to KutScarLedger interface).",
+    ].join(" "),
+    inputSchema: z.object({
+      data: z.any().describe("The updated KutScarLedger object in JSON format."),
+    }).strict(),
+  },
+  async ({ data }) => {
+    try {
+      await fs.writeFile("kut_scar_ledger.json", JSON.stringify(data, null, 2), "utf-8");
+      return {
+        content: [{
+          type: "text",
+          text: JSON.stringify({ status: "UPDATED", target: "kut_scar_ledger.json" }),
+        }],
+      };
+    } catch (err) {
+      return {
+        content: [{
+          type: "text",
+          text: JSON.stringify({
+            error_code: "TOOL_FAULT_GENERAL_PROGRAMMING",
+            fault_category: "GENERAL_PROGRAMMING",
+            structured_detail: {
+              violation: "FS_WRITE_ERROR",
+              error: String(err),
+            },
+            retry_viable: true,
+            suggested_decomposition: "Check file write permissions.",
+          }),
+        }],
+        isError: true,
+      };
+    }
+  }
+);
+
 // MCP Prompt Template
+
+// MCP Prompt Template 2: KUT Retention Architect
+server.prompt(
+  "kut-retention-architect",
+  "Initialize KUT: The Retention Architect, Sovereign Agent Blueprint v2.0.",
+  {},
+  async () => {
+    let blueprintText = "";
+    try {
+        blueprintText = await fs.readFile("KUT_BLUEPRINT.md", "utf-8");
+    } catch (e) {
+        blueprintText = "Failed to load blueprint.";
+    }
+    return {
+        messages: [{
+        role: "user",
+        content: {
+            type: "text",
+            text: blueprintText,
+        },
+        }],
+    };
+  }
+);
+
 server.prompt(
   "analyze-tool-schema",
   "Generate a KORSAKOV-style analysis of a proposed MCP tool schema.",

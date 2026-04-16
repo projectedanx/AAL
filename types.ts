@@ -1,3 +1,4 @@
+/// file: types.ts ///
 /**
  * Enum for the different aesthetic parameters that can be varied.
  * @enum {string}
@@ -152,4 +153,51 @@ export interface EvolutionaryLineage {
   parentIds: string[];
   generation: number;
   blendWeights?: Record<string, number>;
+}
+
+/**
+ * Interfaces for the KUT Scar Ledger (The Retention Architect)
+ */
+
+export interface CreatorProfile {
+  creator_id: string;
+  display_name: string;
+  nle_primary: 'DaVinci' | 'Premiere' | 'FinalCut' | 'CapCut' | 'Other';
+  nle_secondary: string | null;
+  platform_targets: Array<'TikTok' | 'Instagram_Reels' | 'YouTube_Shorts' | 'Cross_Platform'>;
+  genre_classification: 'Education' | 'Comedy' | 'Lifestyle' | 'Tutorial' | 'Commentary' | 'Product' | 'Other';
+  session_count: number;
+  dominant_failure_mode: string | null;
+  pacing_baseline_cpm: number | null;
+  target_cpm: number;
+}
+
+export interface ScarEntry {
+  scar_id: string;
+  session_timestamp: string; // ISO8601
+  error_classification: 'Hook_Latency' | 'Dead_Air' | 'Safe_Zone_Violation' | 'Audio_Clip' | 'Poor_CPM' | 'Caption_Overflow' | 'L_Cut_Absence' | 'Lethargic_B_Roll' | 'LUFS_Non_Compliance' | 'Repeated_DFM';
+  error_detail: string;
+  correction_prescribed: string;
+  correction_applied: boolean;
+  recurrence_count: number;
+  status: 'active' | 'resolved' | 'archived';
+  escalation_level: '1_prescriptive' | '2_scar_linked' | '3_dominant_failure_mode';
+}
+
+export interface SessionHistory {
+  session_id: string;
+  session_timestamp: string; // ISO8601
+  video_duration_seconds: number;
+  hook_first_cut_timestamp: string; // timecode
+  reported_3s_retention_pct: number | null;
+  reported_avd_pct: number | null;
+  scars_flagged_this_session: string[]; // scar_id[]
+  scars_resolved_this_session: string[]; // scar_id[]
+  net_improvement_delta: number | null;
+}
+
+export interface KutScarLedger {
+  Creator_Profile: CreatorProfile;
+  Scar_Ledger: ScarEntry[];
+  Session_History: SessionHistory[];
 }

@@ -1,3 +1,4 @@
+/// file: PRODUCT_STRATEGY.md ///
 # Aesthetic Alchemy Lab - Product Strategy & Requirements
 
 ## Vision
@@ -54,6 +55,22 @@ As a new user, I want to import someone else's Style Blueprint and tweak it, so 
 *Acceptance Criteria:*
 - Importing a blueprint populates the prompt form/canvas with the predefined parameters.
 - Edits to imported blueprints are saved as a "Remix" with attribution to the original author.
+
+
+### Epic 4: Short-Form Video Post-Production Auditing (KUT Agent)
+**Description:** Integrate "The Retention Architect" (KUT) to evaluate video timelines, enforce constraint-first (anionic) retention rules, and maintain creator state via the Scar Ledger.
+
+#### User Stories & Acceptance Criteria
+**US4.1: Scar Ledger Initialization**
+As the system, I need a stateful ledger to track creator failure modes and progression, so KUT can escalate constraints dynamically.
+*Acceptance Criteria:*
+- Implement `kut_scar_ledger.json` adhering to `SCAR_LEDGER_SCHEMA v2.0`.
+- Develop MCP tools to read/write to the ledger.
+
+**US4.2: KUT Blueprint Integration**
+As a video creator, I want my timeline reviewed by KUT so that I can eliminate "dead air" and hit the CPM targets.
+*Acceptance Criteria:*
+- Expose the `KUT_BLUEPRINT.md` via an MCP prompt template (`kut-retention-architect`).
 
 ## Stakeholder Perspective Analysis
 - **Hobbyist Creators:** Need intuitive interfaces. The Node Canvas must have a low barrier to entry with templates.

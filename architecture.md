@@ -1,3 +1,4 @@
+/// file: architecture.md ///
 Root: React/Vite
 ├── Auth: None — N/A
 ├── DB: LocalStorage — Browser API
@@ -21,7 +22,8 @@ The data structures have shifted from linear state objects to Directed Acyclic G
 
 Additionally, `EvolutionaryLineage` models have been implemented to track 'breeding' across nodes, mathematically structuring offspring characteristics using genetic weights.
 
-### PHASE 2 TOPOLOGY: DAG Mapping
+
+### PHASE 2 TOPOLOGY: DAG Mapping & KUT Integration
 
 ```mermaid
 graph TD;
@@ -29,18 +31,25 @@ graph TD;
     Server --> Tools[Tools Namespace];
     Tools --> Tool1[execute_dag];
     Tools --> Tool2[retrieve_scar_archive];
+    Tools --> Tool3[retrieve_kut_ledger];
+    Tools --> Tool4[update_kut_ledger];
 
     Server --> Resources[Resources Namespace];
     Resources --> Res1[scars.yaml];
     Resources --> Res2[SymbolicScar.json];
+    Resources --> Res3[kut_scar_ledger.json];
 
     Server --> Prompts[Prompts Namespace];
     Prompts --> Prm1[analyze-tool-schema];
+    Prompts --> Prm2[kut-retention-architect];
 
     Tool1 --> Executor[services/graphExecutor.ts];
     Tool1 -.-> API[Gemini REST API via @google/genai];
 
     Tool2 -.-> FS[Local File System];
+    Tool3 -.-> FS;
+    Tool4 -.-> FS;
+    Prm2 -.-> FS_Blueprint[KUT_BLUEPRINT.md];
 ```
 
 Capability Declarations Required:
