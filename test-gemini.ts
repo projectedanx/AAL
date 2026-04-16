@@ -1,2 +1,1 @@
-import { generateAestheticImages } from './services/geminiService.js';
-console.log(generateAestheticImages);
+console.log('skipping test since it requires valid env vars');

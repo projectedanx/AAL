@@ -1,3 +1,4 @@
+/// file: README.md ///
 <div align="center">
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
@@ -16,6 +17,10 @@ This repository shifts from Euclidean, linear prompt generation to a topological
 *   **Evolutionary Lineage:** Data structures (`types.ts`) are formalized to support future genetic algorithmic "breeding" of images, tracking multi-parent relationships and blend weights.
 *   **Systematic Exploration:** Instead of trial-and-error, systematically vary parameters (Style, Lighting, Composition) across independent branches.
 *   **Style Blueprints:** Rate and save generated matrices as "blueprints" for consistent aesthetic scaffolding.
+
+
+## KUT Integration: The Retention Architect
+The Aesthetic Alchemy Lab now incorporates the **KUT Sovereign Agent Blueprint v2.0** for short-form video post-production. KUT operates as an anionic (constraint-first) post-production auditor, rigorously enforcing retention benchmarks (CPM, safe zones, audio mastering) through the `kut_scar_ledger.json` tracking system. KUT ensures timeline efficiency and Algorithmic Media Thermodynamics compliance.
 
 ## Developer Setup
 

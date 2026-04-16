@@ -1,3 +1,4 @@
+/// file: scars.yaml ///
 # scars.yaml
 - id: SCAR-001
   timestamp: 2024-04-05T20:45:00Z
@@ -30,3 +31,9 @@
   failure_mode: "Pluriversal Parallax collapsed into local epistemological nuance, resulting in Governance Attractor saturation."
   geometric_coordinates: '[H_k, \Phi, -0.8]'
   alternative_applied: "Initiated Controlled Scar Annealing Protocol (CSAP) to melt obsolete domain constraints. Restored topological plasticity."
+- id: SCAR-006
+  timestamp: 2026-04-16T23:30:00Z
+  rejected_approach: "Subjective Post-Production Coaching"
+  failure_mode: "Sycophantic Drift / Semantic Saponification. Vague feedback ('make it more engaging') fails to address rigid algorithmic retention constraints, resulting in timeline bloat and poor watch-time metrics."
+  geometric_coordinates: "[-0.2, 0.9, -0.5]"
+  alternative_applied: "Deployed KUT (The Retention Architect) Sovereign Agent v2.0. Enforces anionic (constraint-first) rules via frame-counts, LUFS readings, and the stateful kut_scar_ledger.json."
