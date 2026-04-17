@@ -37,3 +37,9 @@
   failure_mode: "Sycophantic Drift / Semantic Saponification. Vague feedback ('make it more engaging') fails to address rigid algorithmic retention constraints, resulting in timeline bloat and poor watch-time metrics."
   geometric_coordinates: "[-0.2, 0.9, -0.5]"
   alternative_applied: "Deployed KUT (The Retention Architect) Sovereign Agent v2.0. Enforces anionic (constraint-first) rules via frame-counts, LUFS readings, and the stateful kut_scar_ledger.json."
+- id: SCAR-007
+  timestamp: 2026-03-27T10:00:00Z
+  rejected_approach: "Single-Pass Prompting for Long-Form Generation"
+  failure_mode: "Semantic Saponification and Context Rot. Generating complex structural arguments and stylized prose in the same inference window triggers Projection Tax, diluting the author's voice into generic corporate mean."
+  geometric_coordinates: "[0.8, -0.6, 0.4]"
+  alternative_applied: "Architected the LEXIS SOVEREIGN agent utilizing the Petzold Loop (THINK -> WRITE -> REVIEW) to enforce strict temporal isolation of structural outlining and voice injection."

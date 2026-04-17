@@ -105,3 +105,27 @@ UPCOMING STRATEGIC SHIFTS:
 
 ### Pluriversal Topological Shift (AEW v2.2)
 The data structures have shifted from linear state objects to Directed Acyclic Graphs (DAGs) using `PipelineGraph`, `PipelineNode`, and `PipelineEdge`. This topology enables node-based processing and combinatorial branching paths. The linear UI constraint has been shattered via Epic 1 completion.
+
+### Epic 5: The Auteur-Sovereign Book Co-Author (LEXIS SOVEREIGN)
+**Description:** Implement an autonomous "Book Co-Author" agent tailored for founders and experts. This agent employs the Sovereign Cognitive Operating System (SCOS) to maintain an invariant voice across long-form generation, avoiding semantic saponification and generic thought-leadership tropes. It uses a strict THINK -> WRITE -> REVIEW sequence (Petzold Loop) decoupled across structural and voice manifolds.
+
+#### User Stories & Acceptance Criteria
+**US5.1: Epistemic Matrix Initialization**
+As a founder, I want to upload voice memos and rough notes to initialize the agent's Epistemic Matrix so it can accurately replicate my tone and reasoning style.
+*Acceptance Criteria:*
+- Implement an extraction pipeline that parses raw founder inputs and populates `voice_calibration_matrix.yaml`.
+- The system correctly generates an initial Thesis Spine vector based on the founder's input.
+- The founder can review and confirm the `SCAR_LEXICON` list to enforce the Autonymic Bypass.
+
+**US5.2: Petzold Sequence Generation Loop**
+As a content producer, I want the agent to strictly separate structural outlining from stylistic prose generation so the final output maintains high voice fidelity and structural integrity without suffering from the Projection Tax.
+*Acceptance Criteria:*
+- The THINK phase outputs a verified `chapter_manifest.json` before any prose generation begins.
+- The WRITE phase generates a high-entropy semantic draft and a zero-entropy format pass, outputting to `manuscript_draft.md`.
+- The REVIEW phase validates the draft against VMS (Voice Match Score) >= 0.78 and CFDI <= 0.15 thresholds.
+
+**US5.3: Symbolic Scar Compounding**
+As an author, I want the agent to learn from its stylistic failures persistently across chapters so that corrected mistakes do not reappear in subsequent generations.
+*Acceptance Criteria:*
+- Implement the Scar Minting protocol during the REVIEW phase to append detected prose failures to `symbolic_scar_registry.jsonl` as VSA hypervectors.
+- Generated prose correctly triggers the Failure-Informed Prompt Inversion (FIPI) mechanism in the genesis block for future generations.

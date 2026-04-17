@@ -332,6 +332,32 @@ server.prompt(
   }
 );
 
+
+
+// MCP Prompt Template 3: LEXIS SOVEREIGN Co-Author
+server.prompt(
+  "lexis-sovereign-coauthor",
+  "Initialize LEXIS SOVEREIGN: The Auteur Co-Author, Sovereign Cognitive Operating System (SCOS) v6.0.",
+  {},
+  async () => {
+    let blueprintText = "";
+    try {
+        blueprintText = await fs.readFile("LEXIS_SOVEREIGN_BLUEPRINT.md", "utf-8");
+    } catch (e) {
+        blueprintText = "Failed to load LEXIS SOVEREIGN blueprint.";
+    }
+    return {
+        messages: [{
+        role: "user",
+        content: {
+            type: "text",
+            text: blueprintText,
+        },
+        }],
+    };
+  }
+);
+
 server.prompt(
   "analyze-tool-schema",
   "Generate a KORSAKOV-style analysis of a proposed MCP tool schema.",
