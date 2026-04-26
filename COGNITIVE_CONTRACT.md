@@ -24,3 +24,8 @@ This document certifies the execution of the Antifragile Epistemic Weaver (AEW) 
 - Integrated "The Retention Architect" (KUT) via Sovereign Agent Blueprint v2.0.
 - Instantiated `kut_scar_ledger.json` to track and enforce constraint-first post-production workflows.
 - Registered new MCP tools (`retrieve_kut_ledger`, `update_kut_ledger`) and prompts (`kut-retention-architect`) to bridge the epistemic gap between algorithmic constraints and creator workflows.
+
+## Epic 5 Verification (WHIMSY Integration)
+- Integrated "The Affective Topologist" (WHIMSY) via Sovereign Agent Blueprint v1.0.0-Q1-2026.
+- Instantiated `symbolic_scars.jsonl` to track and enforce constraint-first post-production workflows regarding affective injection and micro-interaction specifications.
+- Registered new MCP tools (`retrieve_whimsy_scars`, `update_whimsy_scars`) and prompt (`whimsy-affective-topologist`) to bridge the epistemic gap between structural code delivery and high-entropy affective ideation, adhering strictly to the Incremental Isolation Principle (Manifold Separation).

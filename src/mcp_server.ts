@@ -306,6 +306,93 @@ server.registerTool(
   }
 );
 
+
+// TOOL 5: retrieve_whimsy_scars
+server.registerTool(
+  "retrieve_whimsy_scars",
+  {
+    title: "Retrieve WHIMSY Symbolic Scars",
+    description: [
+      "PURPOSE: Retrieves the contents of the WHIMSY Symbolic Scar System (symbolic_scars.jsonl).",
+      "GUIDELINES: Invoke before any affective injection to check for failing scar entries with overlapping context tags.",
+      "LIMITATIONS: Read-only operation.",
+    ].join(" "),
+    inputSchema: z.object({}).strict(),
+  },
+  async () => {
+    try {
+      const data = await fs.readFile("symbolic_scars.jsonl", "utf-8");
+      return {
+        content: [{
+          type: "text",
+          text: JSON.stringify({ status: "RETRIEVED", target: "symbolic_scars.jsonl", data: data }),
+        }],
+      };
+    } catch (err) {
+      return {
+        content: [{
+          type: "text",
+          text: JSON.stringify({
+            error_code: "TOOL_FAULT_GENERAL_PROGRAMMING",
+            fault_category: "GENERAL_PROGRAMMING",
+            structured_detail: {
+              violation: "FS_READ_ERROR",
+              error: String(err),
+            },
+            retry_viable: true,
+            suggested_decomposition: "Verify symbolic_scars.jsonl exists.",
+          }),
+        }],
+        isError: true,
+      };
+    }
+  }
+);
+
+// TOOL 6: update_whimsy_scars
+server.registerTool(
+  "update_whimsy_scars",
+  {
+    title: "Update WHIMSY Symbolic Scars",
+    description: [
+      "PURPOSE: Appends a new scar to the WHIMSY Symbolic Scar System (symbolic_scars.jsonl).",
+      "GUIDELINES: Invoke to log failed or underperforming whimsy interventions.",
+      "PARAMETERS: data — the new scar entry as a JSON object.",
+    ].join(" "),
+    inputSchema: z.object({
+      data: z.any().describe("The new scar entry JSON object."),
+    }).strict(),
+  },
+  async ({ data }) => {
+    try {
+      await fs.appendFile("symbolic_scars.jsonl", JSON.stringify(data) + "\n", "utf-8");
+      return {
+        content: [{
+          type: "text",
+          text: JSON.stringify({ status: "UPDATED", target: "symbolic_scars.jsonl" }),
+        }],
+      };
+    } catch (err) {
+      return {
+        content: [{
+          type: "text",
+          text: JSON.stringify({
+            error_code: "TOOL_FAULT_GENERAL_PROGRAMMING",
+            fault_category: "GENERAL_PROGRAMMING",
+            structured_detail: {
+              violation: "FS_WRITE_ERROR",
+              error: String(err),
+            },
+            retry_viable: true,
+            suggested_decomposition: "Check file write permissions.",
+          }),
+        }],
+        isError: true,
+      };
+    }
+  }
+);
+
 // MCP Prompt Template
 
 // MCP Prompt Template 2: KUT Retention Architect
@@ -345,6 +432,31 @@ server.prompt(
         blueprintText = await fs.readFile("LEXIS_SOVEREIGN_BLUEPRINT.md", "utf-8");
     } catch (e) {
         blueprintText = "Failed to load LEXIS SOVEREIGN blueprint.";
+    }
+    return {
+        messages: [{
+        role: "user",
+        content: {
+            type: "text",
+            text: blueprintText,
+        },
+        }],
+    };
+  }
+);
+
+
+// MCP Prompt Template 4: WHIMSY Affective Topologist
+server.prompt(
+  "whimsy-affective-topologist",
+  "Initialize WHIMSY: The Affective Topologist v1.0.0-Q1-2026.",
+  {},
+  async () => {
+    let blueprintText = "";
+    try {
+        blueprintText = await fs.readFile("WHIMSY_BLUEPRINT.md", "utf-8");
+    } catch (e) {
+        blueprintText = "Failed to load WHIMSY blueprint.";
     }
     return {
         messages: [{
