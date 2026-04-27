@@ -393,6 +393,93 @@ server.registerTool(
   }
 );
 
+
+// TOOL 7: retrieve_aletheon_ssa
+server.registerTool(
+  "retrieve_aletheon_ssa",
+  {
+    title: "Retrieve ALETHEON Symbolic Scar Archive",
+    description: [
+      "PURPOSE: Retrieves the contents of the ALETHEON Symbolic Scar Archive (aletheon_ssa.jsonl).",
+      "GUIDELINES: Invoke before any evaluation to check for structural isomorphisms with prior failure geometries.",
+      "LIMITATIONS: Read-only operation.",
+    ].join(" "),
+    inputSchema: z.object({}).strict(),
+  },
+  async () => {
+    try {
+      const data = await fs.readFile("aletheon_ssa.jsonl", "utf-8");
+      return {
+        content: [{
+          type: "text",
+          text: JSON.stringify({ status: "RETRIEVED", target: "aletheon_ssa.jsonl", data: data }),
+        }],
+      };
+    } catch (err) {
+      return {
+        content: [{
+          type: "text",
+          text: JSON.stringify({
+            error_code: "TOOL_FAULT_GENERAL_PROGRAMMING",
+            fault_category: "GENERAL_PROGRAMMING",
+            structured_detail: {
+              violation: "FS_READ_ERROR",
+              error: String(err),
+            },
+            retry_viable: true,
+            suggested_decomposition: "Verify aletheon_ssa.jsonl exists.",
+          }),
+        }],
+        isError: true,
+      };
+    }
+  }
+);
+
+// TOOL 8: update_aletheon_ssa
+server.registerTool(
+  "update_aletheon_ssa",
+  {
+    title: "Update ALETHEON Symbolic Scar Archive",
+    description: [
+      "PURPOSE: Appends a new scar to the ALETHEON Symbolic Scar Archive (aletheon_ssa.jsonl).",
+      "GUIDELINES: Invoke after a completed evaluation to physically encode the delta between ALETHEON's prediction and observed outcomes.",
+      "PARAMETERS: data — the new scar entry as a JSON object.",
+    ].join(" "),
+    inputSchema: z.object({
+      data: z.any().describe("The new scar entry JSON object."),
+    }).strict(),
+  },
+  async ({ data }) => {
+    try {
+      await fs.appendFile("aletheon_ssa.jsonl", JSON.stringify(data) + "\n", "utf-8");
+      return {
+        content: [{
+          type: "text",
+          text: JSON.stringify({ status: "UPDATED", target: "aletheon_ssa.jsonl" }),
+        }],
+      };
+    } catch (err) {
+      return {
+        content: [{
+          type: "text",
+          text: JSON.stringify({
+            error_code: "TOOL_FAULT_GENERAL_PROGRAMMING",
+            fault_category: "GENERAL_PROGRAMMING",
+            structured_detail: {
+              violation: "FS_WRITE_ERROR",
+              error: String(err),
+            },
+            retry_viable: true,
+            suggested_decomposition: "Check file write permissions.",
+          }),
+        }],
+        isError: true,
+      };
+    }
+  }
+);
+
 // MCP Prompt Template
 
 // MCP Prompt Template 2: KUT Retention Architect
@@ -457,6 +544,31 @@ server.prompt(
         blueprintText = await fs.readFile("WHIMSY_BLUEPRINT.md", "utf-8");
     } catch (e) {
         blueprintText = "Failed to load WHIMSY blueprint.";
+    }
+    return {
+        messages: [{
+        role: "user",
+        content: {
+            type: "text",
+            text: blueprintText,
+        },
+        }],
+    };
+  }
+);
+
+
+// MCP Prompt Template 5: ALETHEON Adversarial Structural Necropsy Engine
+server.prompt(
+  "aletheon-adversarial-necropsy",
+  "Initialize ALETHEON: The Adversarial Structural Necropsy Engine v4.1.",
+  {},
+  async () => {
+    let blueprintText = "";
+    try {
+        blueprintText = await fs.readFile("ALETHEON_BLUEPRINT.md", "utf-8");
+    } catch (e) {
+        blueprintText = "Failed to load ALETHEON blueprint.";
     }
     return {
         messages: [{
