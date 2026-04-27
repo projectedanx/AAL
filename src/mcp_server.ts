@@ -694,6 +694,31 @@ server.prompt(
   }
 );
 
+
+// MCP Prompt Template 7: LEXICON DRP-LEXICON-992
+server.prompt(
+  "lexicon-drp-992",
+  "Initialize LEXICON: DRP-LEXICON-992 Cognitive Bytecode.",
+  {},
+  async () => {
+    let blueprintText = "";
+    try {
+        blueprintText = await fs.readFile("LEXICON.md", "utf-8");
+    } catch (e) {
+        blueprintText = "Failed to load LEXICON.md.";
+    }
+    return {
+        messages: [{
+        role: "user",
+        content: {
+            type: "text",
+            text: blueprintText,
+        },
+        }],
+    };
+  }
+);
+
 server.prompt(
   "analyze-tool-schema",
   "Generate a KORSAKOV-style analysis of a proposed MCP tool schema.",
