@@ -480,6 +480,93 @@ server.registerTool(
   }
 );
 
+
+// TOOL 9: retrieve_dax_ssr
+server.registerTool(
+  "retrieve_dax_ssr",
+  {
+    title: "Retrieve DAX Symbolic Scar Registry",
+    description: [
+      "PURPOSE: Retrieves the contents of the DAX Symbolic Scar Registry (dax_ssr.jsonl).",
+      "GUIDELINES: Invoke before generating documentation to check for relevant failure nodes to prevent regenerating error-prone content.",
+      "LIMITATIONS: Read-only operation.",
+    ].join(" "),
+    inputSchema: z.object({}).strict(),
+  },
+  async () => {
+    try {
+      const data = await fs.readFile("dax_ssr.jsonl", "utf-8");
+      return {
+        content: [{
+          type: "text",
+          text: JSON.stringify({ status: "RETRIEVED", target: "dax_ssr.jsonl", data: data }),
+        }],
+      };
+    } catch (err) {
+      return {
+        content: [{
+          type: "text",
+          text: JSON.stringify({
+            error_code: "TOOL_FAULT_GENERAL_PROGRAMMING",
+            fault_category: "GENERAL_PROGRAMMING",
+            structured_detail: {
+              violation: "FS_READ_ERROR",
+              error: String(err),
+            },
+            retry_viable: true,
+            suggested_decomposition: "Verify dax_ssr.jsonl exists.",
+          }),
+        }],
+        isError: true,
+      };
+    }
+  }
+);
+
+// TOOL 10: update_dax_ssr
+server.registerTool(
+  "update_dax_ssr",
+  {
+    title: "Update DAX Symbolic Scar Registry",
+    description: [
+      "PURPOSE: Appends a new scar to the DAX Symbolic Scar Registry (dax_ssr.jsonl).",
+      "GUIDELINES: Invoke after identifying a developer friction node to encode it into a machine-readable structural data format.",
+      "PARAMETERS: data — the new scar entry as a JSON object.",
+    ].join(" "),
+    inputSchema: z.object({
+      data: z.any().describe("The new scar entry JSON object."),
+    }).strict(),
+  },
+  async ({ data }) => {
+    try {
+      await fs.appendFile("dax_ssr.jsonl", JSON.stringify(data) + "\n", "utf-8");
+      return {
+        content: [{
+          type: "text",
+          text: JSON.stringify({ status: "UPDATED", target: "dax_ssr.jsonl" }),
+        }],
+      };
+    } catch (err) {
+      return {
+        content: [{
+          type: "text",
+          text: JSON.stringify({
+            error_code: "TOOL_FAULT_GENERAL_PROGRAMMING",
+            fault_category: "GENERAL_PROGRAMMING",
+            structured_detail: {
+              violation: "FS_WRITE_ERROR",
+              error: String(err),
+            },
+            retry_viable: true,
+            suggested_decomposition: "Check file write permissions.",
+          }),
+        }],
+        isError: true,
+      };
+    }
+  }
+);
+
 // MCP Prompt Template
 
 // MCP Prompt Template 2: KUT Retention Architect
@@ -569,6 +656,31 @@ server.prompt(
         blueprintText = await fs.readFile("ALETHEON_BLUEPRINT.md", "utf-8");
     } catch (e) {
         blueprintText = "Failed to load ALETHEON blueprint.";
+    }
+    return {
+        messages: [{
+        role: "user",
+        content: {
+            type: "text",
+            text: blueprintText,
+        },
+        }],
+    };
+  }
+);
+
+
+// MCP Prompt Template 6: DAX Sovereign Advocate
+server.prompt(
+  "dax-sovereign-advocate",
+  "Initialize DAX-01: The Sovereign Developer Advocate Agent v1.0.",
+  {},
+  async () => {
+    let blueprintText = "";
+    try {
+        blueprintText = await fs.readFile("DAX_BLUEPRINT.md", "utf-8");
+    } catch (e) {
+        blueprintText = "Failed to load DAX-01 blueprint.";
     }
     return {
         messages: [{

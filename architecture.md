@@ -87,3 +87,29 @@ Topological Considerations:
 - Enforces strict separation between Manifold α (Voice) and Manifold β (Structure) to avoid Projection Tax.
 - Relies on Draft-Conditioned Constrained Decoding (DCCD) to decouple semantic generation from structural formatting.
 - Continues the use of Symbolic Scars for evolutionary error correction across long generation sessions.
+
+
+### Phase 4 Topology: DAX-01 (Sovereign Developer Advocate)
+A new autonomous agent, DAX-01, is introduced to the SCOS framework to act as a Tier 2 Genuine Agency node focused on DevRel. It functions to combat Semantic Saponification and minimize Time-To-First-Call (TTFC).
+
+```mermaid
+graph TD;
+    Client[LLM Client] -->|JSON-RPC over Stdio| Server[MCP Server: K-88];
+    Server --> Prompts[Prompts Namespace];
+    Prompts --> Prm4[dax-sovereign-advocate];
+
+    Server --> Artifacts[Sovereign Artifacts];
+    Artifacts --> Art6[DAX_BLUEPRINT.md];
+    Artifacts --> Art7[dax_ssr.jsonl];
+
+    Server --> Tools[Tools Namespace];
+    Tools --> Tool5[retrieve_dax_ssr];
+    Tools --> Tool6[update_dax_ssr];
+
+    Prm4 -.-> FS_DAX[DAX_BLUEPRINT.md];
+```
+
+Topological Considerations:
+- Enforces code first, prose second via the `+++DCCDSchemaGuard` constraint.
+- Relies on Empathy-Code Transduction.
+- Uses a Symbolic Scar Registry (SSR) to form an autophagic feedback loop and compute Confidence-Fidelity Divergence Index (CFDI) scores.
