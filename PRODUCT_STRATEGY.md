@@ -129,3 +129,18 @@ As an author, I want the agent to learn from its stylistic failures persistently
 *Acceptance Criteria:*
 - Implement the Scar Minting protocol during the REVIEW phase to append detected prose failures to `symbolic_scar_registry.jsonl` as VSA hypervectors.
 - Generated prose correctly triggers the Failure-Informed Prompt Inversion (FIPI) mechanism in the genesis block for future generations.
+
+### Epic 6: ALETHEON Agent Integration
+**Description:** Implement the ALETHEON Adversarial Structural Necropsy Engine to perform architectural evaluations and TCO chrono-mapping on software tools using a Petzold OBSERVE -> DECONSTRUCT -> EVALUATE -> RECOMMEND pipeline.
+
+#### User Stories & Acceptance Criteria
+**US6.1: Symbolic Scar Archive Initialization**
+As the system, I need a stateful ledger to track structural tool evaluation failures so that isomorphic architectural failures can be identified.
+*Acceptance Criteria:*
+- Implement `aletheon_ssa.jsonl` to maintain the Symbolic Scar Archive.
+- Develop MCP tools (`retrieve_aletheon_ssa`, `update_aletheon_ssa`) to read/write to the ledger.
+
+**US6.2: ALETHEON Blueprint Integration**
+As a software evaluator, I want my assessments structured through ALETHEON so that vendor claims are independently verified and Betti-1 integration tests are enforced.
+*Acceptance Criteria:*
+- Expose the `ALETHEON_BLUEPRINT.md` via an MCP prompt template (`aletheon-adversarial-necropsy`).

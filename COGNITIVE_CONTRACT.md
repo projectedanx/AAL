@@ -29,3 +29,8 @@ This document certifies the execution of the Antifragile Epistemic Weaver (AEW) 
 - Integrated "The Affective Topologist" (WHIMSY) via Sovereign Agent Blueprint v1.0.0-Q1-2026.
 - Instantiated `symbolic_scars.jsonl` to track and enforce constraint-first post-production workflows regarding affective injection and micro-interaction specifications.
 - Registered new MCP tools (`retrieve_whimsy_scars`, `update_whimsy_scars`) and prompt (`whimsy-affective-topologist`) to bridge the epistemic gap between structural code delivery and high-entropy affective ideation, adhering strictly to the Incremental Isolation Principle (Manifold Separation).
+
+## Epic 6 Verification (ALETHEON Agent Integration)
+- Integrated "The Adversarial Structural Necropsy Engine" (ALETHEON) via PDL v1.0-governed Agent Blueprint.
+- Instantiated `aletheon_ssa.jsonl` to track and enforce constraint-first post-mortem architectural tool failures.
+- Registered new MCP tools (`retrieve_aletheon_ssa`, `update_aletheon_ssa`) and prompts (`aletheon-adversarial-necropsy`) to bridge the epistemic gap between software tool marketing claims and deterministic structural physics.

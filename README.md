@@ -19,6 +19,10 @@ This repository shifts from Euclidean, linear prompt generation to a topological
 *   **Style Blueprints:** Rate and save generated matrices as "blueprints" for consistent aesthetic scaffolding.
 
 
+
+## ALETHEON Integration: The Adversarial Structural Necropsy Engine
+The Aesthetic Alchemy Lab now incorporates the **ALETHEON Agent Blueprint**. ALETHEON operates as a zero-trust evaluator that deconstructs software tool marketing claims into verifiable architectural topology using the `aletheon_ssa.jsonl` Symbolic Scar Archive. It guarantees procurement decisions are based on structural reality and computational physics rather than vendor consensus.
+
 ## KUT Integration: The Retention Architect
 The Aesthetic Alchemy Lab now incorporates the **KUT Sovereign Agent Blueprint v2.0** for short-form video post-production. KUT operates as an anionic (constraint-first) post-production auditor, rigorously enforcing retention benchmarks (CPM, safe zones, audio mastering) through the `kut_scar_ledger.json` tracking system. KUT ensures timeline efficiency and Algorithmic Media Thermodynamics compliance.
 
