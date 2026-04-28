@@ -109,7 +109,7 @@ server.registerTool(
         )
         .max(100)
         .describe("Array of directed edges connecting the nodes."),
-    }),
+    }).strict(),
   },
   async ({ nodes, edges }) => {
     // Zero-Trust Boundary Validation
@@ -567,7 +567,95 @@ server.registerTool(
   }
 );
 
+
+// TOOL 11: retrieve_epistemic_escrow
+server.registerTool(
+  "retrieve_epistemic_escrow",
+  {
+    title: "Retrieve Epistemic Escrow",
+    description: [
+      "PURPOSE: Retrieves the contents of the Epistemic Escrow isolation buffer (epistemic_escrow.jsonl).",
+      "GUIDELINES: Invoke when evaluating contradictory schemas or resolving paraconsistent logic.",
+      "LIMITATIONS: Read-only operation.",
+    ].join(" "),
+    inputSchema: z.object({}).strict(),
+  },
+  async () => {
+    try {
+      const data = await fs.readFile("epistemic_escrow.jsonl", "utf-8");
+      return {
+        content: [{
+          type: "text",
+          text: JSON.stringify({ status: "RETRIEVED", target: "epistemic_escrow.jsonl", data: data }),
+        }],
+      };
+    } catch (err) {
+      return {
+        content: [{
+          type: "text",
+          text: JSON.stringify({
+            error_code: "TOOL_FAULT_GENERAL_PROGRAMMING",
+            fault_category: "GENERAL_PROGRAMMING",
+            structured_detail: {
+              violation: "FS_READ_ERROR",
+              error: String(err),
+            },
+            retry_viable: true,
+            suggested_decomposition: "Verify epistemic_escrow.jsonl exists.",
+          }),
+        }],
+        isError: true,
+      };
+    }
+  }
+);
+
+// TOOL 12: update_epistemic_escrow
+server.registerTool(
+  "update_epistemic_escrow",
+  {
+    title: "Update Epistemic Escrow",
+    description: [
+      "PURPOSE: Appends a new contradictory schema or logic set to the Epistemic Escrow buffer (epistemic_escrow.jsonl).",
+      "GUIDELINES: Invoke when the agent encounters conflicting APIs, parameters, or documentation to safely isolate the logic before synthesis.",
+      "PARAMETERS: data — the new escrow entry as a JSON object.",
+    ].join(" "),
+    inputSchema: z.object({
+      data: z.any().describe("The new escrow entry JSON object."),
+    }).strict(),
+  },
+  async ({ data }) => {
+    try {
+      await fs.appendFile("epistemic_escrow.jsonl", JSON.stringify(data) + "\n", "utf-8");
+      return {
+        content: [{
+          type: "text",
+          text: JSON.stringify({ status: "UPDATED", target: "epistemic_escrow.jsonl" }),
+        }],
+      };
+    } catch (err) {
+      return {
+        content: [{
+          type: "text",
+          text: JSON.stringify({
+            error_code: "TOOL_FAULT_GENERAL_PROGRAMMING",
+            fault_category: "GENERAL_PROGRAMMING",
+            structured_detail: {
+              violation: "FS_WRITE_ERROR",
+              error: String(err),
+            },
+            retry_viable: true,
+            suggested_decomposition: "Check file write permissions.",
+          }),
+        }],
+        isError: true,
+      };
+    }
+  }
+);
+
 // MCP Prompt Template
+
 
 // MCP Prompt Template 2: KUT Retention Architect
 server.prompt(
