@@ -26,6 +26,10 @@ The Aesthetic Alchemy Lab now incorporates the **ALETHEON Agent Blueprint**. ALE
 ## KUT Integration: The Retention Architect
 The Aesthetic Alchemy Lab now incorporates the **KUT Sovereign Agent Blueprint v2.0** for short-form video post-production. KUT operates as an anionic (constraint-first) post-production auditor, rigorously enforcing retention benchmarks (CPM, safe zones, audio mastering) through the `kut_scar_ledger.json` tracking system. KUT ensures timeline efficiency and Algorithmic Media Thermodynamics compliance.
 
+
+## Epistemic Escrow Integration
+The Aesthetic Alchemy Lab now implements an **Epistemic Escrow** isolation buffer. When the agent encounters contradictory schemas, paraconsistent logic, or conflicting API documentation, these divergences are placed into `epistemic_escrow.jsonl`. This buffer prevents belief contamination, allowing parallel tasks to proceed while the Hegelian Dialectical Synthesis module actively resolves the discrepancies. Managed via the MCP server's `retrieve_epistemic_escrow` and `update_epistemic_escrow` tools.
+
 ## Developer Setup
 
 **Prerequisites:**
