@@ -96,6 +96,7 @@ export enum PipelineNodeType {
   PARAMETER = 'Parameter',
   OUTPUT = 'Output',
   BLEND = 'Blend',
+  TOPOLOGICAL_PERSONA = 'TopologicalPersona',
 }
 
 /**
@@ -115,6 +116,10 @@ export interface PipelineNode {
     temperature?: number;
     seed?: number;
     phantomZ?: number; // Spatial Bind: Z-Axis Depth for Paraconsistent State
+    // Topological Persona fields
+    personaRole?: string;
+    contradictoryDirectives?: string[]; // PAL2v tension representation
+    pdtConstraints?: Array<{ type: string; datum: string; tolerance: string }>;
   };
   position: { x: number; y: number; z?: number };
 }

@@ -9,6 +9,9 @@ import { generateAestheticImages } from './geminiService';
  */
 export interface TraversalPath {
     basePrompt: string;
+    personaRole?: string;
+    contradictoryDirectives?: string[];
+    pdtConstraints?: Array<{ type: string; datum: string; tolerance: string }>;
     parameters: Array<{
         parameter: string;
         variation: string;
@@ -56,6 +59,16 @@ const findPaths = (nodes: Node[], edges: Edge[]): TraversalPath[] => {
                     };
                     traverse(sourceNode.id, newPath);
                 });
+
+            } else if (sourceNode && sourceNode.type === PipelineNodeType.TOPOLOGICAL_PERSONA) {
+                // Treat as an Adaptive Context Object (ACO) by wrapping current state
+                const newPath = {
+                    ...currentPath,
+                    personaRole: sourceNode.data.personaRole as string,
+                    contradictoryDirectives: (sourceNode.data.contradictoryDirectives || []) as string[],
+                    pdtConstraints: (sourceNode.data.pdtConstraints || []) as Array<{ type: string; datum: string; tolerance: string }>
+                };
+                traverse(sourceNode.id, newPath);
             } else if (sourceNode && sourceNode.type === PipelineNodeType.BASE_PROMPT) {
                  traverse(sourceNode.id, currentPath);
             }

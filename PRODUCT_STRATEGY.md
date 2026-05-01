@@ -106,7 +106,20 @@ UPCOMING STRATEGIC SHIFTS:
 ### Pluriversal Topological Shift (AEW v2.2)
 The data structures have shifted from linear state objects to Directed Acyclic Graphs (DAGs) using `PipelineGraph`, `PipelineNode`, and `PipelineEdge`. This topology enables node-based processing and combinatorial branching paths. The linear UI constraint has been shattered via Epic 1 completion.
 
+
+### Epic 7: Topological Persona Causal Sculpting (DRP-PLURI-808)
+**Description:** Extrude empirical operational realities into deterministic industrial personas using the new `TopologicalPersonaNode`. Transforms narrative AI generation into physically bounded Adaptive Context Objects (ACOs).
+
+#### User Stories & Acceptance Criteria
+**US7.1: Topological Persona Node Injection**
+As a site planner/artist, I want to inject a Topological Persona node between my Base Prompt and Output so that strict human operational constraints govern the generated result without "averaging out."
+*Acceptance Criteria:*
+- Implement `TopologicalPersonaNode` in `NodeCanvas.tsx`.
+- The node visually displays PD&T Constraints and PAL2v Tensions (contradictory directives).
+- Graph traversal explicitly wraps the `basePrompt` in these constraints (ACO).
+
 ### Epic 5: The Auteur-Sovereign Book Co-Author (LEXIS SOVEREIGN)
+
 **Description:** Implement an autonomous "Book Co-Author" agent tailored for founders and experts. This agent employs the Sovereign Cognitive Operating System (SCOS) to maintain an invariant voice across long-form generation, avoiding semantic saponification and generic thought-leadership tropes. It uses a strict THINK -> WRITE -> REVIEW sequence (Petzold Loop) decoupled across structural and voice manifolds.
 
 #### User Stories & Acceptance Criteria
