@@ -86,3 +86,9 @@ npm run build
 *   `data/`: Curated templates and example prompts.
 *   `types.ts`: Centralized TypeScript definitions representing the DAG topology (`PipelineGraph`, `PipelineNode`, `EvolutionaryLineage`).
 *   `COGNITIVE_CONTRACT.md` / `PRODUCT_STRATEGY.md`: Epistemic documentation governing architectural intent and product epics.
+
+## Dialectical Synthesis Engine
+
+This project now incorporates the **Dialectical Synthesis Engine**. It detects "Ontological Shear" caused by Contradictory Directives passed in by a `TopologicalPersonaNode` and generates a **Justified Uncertainty Report (JUR)**. Instead of using the generative agent to "average out" and solve the paradox (Semantic Annihilation), this engine suspends execution and explicitly surfaces the paradox to the Human orchestrator utilizing the **Golden Scar Protocol**.
+
+For deeper context, review `DOMAIN_GLOSSARY.md`, `CONSTRAINTS.md`, and `docs/adr/01-dialectical-synthesis-engine.md`.

@@ -124,6 +124,7 @@ const App: React.FC = () => {
               isLoading={isLoading}
               onRateImage={handleRateImage}
               error={error}
+              jur={displayedGeneration?.jur}
             />
             {displayedGeneration && (
                <StyleBlueprintGenerator generation={displayedGeneration} />

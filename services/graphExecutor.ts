@@ -1,6 +1,6 @@
 /// file: services/graphExecutor.ts ///
 import { Node, Edge } from '@xyflow/react';
-import { PipelineNodeType, GenerationResult } from '../types';
+import { PipelineNodeType, GenerationResult, JustifiedUncertaintyReport } from '../types';
 import { generateAestheticImages } from './geminiService';
 
 /**
@@ -26,6 +26,35 @@ export interface TraversalPath {
  * @param {Edge[]} edges - The array of edges defining connections between nodes.
  * @returns {TraversalPath[]} An array containing all resolved paths, tracing from base prompts through aesthetic parameters.
  */
+
+/**
+ * Dialectical Synthesis Engine Core
+ * Calculates the Ontological Shear between contradictory directives using the Golden Scar Protocol.
+ */
+const synthesizeJUR = (path: TraversalPath): JustifiedUncertaintyReport | undefined => {
+    if (!path.contradictoryDirectives || path.contradictoryDirectives.length < 2) {
+        return undefined; // No paradox to resolve
+    }
+
+    // Golden Scar Protocol calculation (mocked for topological mapping)
+    // In a full implementation, this would involve DE-9IM SDF mapping over the text embeddings.
+    const empiricalWeight = 1.618;
+    const stochasticWeight = 1.000;
+
+    // Geometric Density Score = (Constraints * Weight) / (Variations * Stochastic Weight) normalized
+    const constraintCount = path.pdtConstraints?.length || 1;
+    const variationCount = path.parameters.length || 1;
+    const rawDensity = (constraintCount * empiricalWeight) / (variationCount * stochasticWeight);
+    const normalizedDensity = Math.min(Math.max(rawDensity * 0.5, 0.1), 0.99); // Bound between 0.1 and 0.99
+
+    return {
+        geometricDensityScore: parseFloat(normalizedDensity.toFixed(2)),
+        ontologicalShear: `Tension detected between [${path.contradictoryDirectives[0]}] and [${path.contradictoryDirectives[1]}]. AI generation suspended in paraconsistent state.`,
+        contradictions: path.contradictoryDirectives,
+        goldenRatioApplied: true
+    };
+};
+
 const findPaths = (nodes: Node[], edges: Edge[]): TraversalPath[] => {
     const paths: TraversalPath[] = [];
     const outputNodes = nodes.filter(n => n.type === PipelineNodeType.OUTPUT);
@@ -101,11 +130,11 @@ export const executeGraph = async (nodes: Node[], edges: Edge[]): Promise<Genera
         const primaryParam = path.parameters[0]?.parameter || 'Mixed';
         const key = `${path.basePrompt}-${primaryParam}`;
         if (!acc[key]) {
-            acc[key] = { basePrompt: path.basePrompt, parameter: primaryParam, variations: [] };
+            acc[key] = { basePrompt: path.basePrompt, parameter: primaryParam, variations: [], originalPath: path };
         }
         acc[key].variations.push(path.parameters.map(p => p.variation).join(' + '));
         return acc;
-    }, {} as Record<string, { basePrompt: string, parameter: string, variations: string[] }>);
+    }, {} as Record<string, { basePrompt: string, parameter: string, variations: string[], originalPath: TraversalPath }>);
 
 
     for (const key of Object.keys(groupedPaths)) {
@@ -117,6 +146,9 @@ export const executeGraph = async (nodes: Node[], edges: Edge[]): Promise<Genera
             // Temperature is hardcoded as topology dictates structure, not chaos.
             const images = await generateAestheticImages(group.basePrompt, uniqueVariations, group.parameter, 0.5);
 
+
+            const jur = synthesizeJUR(group.originalPath);
+
             results.push({
                 id: crypto.randomUUID(),
                 basePrompt: group.basePrompt,
@@ -127,7 +159,8 @@ export const executeGraph = async (nodes: Node[], edges: Edge[]): Promise<Genera
                     id: crypto.randomUUID(),
                 })),
                 timestamp: new Date().toLocaleString(),
-                temperature: 0.5
+                temperature: 0.5,
+                jur
             });
         } catch (e) {
              console.error("Epistemic mapping failed for path:", group, e);

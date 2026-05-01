@@ -1,6 +1,6 @@
 /// file: components/ImageGrid.tsx ///
 import React from 'react';
-import type { GeneratedImage } from '../types';
+import type { GeneratedImage, JustifiedUncertaintyReport } from '../types';
 import LoadingSpinner from './LoadingSpinner';
 import Tooltip from './Tooltip';
 
@@ -14,6 +14,7 @@ import Tooltip from './Tooltip';
  */
 interface ImageGridProps {
   images: GeneratedImage[];
+  jur?: JustifiedUncertaintyReport;
   isLoading: boolean;
   onRateImage: (imageId: string, rating: number) => void;
   error: string | null;
@@ -27,7 +28,7 @@ interface ImageGridProps {
  * @param {ImageGridProps} props - The configuration parameters for the grid.
  * @returns {JSX.Element | null} The rendered ImageGrid component, or null if no active data and not loading/error.
  */
-const ImageGrid: React.FC<ImageGridProps> = ({ images, isLoading, onRateImage, error }) => {
+const ImageGrid: React.FC<ImageGridProps> = ({ images, isLoading, onRateImage, error, jur }) => {
   if (isLoading) {
     return (
       <div className="w-full h-96 flex items-center justify-center bg-slate-800/30 rounded-xl border border-slate-700/50 shadow-inner">
