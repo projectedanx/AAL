@@ -36,8 +36,8 @@ const synthesizeJUR = (path: TraversalPath): JustifiedUncertaintyReport | undefi
         return undefined; // No paradox to resolve
     }
 
-    // Golden Scar Protocol calculation (mocked for topological mapping)
-    // In a full implementation, this would involve DE-9IM SDF mapping over the text embeddings.
+    // [∇] Golden Scar Protocol calculation (mocked for topological mapping)
+    // [∇] In a full implementation, this would involve DE-9IM SDF mapping over the text embeddings.
     const empiricalWeight = 1.618;
     const stochasticWeight = 1.000;
 
@@ -143,21 +143,28 @@ export const executeGraph = async (nodes: Node[], edges: Edge[]): Promise<Genera
         const uniqueVariations = Array.from(new Set(group.variations));
 
         try {
-            // Temperature is hardcoded as topology dictates structure, not chaos.
-            const images = await generateAestheticImages(group.basePrompt, uniqueVariations, group.parameter, 0.5);
-
-
             const jur = synthesizeJUR(group.originalPath);
+
+            let mappedImages: any[] = [];
+
+            if (jur) {
+                // Suspended generation on Ontological Shear
+                console.warn(`[DIALECTICAL SYNTHESIS] Generation suspended due to ontological shear: ${jur.ontologicalShear}`);
+            } else {
+                // Temperature is hardcoded as topology dictates structure, not chaos.
+                const images = await generateAestheticImages(group.basePrompt, uniqueVariations, group.parameter, 0.5);
+                mappedImages = images.map(img => ({
+                    ...img,
+                    id: crypto.randomUUID(),
+                }));
+            }
 
             results.push({
                 id: crypto.randomUUID(),
                 basePrompt: group.basePrompt,
                 parameter: group.parameter as any, // Cast to any to satisfy AestheticParameter enum if mixed
                 variations: uniqueVariations,
-                images: images.map(img => ({
-                    ...img,
-                    id: crypto.randomUUID(),
-                })),
+                images: mappedImages,
                 timestamp: new Date().toLocaleString(),
                 temperature: 0.5,
                 jur

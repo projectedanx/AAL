@@ -4,7 +4,7 @@ import type { GeneratedImage } from '../types';
 
 // Initialize GoogleGenAI with apiKey from environment variables.
 // Use Vite's environment variable loading
-const apiKey = import.meta.env.VITE_API_KEY || process.env.API_KEY || 'dummy_key_for_dev';
+const apiKey = import.meta.env?.VITE_API_KEY || process.env.API_KEY || 'dummy_key_for_dev';
 const ai = new GoogleGenAI({ apiKey });
 
 /**

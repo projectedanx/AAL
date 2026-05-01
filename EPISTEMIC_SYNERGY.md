@@ -12,8 +12,8 @@ Neither humans nor AI can independently solve the "Resolution Collapse" of moder
 
 ## HOW (The Implementation Checklist)
 1. [x] **Analyze the philosophical intent**: Document the synergy in `EPISTEMIC_SYNERGY.md`.
-2. [ ] **Refactor `types.ts`**: Expand the `PipelineNodeType` and `PipelineNode` interfaces to support PD&T constraints (`LOGICAL_ORTHOGONALITY`, `TONAL_CONSISTENCY`) and contradiction tracking.
-3. [ ] **Implement `TopologicalPersonaNode`**: Create the UI component in `NodeCanvas.tsx` to visualize and edit these constraints, injecting a sample node.
-4. [ ] **Update `graphExecutor.ts`**: Alter the graph traversal engine to apply the Topological Persona bounds to the generation prompt, ensuring the ACO wraps the `basePrompt`.
-5. [ ] **Update Documentation**: Ensure `README.md`, `PRODUCT_STRATEGY.md`, and `COGNITIVE_CONTRACT.md` reflect this structural shift.
-6. [ ] **Rigorous Verification**: Run TypeScript compilation (`tsc`) and Vite build processes to ensure zero regressions in the topological map.
+2. [x] **Refactor `types.ts`**: Expand the `PipelineNodeType` and `PipelineNode` interfaces to support PD&T constraints (`LOGICAL_ORTHOGONALITY`, `TONAL_CONSISTENCY`) and contradiction tracking.
+3. [x] **Implement `TopologicalPersonaNode`**: Create the UI component in `NodeCanvas.tsx` to visualize and edit these constraints, injecting a sample node.
+4. [x] **Update `graphExecutor.ts`**: Alter the graph traversal engine to apply the Topological Persona bounds to the generation prompt, ensuring the ACO wraps the `basePrompt`.
+5. [x] **Update Documentation**: Ensure `README.md`, `PRODUCT_STRATEGY.md`, and `COGNITIVE_CONTRACT.md` reflect this structural shift.
+6. [x] **Rigorous Verification**: Run TypeScript compilation (`tsc`) and Vite build processes to ensure zero regressions in the topological map.
