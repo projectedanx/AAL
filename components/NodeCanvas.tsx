@@ -91,13 +91,64 @@ const OutputNode = ({ data }: NodeProps) => {
   );
 };
 
+
+/**
+ * Custom Node for Topological Persona (DRP-PLURI-808)
+ */
+const TopologicalPersonaNode = ({ data }: NodeProps) => {
+  return (
+    <div className="bg-slate-800 border-2 border-amber-500 rounded-lg p-4 w-72 shadow-lg shadow-amber-500/20">
+      <Handle type="target" position={Position.Left} className="w-3 h-3 bg-amber-500" />
+      <div className="text-sm font-bold text-slate-300 mb-2 border-b border-slate-700 pb-1">Topological Persona</div>
+      <div className="text-xs text-slate-400 mb-2">Role: {data.personaRole || 'Undefined'}</div>
+
+      {Array.isArray(data.contradictoryDirectives) && data.contradictoryDirectives.length > 0 && (
+        <div className="mb-2">
+          <div className="text-[10px] font-semibold text-rose-400 uppercase">PAL2v Tension (Contradictions)</div>
+          <ul className="list-disc list-inside text-xs text-slate-300">
+            {(data.contradictoryDirectives as string[]).map((d: string, i: number) => <li key={i}>{d}</li>)}
+          </ul>
+        </div>
+      )}
+
+      {Array.isArray(data.pdtConstraints) && data.pdtConstraints.length > 0 && (
+        <div>
+           <div className="text-[10px] font-semibold text-cyan-400 uppercase">PD&T Constraints</div>
+           <div className="flex flex-col gap-1 mt-1">
+             {(data.pdtConstraints as Array<{ type: string; datum: string; tolerance: string }>).map((c: any, i: number) => (
+                <div key={i} className="text-[10px] bg-slate-900 px-2 py-1 rounded text-slate-300 border border-slate-700">
+                  <span className="text-brand-cyan">{c.type}</span> | Datum: {c.datum} | Tol: {c.tolerance}
+                </div>
+             ))}
+           </div>
+        </div>
+      )}
+      <Handle type="source" position={Position.Right} className="w-3 h-3 bg-amber-500" />
+    </div>
+  );
+};
+
 const nodeTypes = {
   [PipelineNodeType.BASE_PROMPT]: BasePromptNode,
   [PipelineNodeType.PARAMETER]: ParameterNode,
   [PipelineNodeType.OUTPUT]: OutputNode,
+  [PipelineNodeType.TOPOLOGICAL_PERSONA]: TopologicalPersonaNode,
 };
 
 const initialNodes: Node[] = [
+  {
+    id: 'persona-1',
+    type: PipelineNodeType.TOPOLOGICAL_PERSONA,
+    position: { x: 50, y: 350 },
+    data: {
+      personaRole: 'Site Planning Operator',
+      contradictoryDirectives: ['Maximize production yield', 'Maintain strict zero-emission footprint'],
+      pdtConstraints: [
+        { type: 'LOGICAL_ORTHOGONALITY', datum: 'A', tolerance: '< 0.30' },
+        { type: 'TONAL_CONSISTENCY', datum: 'B', tolerance: 'DEVIATION: 0.10' }
+      ]
+    }
+  },
   {
     id: 'base-1',
     type: PipelineNodeType.BASE_PROMPT,
@@ -182,6 +233,7 @@ export const NodeCanvas: React.FC<{ onExecuteGraph: (nodes: Node[], edges: Edge[
             nodeColor={(n) => {
                 if (n.type === PipelineNodeType.BASE_PROMPT) return '#06b6d4';
                 if (n.type === PipelineNodeType.PARAMETER) return '#a855f7';
+                if (n.type === PipelineNodeType.TOPOLOGICAL_PERSONA) return '#f59e0b';
                 return '#22c55e';
             }}
             maskColor="rgba(15, 23, 42, 0.8)"
