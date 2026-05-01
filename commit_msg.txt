@@ -1,8 +1,0 @@
-feat: Implement Dialectical Synthesis Engine (JUR)
-
-This commit introduces the Dialectical Synthesis Engine via the Golden Scar Protocol to address Ontological Shear caused by Contradictory Directives passed by a TopologicalPersonaNode.
-
-- Creates `DOMAIN_GLOSSARY.md`, `CONSTRAINTS.md`, and `docs/adr/01-dialectical-synthesis-engine.md` to define semantic and architectural boundaries.
-- Updates `types.ts` with `JustifiedUncertaintyReport` schema.
-- Modifies `services/graphExecutor.ts` to suspend execution on paradox and generate a JUR using the Golden Scar weighting mechanism (1.618).
-- Updates `components/ImageGrid.tsx` to surface the architectural tension directly to the human orchestrator.

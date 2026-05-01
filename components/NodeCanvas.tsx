@@ -176,7 +176,8 @@ const initialNodes: Node[] = [
 ];
 
 const initialEdges: Edge[] = [
-  { id: 'e1-2', source: 'base-1', target: 'param-style', animated: true, style: { stroke: '#06b6d4' } },
+  { id: 'e1-persona', source: 'base-1', target: 'persona-1', animated: true, style: { stroke: '#06b6d4' } },
+  { id: 'epersona-style', source: 'persona-1', target: 'param-style', animated: true, style: { stroke: '#f59e0b' } },
   { id: 'e1-3', source: 'base-1', target: 'param-lighting', animated: true, style: { stroke: '#06b6d4' } },
   { id: 'e2-4', source: 'param-style', target: 'output-1', animated: true, style: { stroke: '#a855f7' } },
   { id: 'e3-4', source: 'param-lighting', target: 'output-1', animated: true, style: { stroke: '#a855f7' } },

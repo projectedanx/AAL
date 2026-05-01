@@ -50,6 +50,49 @@ const ImageGrid: React.FC<ImageGridProps> = ({ images, isLoading, onRateImage, e
   }
 
   if (images.length === 0) {
+    if (jur) {
+      return (
+        <div className="w-full flex flex-col items-center justify-center bg-slate-800/80 rounded-xl border border-amber-500/50 p-8 shadow-lg">
+          <div className="flex items-center justify-center mb-4 text-amber-400">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            <h3 className="text-2xl font-bold tracking-tight">Justified Uncertainty Report (JUR)</h3>
+          </div>
+
+          <p className="text-slate-300 text-center max-w-2xl mb-6 text-lg border-l-4 border-amber-500 pl-4 py-2 italic bg-slate-900/50">
+            {jur.ontologicalShear}
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-3xl">
+            <div className="bg-slate-900 rounded-lg p-5 border border-slate-700">
+               <h4 className="text-brand-cyan text-sm font-semibold uppercase tracking-wider mb-3">PAL2v Tensions</h4>
+               <ul className="space-y-2">
+                 {jur.contradictions.map((c, i) => (
+                   <li key={i} className="flex items-start">
+                     <span className="text-rose-400 mr-2 mt-0.5">[⊘]</span>
+                     <span className="text-slate-300 text-sm">{c}</span>
+                   </li>
+                 ))}
+               </ul>
+            </div>
+
+            <div className="bg-slate-900 rounded-lg p-5 border border-slate-700 flex flex-col justify-center">
+                <h4 className="text-brand-cyan text-sm font-semibold uppercase tracking-wider mb-3">Golden Scar Metrics</h4>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-slate-400 text-sm">Geometric Density Score:</span>
+                  <span className="text-amber-400 font-mono font-bold">{jur.geometricDensityScore.toFixed(2)}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-slate-400 text-sm">Golden Ratio Applied (Φ):</span>
+                  <span className="text-emerald-400 font-mono font-bold">{jur.goldenRatioApplied ? 'TRUE' : 'FALSE'}</span>
+                </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div className="w-full h-96 flex flex-col items-center justify-center bg-slate-800/30 rounded-xl border border-slate-700/50 text-slate-500 border-dashed">
         <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 mb-4 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
