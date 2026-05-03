@@ -50,6 +50,8 @@ export interface JustifiedUncertaintyReport {
 }
 
 export interface GenerationResult {
+  adherenceScore?: number; // PROJECT AURELIUS
+  semanticDrift?: number; // PROJECT AURELIUS
   id: string;
   basePrompt: string;
   parameter: AestheticParameter;
@@ -106,6 +108,7 @@ export interface PromptHistoryEntry {
  * @enum {string}
  */
 export enum PipelineNodeType {
+  MULTISPECTRAL_CONDITIONING = 'MultispectralConditioning',
   BASE_PROMPT = 'BasePrompt',
   PARAMETER = 'Parameter',
   OUTPUT = 'Output',
@@ -134,6 +137,7 @@ export interface PipelineNode {
     personaRole?: string;
     contradictoryDirectives?: string[]; // PAL2v tension representation
     pdtConstraints?: Array<{ type: string; datum: string; tolerance: string }>;
+    spectralTargets?: Array<{ target: string; wavelength: number; fwhm: number }>; // PROJECT AURELIUS: Multispectral MSI conditioning
   };
   position: { x: number; y: number; z?: number };
 }
