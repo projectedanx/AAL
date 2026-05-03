@@ -157,3 +157,18 @@ As the system, I need a stateful ledger to track structural tool evaluation fail
 As a software evaluator, I want my assessments structured through ALETHEON so that vendor claims are independently verified and Betti-1 integration tests are enforced.
 *Acceptance Criteria:*
 - Expose the `ALETHEON_BLUEPRINT.md` via an MCP prompt template (`aletheon-adversarial-necropsy`).
+
+### Epic 8: Causal Latent Sculpting (PROJECT_AURELIUS)
+**Description:** Implement deterministic geometric boundary conditions to invert the AI generation paradigm. Move away from associative prompting towards "Phantom Dimension" manipulation, allowing the user/agent to sculpt Non-Euclidean Latent Spaces and avoid Semantic Saponification.
+
+#### User Stories & Acceptance Criteria
+**US8.1: Geometric Cognition Mapping**
+As a spatial architect, I want to explicitly define the underlying geometry of my generation (e.g., Hyperbolic Manifold), so the system generates self-consistent, non-standard spatial arrangements rather than averaging out to Euclidean norms.
+*Acceptance Criteria:*
+- Implement `GeometricCausalSculptor` to wrap base prompts in strict topological constraints.
+
+**US8.2: Agentic Plausibility Oracle**
+As the system, I need an autonomous feedback loop to evaluate the physical adherence of the output to the requested non-Euclidean geometry, adjusting the "Phantom Dimensions" if semantic drift occurs.
+*Acceptance Criteria:*
+- Implement `PlausibilityOracle` to score iterations.
+- Implement `ProvenanceTracker` to flag semantic drift greater than the 0.15 threshold.
