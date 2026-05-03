@@ -92,3 +92,6 @@ npm run build
 This project now incorporates the **Dialectical Synthesis Engine**. It detects "Ontological Shear" caused by Contradictory Directives passed in by a `TopologicalPersonaNode` and generates a **Justified Uncertainty Report (JUR)**. Instead of using the generative agent to "average out" and solve the paradox (Semantic Annihilation), this engine suspends execution and explicitly surfaces the paradox to the Human orchestrator utilizing the **Golden Scar Protocol**.
 
 For deeper context, review `DOMAIN_GLOSSARY.md`, `CONSTRAINTS.md`, and `docs/adr/01-dialectical-synthesis-engine.md`.
+
+## META_ARCHITECT_INTELLIGENCE_PROJECT_AURELIUS
+The Aesthetic Alchemy Lab integrates **PROJECT_AURELIUS**, moving beyond prompt engineering to **Causal Latent Sculpting**. This inversion treats the latent space not as a statistical average to be guessed, but as a Non-Euclidean topology to be explicitly bounded by mathematical constraints (Hyperbolic, Spherical, etc.). It utilizes an **Agentic Oracle Feedback Loop** to grade outputs on physical plausibility, actively punishing "Semantic Saponification" (consensus flattening) and enforcing strict human intentionality.
