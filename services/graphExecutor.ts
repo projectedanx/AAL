@@ -2,6 +2,8 @@
 import { Node, Edge } from '@xyflow/react';
 import { PipelineNodeType, GenerationResult, JustifiedUncertaintyReport } from '../types';
 import { generateAestheticImages } from './geminiService';
+import { GeometricCausalSculptor, NonEuclideanTopology, PhantomDimension } from '../PROJECT_AURELIUS/GeometricCognition';
+import { PlausibilityOracle, ProvenanceTracker } from '../PROJECT_AURELIUS/OracleFeedbackLoop';
 
 /**
  * Interface representing a path traversed through the DAG.
@@ -12,6 +14,7 @@ export interface TraversalPath {
     personaRole?: string;
     contradictoryDirectives?: string[];
     pdtConstraints?: Array<{ type: string; datum: string; tolerance: string }>;
+    spectralTargets?: Array<{ target: string; wavelength: number; fwhm: number }>;
     parameters: Array<{
         parameter: string;
         variation: string;
@@ -98,6 +101,12 @@ const findPaths = (nodes: Node[], edges: Edge[]): TraversalPath[] => {
                     pdtConstraints: (sourceNode.data.pdtConstraints || []) as Array<{ type: string; datum: string; tolerance: string }>
                 };
                 traverse(sourceNode.id, newPath);
+            } else if (sourceNode && sourceNode.type === PipelineNodeType.MULTISPECTRAL_CONDITIONING) {
+                 const newPath = {
+                     ...currentPath,
+                     spectralTargets: [...(currentPath.spectralTargets || []), ...((sourceNode.data.spectralTargets as any) || [])]
+                 };
+                 traverse(sourceNode.id, newPath);
             } else if (sourceNode && sourceNode.type === PipelineNodeType.BASE_PROMPT) {
                  traverse(sourceNode.id, currentPath);
             }
@@ -121,6 +130,9 @@ const findPaths = (nodes: Node[], edges: Edge[]): TraversalPath[] => {
  */
 export const executeGraph = async (nodes: Node[], edges: Edge[]): Promise<GenerationResult[]> => {
     const paths = findPaths(nodes, edges);
+    const causalSculptor = new GeometricCausalSculptor();
+    const oracle = new PlausibilityOracle();
+    const provenance = new ProvenanceTracker();
     const results: GenerationResult[] = [];
 
     // Process paths. We group by basePrompt and parameter for the UI's historical structure,
@@ -130,11 +142,11 @@ export const executeGraph = async (nodes: Node[], edges: Edge[]): Promise<Genera
         const primaryParam = path.parameters[0]?.parameter || 'Mixed';
         const key = `${path.basePrompt}-${primaryParam}`;
         if (!acc[key]) {
-            acc[key] = { basePrompt: path.basePrompt, parameter: primaryParam, variations: [], originalPath: path };
+            acc[key] = { basePrompt: path.basePrompt, parameter: primaryParam, variations: [], originalPath: path, spectralTargets: path.spectralTargets || [] };
         }
         acc[key].variations.push(path.parameters.map(p => p.variation).join(' + '));
         return acc;
-    }, {} as Record<string, { basePrompt: string, parameter: string, variations: string[], originalPath: TraversalPath }>);
+    }, {} as Record<string, { basePrompt: string, parameter: string, variations: string[], originalPath: TraversalPath, spectralTargets?: Array<{ target: string; wavelength: number; fwhm: number }> }> );
 
 
     for (const key of Object.keys(groupedPaths)) {
@@ -152,22 +164,48 @@ export const executeGraph = async (nodes: Node[], edges: Edge[]): Promise<Genera
                 console.warn(`[DIALECTICAL SYNTHESIS] Generation suspended due to ontological shear: ${jur.ontologicalShear}`);
             } else {
                 // Temperature is hardcoded as topology dictates structure, not chaos.
-                const images = await generateAestheticImages(group.basePrompt, uniqueVariations, group.parameter, 0.5);
+
+                // PROJECT AURELIUS: Causal Latent Sculpting
+                const topology = NonEuclideanTopology.HYPERBOLIC; // Default paraconsistent bound
+                const phantomDims: PhantomDimension[] = (group.spectralTargets || []).map(t => ({
+                    id: crypto.randomUUID(),
+                    metric: `Wavelength: ${t.wavelength}nm, FWHM: ${t.fwhm}nm (${t.target})`,
+                    influence_weight: 1.0
+                }));
+
+                const sculptedPrompt = causalSculptor.sculptTopology(group.basePrompt, topology, phantomDims);
+
+                const images = await generateAestheticImages(sculptedPrompt, uniqueVariations, group.parameter, 0.5);
                 mappedImages = images.map(img => ({
                     ...img,
                     id: crypto.randomUUID(),
                 }));
             }
 
+            const resultId = crypto.randomUUID();
+            let adherenceScore: number | undefined;
+            let semanticDrift: number | undefined;
+
+            if (!jur && mappedImages.length > 0) {
+                // PROJECT AURELIUS: Plausibility Oracle Evaluation
+                const sampleImage = mappedImages[0].src;
+                adherenceScore = oracle.evaluatePhysicalAdherence(sampleImage, NonEuclideanTopology.HYPERBOLIC);
+
+                // Assuming baseline influence of 1.0 for the strict topology
+                semanticDrift = provenance.trackSemanticDrift(resultId, 1.0, adherenceScore);
+            }
+
             results.push({
-                id: crypto.randomUUID(),
+                id: resultId,
                 basePrompt: group.basePrompt,
                 parameter: group.parameter as any, // Cast to any to satisfy AestheticParameter enum if mixed
                 variations: uniqueVariations,
                 images: mappedImages,
                 timestamp: new Date().toLocaleString(),
                 temperature: 0.5,
-                jur
+                jur,
+                adherenceScore,
+                semanticDrift
             });
         } catch (e) {
              console.error("Epistemic mapping failed for path:", group, e);

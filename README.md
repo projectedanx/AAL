@@ -31,6 +31,10 @@ The Aesthetic Alchemy Lab now incorporates the **KUT Sovereign Agent Blueprint v
 ## Topological Persona Integration (DRP-PLURI-808)
 The Lab now implements **Topological Persona Causal Sculpting**. This introduces the `TopologicalPersonaNode` which bounds generated pipelines within strict, deterministic human operational rules via Prompt Dimensioning & Tolerancing (PD&T). It maintains multi-causal tensions (e.g., conflicting aesthetics) using Paraconsistent Annotated Logic (PAL2v) without succumbing to consensus flattening.
 
+
+## Cross-Modal Perceptual Fusion Integration
+The Aesthetic Alchemy Lab now fully supports Multispectral Conditioning nodes (`PipelineNodeType.MULTISPECTRAL_CONDITIONING`). This integration forces Hyper-Spectral HDRi generation and Causal Latent Sculpting via **PROJECT_AURELIUS** to push the latent space boundary beyond traditional RGB parameters mapping toward strict physical wavelengths.
+
 ## Epistemic Escrow Integration
 
 The Aesthetic Alchemy Lab now implements an **Epistemic Escrow** isolation buffer. When the agent encounters contradictory schemas, paraconsistent logic, or conflicting API documentation, these divergences are placed into `epistemic_escrow.jsonl`. This buffer prevents belief contamination, allowing parallel tasks to proceed while the Hegelian Dialectical Synthesis module actively resolves the discrepancies. Managed via the MCP server's `retrieve_epistemic_escrow` and `update_epistemic_escrow` tools.
