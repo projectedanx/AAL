@@ -172,3 +172,6 @@ As the system, I need an autonomous feedback loop to evaluate the physical adher
 *Acceptance Criteria:*
 - Implement `PlausibilityOracle` to score iterations.
 - Implement `ProvenanceTracker` to flag semantic drift greater than the 0.15 threshold.
+*Acceptance Criteria:*
+- Implement `MultispectralConditioningNode` within DAG canvas (`components/NodeCanvas.tsx`).
+- Graph traversing engine (`services/graphExecutor.ts`) binds parameters and constraints into explicit topologies.
