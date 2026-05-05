@@ -128,14 +128,52 @@ const TopologicalPersonaNode = ({ data }: NodeProps) => {
   );
 };
 
+
+/**
+ * Custom Node for Multispectral Conditioning (PROJECT AURELIUS)
+ */
+const MultispectralConditioningNode = ({ data }: NodeProps) => {
+  return (
+    <div className="bg-slate-800 border-2 border-red-500 rounded-lg p-4 w-72 shadow-lg shadow-red-500/20">
+      <Handle type="target" position={Position.Left} className="w-3 h-3 bg-red-500" />
+      <div className="text-sm font-bold text-slate-300 mb-2 border-b border-slate-700 pb-1">Multispectral Conditioning</div>
+
+      {Array.isArray(data.spectralTargets) && data.spectralTargets.length > 0 && (
+        <div className="flex flex-col gap-2 mt-2">
+           {(data.spectralTargets as Array<{ target: string; wavelength: number; fwhm: number }>).map((t: any, i: number) => (
+              <div key={i} className="text-[10px] bg-slate-900 px-2 py-1 rounded text-slate-300 border border-slate-700">
+                <div className="font-bold text-red-400">{t.target}</div>
+                <div>Wavelength: {t.wavelength}nm</div>
+                <div>FWHM: {t.fwhm}nm</div>
+              </div>
+           ))}
+        </div>
+      )}
+      <Handle type="source" position={Position.Right} className="w-3 h-3 bg-red-500" />
+    </div>
+  );
+};
+
 const nodeTypes = {
   [PipelineNodeType.BASE_PROMPT]: BasePromptNode,
   [PipelineNodeType.PARAMETER]: ParameterNode,
   [PipelineNodeType.OUTPUT]: OutputNode,
   [PipelineNodeType.TOPOLOGICAL_PERSONA]: TopologicalPersonaNode,
+  [PipelineNodeType.MULTISPECTRAL_CONDITIONING]: MultispectralConditioningNode,
 };
 
 const initialNodes: Node[] = [
+  {
+    id: 'msi-1',
+    type: PipelineNodeType.MULTISPECTRAL_CONDITIONING,
+    position: { x: 50, y: 550 },
+    data: {
+      spectralTargets: [
+        { target: 'Chlorophyll A', wavelength: 430, fwhm: 20 },
+        { target: 'Cyan', wavelength: 490, fwhm: 10 }
+      ]
+    }
+  },
   {
     id: 'persona-1',
     type: PipelineNodeType.TOPOLOGICAL_PERSONA,
@@ -176,6 +214,8 @@ const initialNodes: Node[] = [
 ];
 
 const initialEdges: Edge[] = [
+  { id: 'e1-msi', source: 'base-1', target: 'msi-1', animated: true, style: { stroke: '#06b6d4' } },
+  { id: 'emsi-style', source: 'msi-1', target: 'param-style', animated: true, style: { stroke: '#ef4444' } },
   { id: 'e1-persona', source: 'base-1', target: 'persona-1', animated: true, style: { stroke: '#06b6d4' } },
   { id: 'epersona-style', source: 'persona-1', target: 'param-style', animated: true, style: { stroke: '#f59e0b' } },
   { id: 'e1-3', source: 'base-1', target: 'param-lighting', animated: true, style: { stroke: '#06b6d4' } },
@@ -235,6 +275,7 @@ export const NodeCanvas: React.FC<{ onExecuteGraph: (nodes: Node[], edges: Edge[
                 if (n.type === PipelineNodeType.BASE_PROMPT) return '#06b6d4';
                 if (n.type === PipelineNodeType.PARAMETER) return '#a855f7';
                 if (n.type === PipelineNodeType.TOPOLOGICAL_PERSONA) return '#f59e0b';
+                if (n.type === PipelineNodeType.MULTISPECTRAL_CONDITIONING) return  '#ef4444';
                 return '#22c55e';
             }}
             maskColor="rgba(15, 23, 42, 0.8)"
