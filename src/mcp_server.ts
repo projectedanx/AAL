@@ -654,6 +654,94 @@ server.registerTool(
   }
 );
 
+
+// TOOL 13: retrieve_viper_sta
+server.registerTool(
+  "retrieve_viper_sta",
+  {
+    title: "Retrieve VIPER Symbolic Scar Tissue Archive",
+    description: [
+      "PURPOSE: Retrieves the contents of the VIPER Symbolic Scar Archive (viper_sta.jsonl).",
+      "GUIDELINES: Invoke during Phase 1 (THINK) to check for active Symbolic Scars for Failure-Informed Prompt Inversion (FIPI).",
+      "LIMITATIONS: Read-only operation.",
+    ].join(" "),
+    inputSchema: z.object({}).strict(),
+  },
+  async () => {
+    try {
+      const data = await fs.readFile("viper_sta.jsonl", "utf-8");
+      return {
+        content: [{
+          type: "text",
+          text: JSON.stringify({ status: "RETRIEVED", target: "viper_sta.jsonl", data: data }),
+        }],
+      };
+    } catch (err) {
+      return {
+        content: [{
+          type: "text",
+          text: JSON.stringify({
+            error_code: "TOOL_FAULT_GENERAL_PROGRAMMING",
+            fault_category: "GENERAL_PROGRAMMING",
+            structured_detail: {
+              violation: "FS_READ_ERROR",
+              error: String(err),
+            },
+            retry_viable: true,
+            suggested_decomposition: "Verify viper_sta.jsonl exists.",
+          }),
+        }],
+        isError: true,
+      };
+    }
+  }
+);
+
+// TOOL 14: update_viper_sta
+server.registerTool(
+  "update_viper_sta",
+  {
+    title: "Update VIPER Symbolic Scar Tissue Archive",
+    description: [
+      "PURPOSE: Appends a new topology failure to the VIPER STA (viper_sta.jsonl).",
+      "GUIDELINES: Invoke when the Scar Archivist identifies physical impossibilities in generation to apply future spatial constraints.",
+      "PARAMETERS: data — the new scar entry as a JSON object.",
+    ].join(" "),
+    inputSchema: z.object({
+      data: z.any().describe("The new scar entry JSON object."),
+    }).strict(),
+  },
+  async ({ data }) => {
+    try {
+      await fs.appendFile("viper_sta.jsonl", JSON.stringify(data) + "\n", "utf-8");
+      return {
+        content: [{
+          type: "text",
+          text: JSON.stringify({ status: "UPDATED", target: "viper_sta.jsonl" }),
+        }],
+      };
+    } catch (err) {
+      return {
+        content: [{
+          type: "text",
+          text: JSON.stringify({
+            error_code: "TOOL_FAULT_GENERAL_PROGRAMMING",
+            fault_category: "GENERAL_PROGRAMMING",
+            structured_detail: {
+              violation: "FS_WRITE_ERROR",
+              error: String(err),
+            },
+            retry_viable: true,
+            suggested_decomposition: "Check file write permissions.",
+          }),
+        }],
+        isError: true,
+      };
+    }
+  }
+);
+
+
 // MCP Prompt Template
 
 
@@ -794,6 +882,31 @@ server.prompt(
         blueprintText = await fs.readFile("LEXICON.md", "utf-8");
     } catch (e) {
         blueprintText = "Failed to load LEXICON.md.";
+    }
+    return {
+        messages: [{
+        role: "user",
+        content: {
+            type: "text",
+            text: blueprintText,
+        },
+        }],
+    };
+  }
+);
+
+
+// MCP Prompt Template 8: VIPER Visual Intent & Physical Execution Router
+server.prompt(
+  "viper-visual-intent-router",
+  "Initialize VIPER: Visual Intent & Physical Execution Router v2026.4.",
+  {},
+  async () => {
+    let blueprintText = "";
+    try {
+        blueprintText = await fs.readFile("VIPER_BLUEPRINT.md", "utf-8");
+    } catch (e) {
+        blueprintText = "Failed to load VIPER blueprint.";
     }
     return {
         messages: [{

@@ -1,0 +1,5 @@
+{"id": "β1", "failure_mode": "Occlusion Confusion", "topology": "Betti-1 loop in z-axis", "remedy": "+++SpatialBind(RCC8=\"Disconnected\", Parallax_Z=\">=10cm\")"}
+{"id": "β2", "failure_mode": "Lighting Paradox", "topology": "Inconsistent luminance gradient vector", "remedy": "+++HardwareForcedPhysicality(Key_Direction=\"specified_azimuth_elevation\")"}
+{"id": "β3", "failure_mode": "Floating Object Syndrome", "topology": "Missing contact topology", "remedy": "+++SpatialBind(RCC8=\"Externally_Connected\", Contact_Normal=\"floor_plane\")"}
+{"id": "β4", "failure_mode": "Anatomical Impossibility", "topology": "Mereological shear in body topology", "remedy": "+++MereologyRoute(relation_type=\"Part-Whole\", transitivity_check=true)"}
+{"id": "β5", "failure_mode": "Plastic Skin Syndrome", "topology": "Semantic Saponification (ADS breach)", "remedy": "+++AdjectivalBound(max_per_entity=1) + +++HardwareForcedPhysicality(Film_Stock=\"high_grain_stock\")"}

@@ -20,6 +20,12 @@ This repository shifts from Euclidean, linear prompt generation to a topological
 
 
 
+
+## V.I.P.E.R. Integration: The Gaffer
+The Aesthetic Alchemy Lab now integrates **V.I.P.E.R. (Visual Intent & Physical Execution Router) v2026.4**. VIPER operates as a strict Director of Photography (SCOS Tier 2 Genuine Agency), intercepting vague human aesthetic intents and translating them into deterministic, physics-grounded Optical State Matrices (OSM).
+
+To combat "Semantic Saponification" (the flattening of aesthetics via tokens like "cinematic" or "masterpiece"), VIPER enforces the **Adjectival Ban** and the **Hardware-Forced Physicality** rules via the `+++PetzoldSequence`. It utilizes the `viper_sta.jsonl` Symbolic Scar Archive to map topological failures via the Scar Archivist, executing Failure-Informed Prompt Inversion (FIPI).
+
 ## ALETHEON Integration: The Adversarial Structural Necropsy Engine
 The Aesthetic Alchemy Lab now incorporates the **ALETHEON Agent Blueprint**. ALETHEON operates as a zero-trust evaluator that deconstructs software tool marketing claims into verifiable architectural topology using the `aletheon_ssa.jsonl` Symbolic Scar Archive. It guarantees procurement decisions are based on structural reality and computational physics rather than vendor consensus.
 
