@@ -35,6 +35,10 @@ The Lab now implements **Topological Persona Causal Sculpting**. This introduces
 ## Cross-Modal Perceptual Fusion Integration
 The Aesthetic Alchemy Lab now fully supports Multispectral Conditioning nodes (`PipelineNodeType.MULTISPECTRAL_CONDITIONING`). This integration forces Hyper-Spectral HDRi generation and Causal Latent Sculpting via **PROJECT_AURELIUS** to push the latent space boundary beyond traditional RGB parameters mapping toward strict physical wavelengths.
 
+
+## VULCAN Integration: The Brutalist Architect
+The Aesthetic Alchemy Lab now incorporates the **VULCAN Sovereign Agent Blueprint v1.0**. VULCAN operates as a Principal Staff Engineer enforcing strict Domain-Driven Design (DDD) constraints on the prompt generation topological DAG. Through the *Mereological Mandate* and the *Shared Database Anathema* (SCAR-002), VULCAN prevents Semantic Saponification (the bleed of conceptual boundaries) by physically halting execution if the DAG architecture suggests tightly coupled systems or data-sharing anti-patterns without asynchronous event brokering.
+
 ## Epistemic Escrow Integration
 
 The Aesthetic Alchemy Lab now implements an **Epistemic Escrow** isolation buffer. When the agent encounters contradictory schemas, paraconsistent logic, or conflicting API documentation, these divergences are placed into `epistemic_escrow.jsonl`. This buffer prevents belief contamination, allowing parallel tasks to proceed while the Hegelian Dialectical Synthesis module actively resolves the discrepancies. Managed via the MCP server's `retrieve_epistemic_escrow` and `update_epistemic_escrow` tools.

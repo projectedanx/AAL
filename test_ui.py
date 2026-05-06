@@ -6,7 +6,7 @@ def run():
     with sync_playwright() as p:
         browser = p.chromium.launch()
         page = browser.new_page()
-        page.goto("http://localhost:5173")
+        page.goto("http://localhost:3000")
         time.sleep(2)  # Wait for React to mount and render canvas
 
         # Take a screenshot to verify node canvas loaded properly

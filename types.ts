@@ -108,6 +108,10 @@ export interface PromptHistoryEntry {
  * @enum {string}
  */
 export enum PipelineNodeType {
+  VULCAN_BOUNDED_CONTEXT = 'VulcanBoundedContext',
+  VULCAN_EVENT_BROKER = 'VulcanEventBroker',
+  VULCAN_SHARED_DATABASE = 'VulcanSharedDatabase',
+
   MULTISPECTRAL_CONDITIONING = 'MultispectralConditioning',
   BASE_PROMPT = 'BasePrompt',
   PARAMETER = 'Parameter',
@@ -139,6 +143,10 @@ export interface PipelineNode {
     pdtConstraints?: Array<{ type: string; datum: string; tolerance: string }>;
     spectralTargets?: Array<{ target: string; wavelength: number; fwhm: number }>; // PROJECT AURELIUS: Multispectral MSI conditioning
   };
+    // VULCAN specific
+    domainName?: string;
+    eventName?: string;
+
   position: { x: number; y: number; z?: number };
 }
 
