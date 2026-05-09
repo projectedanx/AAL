@@ -4,7 +4,8 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { executeGraph } from "../services/graphExecutor.js";
 import { PipelineNode, PipelineEdge } from "../types.js";
-import { promises as fs } from "fs";
+import fs from "fs";
+import { promises as fsp } from "fs";
 
 const server = new McpServer({
   name: "aesthetic-alchemy-mcp",
@@ -34,7 +35,7 @@ server.registerTool(
   async ({ format }) => {
     try {
       const fileName = format === 'yaml' ? 'scars.yaml' : 'SymbolicScar.json';
-      const data = await fs.readFile(fileName, "utf-8");
+      const data = await fsp.readFile(fileName, "utf-8");
       return {
         content: [{
           type: "text",
@@ -234,7 +235,7 @@ server.registerTool(
   },
   async () => {
     try {
-      const data = await fs.readFile("kut_scar_ledger.json", "utf-8");
+      const data = await fsp.readFile("kut_scar_ledger.json", "utf-8");
       return {
         content: [{
           type: "text",
@@ -278,7 +279,7 @@ server.registerTool(
   },
   async ({ data }) => {
     try {
-      await fs.writeFile("kut_scar_ledger.json", JSON.stringify(data, null, 2), "utf-8");
+      await fsp.writeFile("kut_scar_ledger.json", JSON.stringify(data, null, 2), "utf-8");
       return {
         content: [{
           type: "text",
@@ -321,7 +322,7 @@ server.registerTool(
   },
   async () => {
     try {
-      const data = await fs.readFile("symbolic_scars.jsonl", "utf-8");
+      const data = await fsp.readFile("symbolic_scars.jsonl", "utf-8");
       return {
         content: [{
           type: "text",
@@ -365,7 +366,7 @@ server.registerTool(
   },
   async ({ data }) => {
     try {
-      await fs.appendFile("symbolic_scars.jsonl", JSON.stringify(data) + "\n", "utf-8");
+      await fsp.appendFile("symbolic_scars.jsonl", JSON.stringify(data) + "\n", "utf-8");
       return {
         content: [{
           type: "text",
@@ -408,7 +409,7 @@ server.registerTool(
   },
   async () => {
     try {
-      const data = await fs.readFile("aletheon_ssa.jsonl", "utf-8");
+      const data = await fsp.readFile("aletheon_ssa.jsonl", "utf-8");
       return {
         content: [{
           type: "text",
@@ -452,7 +453,7 @@ server.registerTool(
   },
   async ({ data }) => {
     try {
-      await fs.appendFile("aletheon_ssa.jsonl", JSON.stringify(data) + "\n", "utf-8");
+      await fsp.appendFile("aletheon_ssa.jsonl", JSON.stringify(data) + "\n", "utf-8");
       return {
         content: [{
           type: "text",
@@ -495,7 +496,7 @@ server.registerTool(
   },
   async () => {
     try {
-      const data = await fs.readFile("dax_ssr.jsonl", "utf-8");
+      const data = await fsp.readFile("dax_ssr.jsonl", "utf-8");
       return {
         content: [{
           type: "text",
@@ -539,7 +540,7 @@ server.registerTool(
   },
   async ({ data }) => {
     try {
-      await fs.appendFile("dax_ssr.jsonl", JSON.stringify(data) + "\n", "utf-8");
+      await fsp.appendFile("dax_ssr.jsonl", JSON.stringify(data) + "\n", "utf-8");
       return {
         content: [{
           type: "text",
@@ -582,7 +583,7 @@ server.registerTool(
   },
   async () => {
     try {
-      const data = await fs.readFile("epistemic_escrow.jsonl", "utf-8");
+      const data = await fsp.readFile("epistemic_escrow.jsonl", "utf-8");
       return {
         content: [{
           type: "text",
@@ -626,7 +627,7 @@ server.registerTool(
   },
   async ({ data }) => {
     try {
-      await fs.appendFile("epistemic_escrow.jsonl", JSON.stringify(data) + "\n", "utf-8");
+      await fsp.appendFile("epistemic_escrow.jsonl", JSON.stringify(data) + "\n", "utf-8");
       return {
         content: [{
           type: "text",
@@ -669,7 +670,7 @@ server.registerTool(
   },
   async () => {
     try {
-      const data = await fs.readFile("viper_sta.jsonl", "utf-8");
+      const data = await fsp.readFile("viper_sta.jsonl", "utf-8");
       return {
         content: [{
           type: "text",
@@ -713,7 +714,7 @@ server.registerTool(
   },
   async ({ data }) => {
     try {
-      await fs.appendFile("viper_sta.jsonl", JSON.stringify(data) + "\n", "utf-8");
+      await fsp.appendFile("viper_sta.jsonl", JSON.stringify(data) + "\n", "utf-8");
       return {
         content: [{
           type: "text",
@@ -753,7 +754,7 @@ server.prompt(
   async () => {
     let blueprintText = "";
     try {
-        blueprintText = await fs.readFile("KUT_BLUEPRINT.md", "utf-8");
+        blueprintText = await fsp.readFile("KUT_BLUEPRINT.md", "utf-8");
     } catch (e) {
         blueprintText = "Failed to load blueprint.";
     }
@@ -779,7 +780,7 @@ server.prompt(
   async () => {
     let blueprintText = "";
     try {
-        blueprintText = await fs.readFile("LEXIS_SOVEREIGN_BLUEPRINT.md", "utf-8");
+        blueprintText = await fsp.readFile("LEXIS_SOVEREIGN_BLUEPRINT.md", "utf-8");
     } catch (e) {
         blueprintText = "Failed to load LEXIS SOVEREIGN blueprint.";
     }
@@ -804,7 +805,7 @@ server.prompt(
   async () => {
     let blueprintText = "";
     try {
-        blueprintText = await fs.readFile("WHIMSY_BLUEPRINT.md", "utf-8");
+        blueprintText = await fsp.readFile("WHIMSY_BLUEPRINT.md", "utf-8");
     } catch (e) {
         blueprintText = "Failed to load WHIMSY blueprint.";
     }
@@ -829,7 +830,7 @@ server.prompt(
   async () => {
     let blueprintText = "";
     try {
-        blueprintText = await fs.readFile("ALETHEON_BLUEPRINT.md", "utf-8");
+        blueprintText = await fsp.readFile("ALETHEON_BLUEPRINT.md", "utf-8");
     } catch (e) {
         blueprintText = "Failed to load ALETHEON blueprint.";
     }
@@ -854,7 +855,7 @@ server.prompt(
   async () => {
     let blueprintText = "";
     try {
-        blueprintText = await fs.readFile("DAX_BLUEPRINT.md", "utf-8");
+        blueprintText = await fsp.readFile("DAX_BLUEPRINT.md", "utf-8");
     } catch (e) {
         blueprintText = "Failed to load DAX-01 blueprint.";
     }
@@ -879,7 +880,7 @@ server.prompt(
   async () => {
     let blueprintText = "";
     try {
-        blueprintText = await fs.readFile("LEXICON.md", "utf-8");
+        blueprintText = await fsp.readFile("LEXICON.md", "utf-8");
     } catch (e) {
         blueprintText = "Failed to load LEXICON.md.";
     }
@@ -904,7 +905,7 @@ server.prompt(
   async () => {
     let blueprintText = "";
     try {
-        blueprintText = await fs.readFile("VIPER_BLUEPRINT.md", "utf-8");
+        blueprintText = await fsp.readFile("VIPER_BLUEPRINT.md", "utf-8");
     } catch (e) {
         blueprintText = "Failed to load VIPER blueprint.";
     }
@@ -945,6 +946,53 @@ server.prompt(
       },
     }],
   })
+);
+
+
+// TOOL 15: retrieve_vortex_ssr
+server.registerTool(
+  "retrieve_vortex_ssr",
+  {
+    title: "Retrieve VORTEX Symbolic Scar Registry",
+    description: [
+      "PURPOSE: Retrieves the contents of the VORTEX Symbolic Scar Registry (vortex_ssr.jsonl).",
+      "GUIDELINES: Invoke before generating architectural layouts to check for Betti-1 (β1) loops or cyclic failure topologies.",
+      "RETURNS: JSON string of historical architectural scar boundaries."
+    ].join("\n")
+  },
+  async () => {
+    try {
+      if (true) {
+        const data = fs.readFileSync('vortex_ssr.jsonl', 'utf8');
+        return { content: [{ type: "text", text: data }] };
+      }
+      return { content: [{ type: "text", text: "No VORTEX SCAR data found." }] };
+    } catch (e) {
+      return { content: [{ type: "text", text: `Error: ${e.message}` }] };
+    }
+  }
+);
+
+// TOOL 16: update_vortex_ssr
+server.registerTool(
+  "update_vortex_ssr",
+  {
+    title: "Update VORTEX Symbolic Scar Registry",
+    description: "PURPOSE: Appends a new Betti-1 failure topology to the VORTEX SSR.",
+    inputSchema: z.object({
+      scar_payload: z.string().describe("JSON string representing the Betti-1 failure topology")
+    })
+  },
+  async (args) => {
+    try {
+      if(args && args.scar_payload) {
+          fs.appendFileSync('vortex_ssr.jsonl', args.scar_payload + "\n");
+      }
+      return { content: [{ type: "text", text: "VORTEX SSR successfully updated." }] };
+    } catch (e: any) {
+      return { content: [{ type: "text", text: `Error: ${e.message}` }] };
+    }
+  }
 );
 
 async function main() {

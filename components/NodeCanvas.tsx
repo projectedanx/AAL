@@ -196,6 +196,33 @@ const SharedDatabaseNode = ({ data }: NodeProps) => {
   );
 };
 
+
+// --- VORTEX-ARCHITECT Nodes ---
+const VortexStigmergicLockNode = ({ data, isConnectable }: NodeProps) => {
+  return (
+    <div className="bg-[#FF00FF]/10 border-2 border-[#FF00FF] rounded-md p-3 min-w-[150px] shadow-[0_0_15px_rgba(255,0,255,0.3)]">
+      <Handle type="target" position={Position.Top} isConnectable={isConnectable} className="w-3 h-3 bg-[#FF00FF]" />
+      <div className="font-bold text-[#FF00FF] text-xs uppercase tracking-wider mb-1">Stigmergic Lock</div>
+      <div className="text-gray-300 text-[10px]">
+        {data.label || 'Mutex AST Lock'}
+      </div>
+      <Handle type="source" position={Position.Bottom} isConnectable={isConnectable} className="w-3 h-3 bg-[#FF00FF]" />
+    </div>
+  );
+};
+
+const VortexDccdEnforcerNode = ({ data, isConnectable }: NodeProps) => {
+  return (
+    <div className="bg-[#FF00FF]/10 border-2 border-[#FF00FF] rounded-md p-3 min-w-[150px] shadow-[0_0_15px_rgba(255,0,255,0.3)]">
+      <Handle type="target" position={Position.Top} isConnectable={isConnectable} className="w-3 h-3 bg-[#FF00FF]" />
+      <div className="font-bold text-[#FF00FF] text-xs uppercase tracking-wider mb-1">DCCD Enforcer</div>
+      <div className="text-gray-300 text-[10px] mb-1">Schema: {data.dccdSchema || 'VORTEX_Emergence_Schema'}</div>
+      <div className="text-xs bg-black/50 p-1 rounded font-mono text-gray-400">Draft-Conditioned</div>
+      <Handle type="source" position={Position.Bottom} isConnectable={isConnectable} className="w-3 h-3 bg-[#FF00FF]" />
+    </div>
+  );
+};
+
 const nodeTypes = {
   [PipelineNodeType.VULCAN_BOUNDED_CONTEXT]: BoundedContextNode,
   [PipelineNodeType.VULCAN_EVENT_BROKER]: EventBrokerNode,
@@ -204,10 +231,24 @@ const nodeTypes = {
   [PipelineNodeType.PARAMETER]: ParameterNode,
   [PipelineNodeType.OUTPUT]: OutputNode,
   [PipelineNodeType.TOPOLOGICAL_PERSONA]: TopologicalPersonaNode,
+  [PipelineNodeType.VORTEX_STIGMERGIC_LOCK]: VortexStigmergicLockNode,
+  [PipelineNodeType.VORTEX_DCCD_ENFORCER]: VortexDccdEnforcerNode,
   [PipelineNodeType.MULTISPECTRAL_CONDITIONING]: MultispectralConditioningNode,
 };
 
 const initialNodes: Node[] = [
+  {
+    id: 'vortex-lock-1',
+    type: PipelineNodeType.VORTEX_STIGMERGIC_LOCK,
+    position: { x: 50, y: -200 },
+    data: { label: '+++ContextLock(anchor="VORTEX")', stigmergicLock: true }
+  },
+  {
+    id: 'vortex-dccd-1',
+    type: PipelineNodeType.VORTEX_DCCD_ENFORCER,
+    position: { x: 300, y: -200 },
+    data: { label: 'Schema Enforcer', dccdSchema: 'C4_Model_ADR_JSON' }
+  },
   {
     id: 'bc-1',
     type: PipelineNodeType.VULCAN_BOUNDED_CONTEXT,
