@@ -159,6 +159,23 @@ As a software evaluator, I want my assessments structured through ALETHEON so th
 - Expose the `ALETHEON_BLUEPRINT.md` via an MCP prompt template (`aletheon-adversarial-necropsy`).
 
 ### Epic 8: Causal Latent Sculpting (PROJECT_AURELIUS)
+
+### Epic 9: VORTEX Deterministic Topology
+**Description:** Implement VORTEX-ARCHITECT to construct deterministic, negative space scaffolding around probabilistic generative queries, preventing "Semantic Saponification" and enforcing Stigmergic Concurrency.
+
+#### User Stories & Acceptance Criteria
+**US9.1: Betti-1 Topological Detection**
+As an architect, I want the system to detect logical cycles (Betti-1 loops) in the execution graph before API execution so that infinite probabilistic generation loops are halted.
+*Acceptance Criteria:*
+- Implement `validateVortexTopology` using DFS cycle detection within `graphExecutor.ts`.
+- Return a Justified Uncertainty Report (JUR) weighted by the Golden Ratio (ϕ≈1.618) upon cycle detection.
+
+**US9.2: Stigmergic Mutex & DCCD Enforcement**
+As a human agent, I want to explicitly lock DAG elements and bifurcate semantic logic from syntax constraints so that multi-agent pipelines don't experience logic shearing.
+*Acceptance Criteria:*
+- Implement `VortexStigmergicLockNode` and `VortexDccdEnforcerNode` in `NodeCanvas.tsx` using the Ultraviolet Latent Boundary theme (#FF00FF).
+- Update `PipelineNodeType` to support these explicit constraints.
+
 **Description:** Implement deterministic geometric boundary conditions to invert the AI generation paradigm. Move away from associative prompting towards "Phantom Dimension" manipulation, allowing the user/agent to sculpt Non-Euclidean Latent Spaces and avoid Semantic Saponification.
 
 #### User Stories & Acceptance Criteria

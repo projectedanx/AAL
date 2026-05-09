@@ -118,6 +118,8 @@ export enum PipelineNodeType {
   OUTPUT = 'Output',
   BLEND = 'Blend',
   TOPOLOGICAL_PERSONA = 'TopologicalPersona',
+  VORTEX_STIGMERGIC_LOCK = 'VortexStigmergicLock',
+  VORTEX_DCCD_ENFORCER = 'VortexDccdEnforcer',
 }
 
 /**
@@ -137,6 +139,9 @@ export interface PipelineNode {
     temperature?: number;
     seed?: number;
     phantomZ?: number; // Spatial Bind: Z-Axis Depth for Paraconsistent State
+    // VORTEX-ARCHITECT fields
+    stigmergicLock?: boolean;
+    dccdSchema?: string;
     // Topological Persona fields
     personaRole?: string;
     contradictoryDirectives?: string[]; // PAL2v tension representation

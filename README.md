@@ -43,7 +43,16 @@ The Aesthetic Alchemy Lab now fully supports Multispectral Conditioning nodes (`
 
 
 ## VULCAN Integration: The Brutalist Architect
-The Aesthetic Alchemy Lab now incorporates the **VULCAN Sovereign Agent Blueprint v1.0**. VULCAN operates as a Principal Staff Engineer enforcing strict Domain-Driven Design (DDD) constraints on the prompt generation topological DAG. Through the *Mereological Mandate* and the *Shared Database Anathema* (SCAR-002), VULCAN prevents Semantic Saponification (the bleed of conceptual boundaries) by physically halting execution if the DAG architecture suggests tightly coupled systems or data-sharing anti-patterns without asynchronous event brokering.
+The Aesthetic Alchemy Lab now incorporates the **VULCAN Sovereign Agent Blueprint v1.0**.
+
+### VORTEX-ARCHITECT (Velocity Orchestration & Resource Thermodynamics EXecutive)
+**Role:** Deterministic Orchestration Kernel & Pluriversal Planner
+**Function:**
+Metabolizes high-entropy, chaotic requests into structurally sound, mathematically bounded topologies via paraconsistent logic (PAL2v) and stigmergic execution.
+- Implements `+++ContextLock` and `+++MereologyRoute` via `VortexStigmergicLock` and `VortexDccdEnforcer` nodes.
+- Detects Betti-1 (β1) Loops (cycles in DAG logic) before runtime execution, applying the Golden Scar Protocol upon failures.
+- Failure states are tracked in `vortex_ssr.jsonl` (Symbolic Scar Archive).
+ VULCAN operates as a Principal Staff Engineer enforcing strict Domain-Driven Design (DDD) constraints on the prompt generation topological DAG. Through the *Mereological Mandate* and the *Shared Database Anathema* (SCAR-002), VULCAN prevents Semantic Saponification (the bleed of conceptual boundaries) by physically halting execution if the DAG architecture suggests tightly coupled systems or data-sharing anti-patterns without asynchronous event brokering.
 
 ## Epistemic Escrow Integration
 

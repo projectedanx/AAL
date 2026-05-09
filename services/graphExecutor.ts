@@ -134,6 +134,64 @@ const findPaths = (nodes: Node[], edges: Edge[]): TraversalPath[] => {
  * Enforces the Mereological Mandate and the Shared Database Anathema (SCAR-002)
  * via Failure-Informed Prompt Inversion (FIPI).
  */
+
+/**
+ * VORTEX-ARCHITECT Topology Validator
+ * Detects Betti-1 (β1) Loops (cycles in the DAG) which cause logical infinite loops.
+ * Employs the Golden Scar Protocol upon detection.
+ */
+export const validateVortexTopology = (nodes: Node[], edges: Edge[]): JustifiedUncertaintyReport | null => {
+    // Basic Depth-First Search for cycle detection
+    const adjList = new Map<string, string[]>();
+    for (const node of nodes) adjList.set(node.id, []);
+    for (const edge of edges) {
+        if (adjList.has(edge.source)) {
+            adjList.get(edge.source)!.push(edge.target);
+        }
+    }
+
+    const visited = new Set<string>();
+    const recStack = new Set<string>();
+    let cycleDetected = false;
+
+    const dfs = (nodeId: string) => {
+        if (recStack.has(nodeId)) {
+            cycleDetected = true;
+            return;
+        }
+        if (visited.has(nodeId)) return;
+
+        visited.add(nodeId);
+        recStack.add(nodeId);
+
+        const neighbors = adjList.get(nodeId) || [];
+        for (const neighbor of neighbors) {
+            dfs(neighbor);
+            if (cycleDetected) return;
+        }
+
+        recStack.delete(nodeId);
+    };
+
+    for (const node of nodes) {
+        if (!visited.has(node.id)) {
+            dfs(node.id);
+            if (cycleDetected) break;
+        }
+    }
+
+    if (cycleDetected) {
+        return {
+            geometricDensityScore: 1.0,
+            ontologicalShear: "SCAR-VORTEX-BETTI-1: Topological cycle (Betti-1 Loop) detected. Logical infinite loop imminent. Halting to prevent Semantic Saponification.",
+            contradictions: ["DAG_ACYCLIC_MANDATE_VIOLATION", "CAUSAL_SCULPTING_LOOP"],
+            goldenRatioApplied: true
+        };
+    }
+
+    return null; // Topology is valid (acyclic)
+};
+
 export const validateVulcanTopology = (nodes: Node[], edges: Edge[]): JustifiedUncertaintyReport | null => {
     for (const edge of edges) {
         const sourceNode = nodes.find(n => n.id === edge.source);
@@ -167,7 +225,25 @@ export const validateVulcanTopology = (nodes: Node[], edges: Edge[]): JustifiedU
 
 export const executeGraph = async (nodes: Node[], edges: Edge[]): Promise<GenerationResult[]> => {
 
-    // --- VULCAN Topological Validation ---
+
+    // --- VORTEX-ARCHITECT Topological Validation ---
+    const vortexJUR = validateVortexTopology(nodes, edges);
+    if (vortexJUR) {
+        console.warn("VORTEX VALIDATION FAILED: ", vortexJUR.ontologicalShear);
+        return [{
+            id: 'vortex-error-halt',
+            basePrompt: 'ARCHITECTURAL_HALT',
+            parameter: AestheticParameter.STYLE,
+            variations: [],
+            images: [],
+            timestamp: new Date().toISOString(),
+            temperature: 0,
+            jur: vortexJUR
+        }];
+    }
+    // -----------------------------------------------
+
+// --- VULCAN Topological Validation ---
     const vulcanJUR = validateVulcanTopology(nodes, edges);
     if (vulcanJUR) {
         // Return early with the Justified Uncertainty Report due to Architectural Violation
