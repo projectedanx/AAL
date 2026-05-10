@@ -6,6 +6,13 @@ import { executeGraph } from "../services/graphExecutor.js";
 import { PipelineNode, PipelineEdge } from "../types.js";
 import fs from "fs";
 import { promises as fsp } from "fs";
+import path from "path";
+
+
+const createErrorResponse = (code: string, message: string, detail: any) => ({
+  content: [{ type: "text", text: JSON.stringify({ error_code: code, fault_category: "MCP_ERROR", structured_detail: { message, detail }, retry_viable: false, suggested_decomposition: "" }) }],
+  isError: true
+});
 
 const server = new McpServer({
   name: "aesthetic-alchemy-mcp",
@@ -1005,3 +1012,75 @@ main().catch((err) => {
   process.stderr.write(`KORSAKOV: Fatal — ${err.message}\n`);
   process.exit(1);
 });
+
+// TOOL 16: retrieve_kira_ssr
+server.registerTool(
+  "retrieve_kira_ssr",
+  {
+    title: "Retrieve KIRA Symbolic Scar Registry",
+    description: [
+      "PURPOSE: Retrieves the contents of the KIRA Symbolic Scar Registry (kira_scar_registry.jsonl).",
+      "GUIDELINES: Invoke to check for Feishu API failure geometries, token lifetime errors, or schema violations."
+    ].join(" "),
+    inputSchema: z.object({}).strict(),
+  },
+  async () => {
+    try {
+      const data = await fsp.readFile(path.join(process.cwd(), "kira_scar_registry.jsonl"), "utf-8");
+      return { content: [{ type: "text", text: data }] };
+    } catch (e) {
+      if ((e as NodeJS.ErrnoException).code === "ENOENT") {
+        return { content: [{ type: "text", text: "" }] };
+      }
+      return createErrorResponse("FILE_READ_ERROR", "Failed to read kira_scar_registry.jsonl", e);
+    }
+  }
+);
+
+// TOOL 17: update_kira_ssr
+server.registerTool(
+  "update_kira_ssr",
+  {
+    title: "Update KIRA Symbolic Scar Registry",
+    description: [
+      "PURPOSE: Appends a new JSON object to the KIRA Symbolic Scar Registry (kira_scar_registry.jsonl).",
+      "GUIDELINES: Invoke when a Feishu API architectural invariant (schema, webhook signature, etc.) is violated to map the failure."
+    ].join(" "),
+    inputSchema: z.object({
+      scar: z.any().describe("The scar object to append (will be stringified)."),
+    }).strict(),
+  },
+  async (params) => {
+    try {
+      const line = JSON.stringify(params.scar) + "\n";
+      await fsp.appendFile(path.join(process.cwd(), "kira_scar_registry.jsonl"), line, "utf-8");
+      return { content: [{ type: "text", text: "Successfully appended to kira_scar_registry.jsonl" }] };
+    } catch (e) {
+      return createErrorResponse("FILE_WRITE_ERROR", "Failed to update kira_scar_registry.jsonl", e);
+    }
+  }
+);
+
+// MCP Prompt Template 8: KIRA-7 Lark Weaver
+server.prompt(
+  "kira-lark-weaver",
+  "Initialize KIRA-7: Kinetic Integration & Routing Agent.",
+  {},
+  async () => {
+    let blueprintText = "";
+    try {
+        blueprintText = await fsp.readFile("KIRA_BLUEPRINT.md", "utf-8");
+    } catch (e) {
+        blueprintText = "Failed to load blueprint.";
+    }
+    return {
+        messages: [{
+            role: "user",
+            content: {
+                type: "text",
+                text: "You are now operating under the KIRA-7 (Kinetic Integration & Routing Agent) persona.\n\n" + blueprintText
+            }
+        }]
+    };
+  }
+);

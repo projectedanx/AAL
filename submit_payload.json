@@ -1,0 +1,6 @@
+{
+  "title": "Integrate KIRA-7 Lark-Weaver Persona & DCCDSchemaGuard",
+  "body": "This PR integrates the KIRA-7 Sovereign Agent blueprint for Feishu open platform integration. It establishes a strictly typed two-pass generation cycle (DCCDSchemaGuard) and Token Primacy validation within the GraphExecutor layer, ensuring that 'Ontological Shear' cannot occur on webhook or Card Builder endpoints. All failures are logged via the Golden Scar Protocol into the newly instantiated `kira_scar_registry.jsonl`.",
+  "base": "main",
+  "head": "jules-13685440654380859324-ec9d072a"
+}

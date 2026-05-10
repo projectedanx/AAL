@@ -242,10 +242,40 @@ export const validateVulcanTopology = (nodes: Node[], edges: Edge[]): JustifiedU
  * @param {Edge[]} edges - The connections establishing parent-child relationships across the graph.
  * @returns {Promise<GenerationResult[]>} A promise resolving to an array of finalized generation results, including the generated images.
  */
+export const validateKiraTopology = (nodes: Node[]): JustifiedUncertaintyReport | null => {
+    const cardNodes = nodes.filter(n => n.type === PipelineNodeType.KIRA_CARD_BUILDER);
+    for (const card of cardNodes) {
+        if (!(card.data as any).cardSchema) {
+            return {
+                ontologicalShear: "SCAR-KIRA-005: Feishu Card Builder node missing DCCDSchemaGuard explicit schema. Ontological Shear imminent.",
+                contradictions: ["ANIONIC_VETO_VIOLATION", "MISSING_JSON_SCHEMA"],
+                goldenRatioApplied: true
+            };
+        }
+    }
+    return null;
+};
+
 export const executeGraph = async (nodes: Node[], edges: Edge[]): Promise<GenerationResult[]> => {
 
 
     // --- VORTEX-ARCHITECT Topological Validation ---
+    // --- KIRA-7 Topological Validation ---
+    const kiraJUR = validateKiraTopology(nodes);
+    if (kiraJUR) {
+        console.warn("KIRA VALIDATION FAILED: ", kiraJUR.ontologicalShear);
+        return [{
+            id: "kira-error-halt",
+            basePrompt: "ARCHITECTURAL_HALT",
+            parameter: AestheticParameter.STYLE,
+            variations: [],
+            images: [],
+            timestamp: new Date().toISOString(),
+            temperature: 0,
+            jur: kiraJUR
+        }];
+    }
+
     const vortexJUR = validateVortexTopology(nodes, edges);
     if (vortexJUR) {
         console.warn("VORTEX VALIDATION FAILED: ", vortexJUR.ontologicalShear);
