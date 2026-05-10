@@ -334,8 +334,10 @@ const initialEdges: Edge[] = [
 ];
 
 /**
- * NodeCanvas Component
- * Represents the Semantic Parallax Zone for DAG-based prompt engineering.
+ * React Component representing the interactive node-based canvas.
+ * @param {object} props - Component properties.
+ * @param {function} props.onExecuteGraph - Callback function triggered when the pipeline is executed.
+ * @returns {JSX.Element} The rendered React component.
  */
 export const NodeCanvas: React.FC<{ onExecuteGraph: (nodes: Node[], edges: Edge[]) => void }> = ({ onExecuteGraph }) => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);

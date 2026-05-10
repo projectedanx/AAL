@@ -2,10 +2,7 @@
 import { AestheticParameter } from './types';
 
 /**
- * A dictionary of aesthetic options, keyed by the aesthetic parameter.
- * Each key corresponds to an `AestheticParameter` enum value, and each value is an array of strings
- * representing the available stylistic variations for that parameter. This serves as the data source
- * for user selection within the prompt generation UI.
+ * Options for aesthetic parameters.
  * @type {Record<AestheticParameter, string[]>}
  */
 export const AESTHETIC_OPTIONS: Record<AestheticParameter, string[]> = {

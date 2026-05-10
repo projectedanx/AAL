@@ -136,9 +136,12 @@ const findPaths = (nodes: Node[], edges: Edge[]): TraversalPath[] => {
  */
 
 /**
- * VORTEX-ARCHITECT Topology Validator
+ * Validates the generated Directed Acyclic Graph (DAG) for VORTEX physical constraints.
  * Detects Betti-1 (β1) Loops (cycles in the DAG) which cause logical infinite loops.
- * Employs the Golden Scar Protocol upon detection.
+ *
+ * @param {Node[]} nodes - The array of topological nodes representing generation parameters.
+ * @param {Edge[]} edges - The array of edge definitions connecting the nodes.
+ * @returns {JustifiedUncertaintyReport | null} The JUR containing contradictions if a validation error occurs, or null if valid.
  */
 export const validateVortexTopology = (nodes: Node[], edges: Edge[]): JustifiedUncertaintyReport | null => {
     // Basic Depth-First Search for cycle detection
@@ -192,6 +195,14 @@ export const validateVortexTopology = (nodes: Node[], edges: Edge[]): JustifiedU
     return null; // Topology is valid (acyclic)
 };
 
+/**
+ * Validates the generated Directed Acyclic Graph (DAG) for VULCAN physical constraints.
+ * Ensures the node linkages do not violate established topological logic.
+ *
+ * @param {Node[]} nodes - The array of topological nodes representing generation parameters.
+ * @param {Edge[]} edges - The array of edge definitions connecting the nodes.
+ * @returns {JustifiedUncertaintyReport | null} The JUR containing contradictions if a validation error occurs, or null if valid.
+ */
 export const validateVulcanTopology = (nodes: Node[], edges: Edge[]): JustifiedUncertaintyReport | null => {
     for (const edge of edges) {
         const sourceNode = nodes.find(n => n.id === edge.source);
@@ -223,6 +234,14 @@ export const validateVulcanTopology = (nodes: Node[], edges: Edge[]): JustifiedU
     return null; // Topology is valid
 };
 
+/**
+ * Executes the generative sequence by parsing the provided DAG, validating its topology,
+ * and calling the necessary models to create image variants based on the nodes.
+ *
+ * @param {Node[]} nodes - The array of nodes comprising the requested visual pipeline.
+ * @param {Edge[]} edges - The connections establishing parent-child relationships across the graph.
+ * @returns {Promise<GenerationResult[]>} A promise resolving to an array of finalized generation results, including the generated images.
+ */
 export const executeGraph = async (nodes: Node[], edges: Edge[]): Promise<GenerationResult[]> => {
 
 

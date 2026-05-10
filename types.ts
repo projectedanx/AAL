@@ -1,6 +1,6 @@
 /// file: types.ts ///
 /**
- * Enum for the different aesthetic parameters that can be varied.
+ * Enum mapping the available aesthetic parameters that can be visually explored.
  * @enum {string}
  */
 export enum AestheticParameter {
@@ -10,12 +10,12 @@ export enum AestheticParameter {
 }
 
 /**
- * Interface for a single generated image.
- * @property id - A unique identifier for the image.
- * @property src - The source URL of the image.
- * @property prompt - The full prompt that was used to generate the image.
- * @property variation - The specific variation that was applied to the base prompt.
- * @property rating - The user's rating of the image, from 1 to 5.
+ * Interface defining the structure of a single generated image.
+ * @property {string} id - A unique identifier for the image.
+ * @property {string} src - The source URL of the image.
+ * @property {string} prompt - The full prompt that was used to generate the image.
+ * @property {string} variation - The specific variation that was applied to the base prompt.
+ * @property {number} [rating] - The user's rating of the image, from 1 to 5.
  */
 export interface GeneratedImage {
   id: string;
@@ -38,9 +38,14 @@ export interface GeneratedImage {
  */
 
 /**
- * Justified Uncertainty Report (JUR)
+ * Justified Uncertainty Report (JUR).
  * Manifests the tension (Ontological Shear) between deterministic persona constraints
  * and probabilistic generation, weighted via the Golden Scar Protocol.
+ *
+ * @property {number} geometricDensityScore - The measured density of constraints (e.g., 0.88).
+ * @property {string} ontologicalShear - Narrative description of the contradiction.
+ * @property {string[]} contradictions - The specific PAL2v directives held in tension.
+ * @property {boolean} goldenRatioApplied - Confirms 1.618 weighting of empirical datums.
  */
 export interface JustifiedUncertaintyReport {
   geometricDensityScore: number; // The measured density of constraints (e.g., 0.88)
@@ -49,6 +54,20 @@ export interface JustifiedUncertaintyReport {
   goldenRatioApplied: boolean; // Confirms 1.618 weighting of empirical datums
 }
 
+/**
+ * Interface representing the complete result of an image generation sequence.
+ * @property {number} [adherenceScore] - Project Aurelius metric for constraint adherence.
+ * @property {number} [semanticDrift] - Project Aurelius metric for semantic deviation.
+ * @property {string} id - A unique identifier for the generation result.
+ * @property {string} basePrompt - The base prompt that was used for the generation.
+ * @property {AestheticParameter} parameter - The aesthetic parameter that was varied.
+ * @property {string[]} variations - The variations that were applied to the base prompt.
+ * @property {GeneratedImage[]} images - An array of the generated images.
+ * @property {string} timestamp - The timestamp of when the generation was created.
+ * @property {number} temperature - The temperature that was used for the generation.
+ * @property {number} [seed] - The seed that was used for the generation.
+ * @property {JustifiedUncertaintyReport} [jur] - The JUR object if an ontological shear occurred.
+ */
 export interface GenerationResult {
   adherenceScore?: number; // PROJECT AURELIUS
   semanticDrift?: number; // PROJECT AURELIUS
@@ -64,14 +83,14 @@ export interface GenerationResult {
 }
 
 /**
- * Interface for a saved prompt preset.
- * @property id - A unique identifier for the preset.
- * @property name - The name of the preset.
- * @property basePrompt - The base prompt of the preset.
- * @property parameter - The aesthetic parameter of the preset.
- * @property variations - The variations of the preset.
- * @property temperature - The temperature of the preset.
- * @property seed - The seed of the preset.
+ * Interface defining a saved prompt preset for quick usage.
+ * @property {string} id - A unique identifier for the preset.
+ * @property {string} name - The name of the preset.
+ * @property {string} basePrompt - The base prompt of the preset.
+ * @property {AestheticParameter} parameter - The aesthetic parameter of the preset.
+ * @property {string[]} variations - The variations of the preset.
+ * @property {number} temperature - The temperature of the preset.
+ * @property {number} [seed] - The seed of the preset.
  */
 export interface PromptPreset {
   id: string;
@@ -84,14 +103,14 @@ export interface PromptPreset {
 }
 
 /**
- * Interface for a single entry in the prompt history.
- * @property id - A unique identifier for the history entry.
- * @property basePrompt - The base prompt that was used.
- * @property parameter - The aesthetic parameter that was used.
- * @property variations - The variations that were used.
- * @property temperature - The temperature that was used.
- * @property seed - The seed that was used.
- * @property timestamp - The timestamp of when the prompt was submitted.
+ * Interface representing a single entry in the prompt history log.
+ * @property {string} id - A unique identifier for the history entry.
+ * @property {string} basePrompt - The base prompt that was used.
+ * @property {AestheticParameter} parameter - The aesthetic parameter that was used.
+ * @property {string[]} variations - The variations that were used.
+ * @property {number} temperature - The temperature that was used.
+ * @property {number} [seed] - The seed that was used.
+ * @property {string} timestamp - The timestamp of when the prompt was submitted.
  */
 export interface PromptHistoryEntry {
   id: string;
@@ -104,7 +123,7 @@ export interface PromptHistoryEntry {
 }
 
 /**
- * Defines the types of nodes available in the visual prompt canvas.
+ * Enum defining the types of nodes available in the visual prompt canvas.
  * @enum {string}
  */
 export enum PipelineNodeType {
@@ -124,10 +143,12 @@ export enum PipelineNodeType {
 
 /**
  * Represents a single node within the prompt generation Directed Acyclic Graph (DAG).
- * @property id - Unique identifier for the node.
- * @property type - The functional type of the node.
- * @property data - The payload/configuration specific to the node type.
- * @property position - The spatial coordinates of the node on the canvas (x, y, z-axis phantom for paradox).
+ * @property {string} id - Unique identifier for the node.
+ * @property {PipelineNodeType} type - The functional type of the node.
+ * @property {any} data - The payload/configuration specific to the node type.
+ * @property {string} [domainName] - VULCAN specific domain constraint.
+ * @property {string} [eventName] - VULCAN specific event topic.
+ * @property {any} position - The spatial coordinates of the node on the canvas (x, y, z-axis phantom for paradox).
  */
 export interface PipelineNode {
   id: string;
@@ -157,9 +178,9 @@ export interface PipelineNode {
 
 /**
  * Represents a directional edge connecting two PipelineNodes in the DAG.
- * @property id - Unique identifier for the edge.
- * @property source - The ID of the originating node.
- * @property target - The ID of the destination node.
+ * @property {string} id - Unique identifier for the edge.
+ * @property {string} source - The ID of the originating node.
+ * @property {string} target - The ID of the destination node.
  */
 export interface PipelineEdge {
   id: string;
@@ -169,8 +190,8 @@ export interface PipelineEdge {
 
 /**
  * The full representation of a user's node-based generation pipeline.
- * @property nodes - The set of all nodes in the canvas.
- * @property edges - The directional relationships between nodes.
+ * @property {PipelineNode[]} nodes - The set of all nodes in the canvas.
+ * @property {PipelineEdge[]} edges - The directional relationships between nodes.
  */
 export interface PipelineGraph {
   nodes: PipelineNode[];
@@ -179,10 +200,10 @@ export interface PipelineGraph {
 
 /**
  * Tracks the evolutionary lineage of an image generated via breeding/blending.
- * @property offspringId - The ID of the newly generated image.
- * @property parentIds - The IDs of the source images used to breed this offspring.
- * @property generation - The depth of the evolutionary tree (e.g., F1, F2).
- * @property blendWeights - The relative influence of each parent on the offspring.
+ * @property {string} offspringId - The ID of the newly generated image.
+ * @property {string[]} parentIds - The IDs of the source images used to breed this offspring.
+ * @property {number} generation - The depth of the evolutionary tree (e.g., F1, F2).
+ * @property {Record<string, number>} [blendWeights] - The relative influence of each parent on the offspring.
  */
 export interface EvolutionaryLineage {
   offspringId: string;
@@ -192,9 +213,18 @@ export interface EvolutionaryLineage {
 }
 
 /**
- * Interfaces for the KUT Scar Ledger (The Retention Architect)
+ * Creator Profile Tracking the personas for generation context.
+ * @property {string} creator_id - Identifier for the creator.
+ * @property {string} display_name - The display name.
+ * @property {string} nle_primary - Primary non-linear editor.
+ * @property {string} [nle_secondary] - Secondary non-linear editor.
+ * @property {string[]} platform_targets - Target platforms.
+ * @property {string} genre_classification - Genre category.
+ * @property {number} session_count - Total sessions.
+ * @property {string} [dominant_failure_mode] - Main failure mode.
+ * @property {number} [pacing_baseline_cpm] - Baseline CPM.
+ * @property {number} target_cpm - Target CPM.
  */
-
 export interface CreatorProfile {
   creator_id: string;
   display_name: string;
@@ -208,6 +238,18 @@ export interface CreatorProfile {
   target_cpm: number;
 }
 
+/**
+ * Scar Entry tracking algorithmic trauma and failure modes.
+ * @property {string} scar_id - Identifier.
+ * @property {string} session_timestamp - ISO8601 Timestamp.
+ * @property {string} error_classification - Type of error.
+ * @property {string} error_detail - Detail description.
+ * @property {string} correction_prescribed - Required correction.
+ * @property {boolean} correction_applied - Was correction applied.
+ * @property {number} recurrence_count - Times occurred.
+ * @property {string} status - Resolution status.
+ * @property {string} escalation_level - Escalation.
+ */
 export interface ScarEntry {
   scar_id: string;
   session_timestamp: string; // ISO8601
@@ -220,6 +262,18 @@ export interface ScarEntry {
   escalation_level: '1_prescriptive' | '2_scar_linked' | '3_dominant_failure_mode';
 }
 
+/**
+ * Session History tracking interactions.
+ * @property {string} session_id - Identifier.
+ * @property {string} session_timestamp - Timestamp.
+ * @property {number} video_duration_seconds - Duration.
+ * @property {string} hook_first_cut_timestamp - First cut timecode.
+ * @property {number} [reported_3s_retention_pct] - Retention metric.
+ * @property {number} [reported_avd_pct] - Average View Duration metric.
+ * @property {string[]} scars_flagged_this_session - Flagged scars.
+ * @property {string[]} scars_resolved_this_session - Resolved scars.
+ * @property {number} [net_improvement_delta] - Delta improvement.
+ */
 export interface SessionHistory {
   session_id: string;
   session_timestamp: string; // ISO8601
@@ -232,6 +286,12 @@ export interface SessionHistory {
   net_improvement_delta: number | null;
 }
 
+/**
+ * KUT Scar Ledger linking profiles to history.
+ * @property {CreatorProfile} Creator_Profile - Associated profile.
+ * @property {ScarEntry[]} Scar_Ledger - Recorded scars.
+ * @property {SessionHistory[]} Session_History - Logged sessions.
+ */
 export interface KutScarLedger {
   Creator_Profile: CreatorProfile;
   Scar_Ledger: ScarEntry[];

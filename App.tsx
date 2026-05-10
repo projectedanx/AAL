@@ -9,6 +9,10 @@ import { GenerationResult, PromptHistoryEntry, PromptPreset, AestheticParameter 
 import { executeGraph } from './services/graphExecutor';
 import { Node, Edge } from '@xyflow/react';
 
+/**
+ * The main application component orchestrating the lab.
+ * @returns {JSX.Element} The rendered React component.
+ */
 const App: React.FC = () => {
   const [generations, setGenerations] = useState<GenerationResult[]>([]);
   const [isLoading, setIsLoading] = useState(false);
