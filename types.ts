@@ -138,6 +138,8 @@ export enum PipelineNodeType {
   BLEND = 'Blend',
   TOPOLOGICAL_PERSONA = 'TopologicalPersona',
   VORTEX_STIGMERGIC_LOCK = 'VortexStigmergicLock',
+  KIRA_WEBHOOK_INGRESS = 'KiraWebhookIngress',
+  KIRA_CARD_BUILDER = 'KiraCardBuilder',
   VORTEX_DCCD_ENFORCER = 'VortexDccdEnforcer',
 }
 
@@ -163,6 +165,10 @@ export interface PipelineNode {
     // VORTEX-ARCHITECT fields
     stigmergicLock?: boolean;
     dccdSchema?: string;
+    // KIRA-7 fields
+    encryptKey?: string;
+    verificationToken?: string;
+    cardSchema?: string;
     // Topological Persona fields
     personaRole?: string;
     contradictoryDirectives?: string[]; // PAL2v tension representation

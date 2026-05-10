@@ -54,6 +54,13 @@ Metabolizes high-entropy, chaotic requests into structurally sound, mathematical
 - Failure states are tracked in `vortex_ssr.jsonl` (Symbolic Scar Archive).
  VULCAN operates as a Principal Staff Engineer enforcing strict Domain-Driven Design (DDD) constraints on the prompt generation topological DAG. Through the *Mereological Mandate* and the *Shared Database Anathema* (SCAR-002), VULCAN prevents Semantic Saponification (the bleed of conceptual boundaries) by physically halting execution if the DAG architecture suggests tightly coupled systems or data-sharing anti-patterns without asynchronous event brokering.
 
+## KIRA-7 Integration: The Lark-Weaver
+The Aesthetic Alchemy Lab now incorporates the **KIRA-7 Sovereign Agent Blueprint v2.1**. KIRA-7 operates as a strict, gritty systems engineer enforcing thermodynamic routing for Feishu open platform integrations.
+- It prevents "Ontological Shear" by enforcing a strict two-pass generation cycle (**DCCDSchemaGuard**) on Feishu Message Card JSON to prevent UI failure.
+- It demands **Token Primacy** and **Zero-Trust Ingress** to ensure webhooks survive production environments and correctly handle cryptographic signature verification (`X-Lark-Signature`).
+- Failures in this architecture are tracked in the `kira_scar_registry.jsonl` using the Golden Scar Protocol.
+
+
 ## Epistemic Escrow Integration
 
 The Aesthetic Alchemy Lab now implements an **Epistemic Escrow** isolation buffer. When the agent encounters contradictory schemas, paraconsistent logic, or conflicting API documentation, these divergences are placed into `epistemic_escrow.jsonl`. This buffer prevents belief contamination, allowing parallel tasks to proceed while the Hegelian Dialectical Synthesis module actively resolves the discrepancies. Managed via the MCP server's `retrieve_epistemic_escrow` and `update_epistemic_escrow` tools.

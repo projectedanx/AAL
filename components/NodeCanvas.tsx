@@ -223,6 +223,35 @@ const VortexDccdEnforcerNode = ({ data, isConnectable }: NodeProps) => {
   );
 };
 
+const KiraWebhookIngressNode = ({ data, isConnectable }: any) => {
+  return (
+    <div className="bg-[#00D6B9]/10 border-2 border-[#00D6B9] rounded-none p-3 w-64 shadow-[0_0_15px_rgba(0,214,185,0.3)]">
+      <Handle type="target" position={Position.Left} isConnectable={isConnectable} className="w-3 h-3 bg-[#00D6B9] rounded-none" />
+      <div className="font-bold text-[#00D6B9] mb-1 font-mono text-sm uppercase">KIRA INGRESS</div>
+      <div className="text-xs text-slate-300 font-mono mb-2">Zero-Trust Webhook</div>
+      <div className="text-[10px] bg-slate-900 px-2 py-1 rounded text-slate-400 border border-[#00D6B9]/30">
+        <div>Verify: X-Lark-Signature</div>
+        {data.encryptKey && <div>Encrypt: AES-256-CBC</div>}
+      </div>
+      <Handle type="source" position={Position.Right} isConnectable={isConnectable} className="w-3 h-3 bg-[#00D6B9] rounded-none" />
+    </div>
+  );
+};
+
+const KiraCardBuilderNode = ({ data, isConnectable }: any) => {
+  return (
+    <div className="bg-[#00D6B9]/10 border-2 border-[#00D6B9] rounded-none p-3 w-64 shadow-[0_0_15px_rgba(0,214,185,0.3)]">
+      <Handle type="target" position={Position.Left} isConnectable={isConnectable} className="w-3 h-3 bg-[#00D6B9] rounded-none" />
+      <div className="font-bold text-[#00D6B9] mb-1 font-mono text-sm uppercase">KIRA CARD BUILDER</div>
+      <div className="text-[10px] bg-slate-900 px-2 py-1 rounded text-slate-400 border border-[#00D6B9]/30">
+        <div>DCCDSchemaGuard: ON</div>
+        <div>Schema: {data.cardSchema || "Feishu_Card_JSON_v2"}</div>
+      </div>
+      <Handle type="source" position={Position.Right} isConnectable={isConnectable} className="w-3 h-3 bg-[#00D6B9] rounded-none" />
+    </div>
+  );
+};
+
 const nodeTypes = {
   [PipelineNodeType.VULCAN_BOUNDED_CONTEXT]: BoundedContextNode,
   [PipelineNodeType.VULCAN_EVENT_BROKER]: EventBrokerNode,
@@ -233,6 +262,8 @@ const nodeTypes = {
   [PipelineNodeType.TOPOLOGICAL_PERSONA]: TopologicalPersonaNode,
   [PipelineNodeType.VORTEX_STIGMERGIC_LOCK]: VortexStigmergicLockNode,
   [PipelineNodeType.VORTEX_DCCD_ENFORCER]: VortexDccdEnforcerNode,
+  [PipelineNodeType.KIRA_WEBHOOK_INGRESS]: KiraWebhookIngressNode,
+  [PipelineNodeType.KIRA_CARD_BUILDER]: KiraCardBuilderNode,
   [PipelineNodeType.MULTISPECTRAL_CONDITIONING]: MultispectralConditioningNode,
 };
 
