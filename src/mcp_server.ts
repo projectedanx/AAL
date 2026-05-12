@@ -971,7 +971,7 @@ server.registerTool(
     try {
       if (true) {
         const data = fs.readFileSync('vortex_ssr.jsonl', 'utf8');
-        return { content: [{ type: "text", text: data }] };
+        return { content: [{ type: "text" as const, text: data }] };
       }
       return { content: [{ type: "text", text: "No VORTEX SCAR data found." }] };
     } catch (e) {
@@ -1013,6 +1013,78 @@ main().catch((err) => {
   process.exit(1);
 });
 
+// MCP Prompt Template 9: CIPHER Zero-Trust Sentinel
+server.prompt(
+  "cipher-zero-trust-sentinel",
+  "Initialize CIPHER: The Zero-Trust Epistemic Sentinel, Sovereign Architect Tier 4.",
+  {},
+  async () => {
+    let blueprintText = "";
+    try {
+        blueprintText = await fsp.readFile("CIPHER_BLUEPRINT.md", "utf-8");
+    } catch (e) {
+        blueprintText = "Failed to load CIPHER blueprint.";
+    }
+    return {
+        messages: [{
+        role: "user",
+        content: {
+            type: "text" as const,
+            text: blueprintText,
+        },
+        }],
+    };
+  }
+);
+
+// TOOL 18: retrieve_cipher_ssr
+server.registerTool(
+  "retrieve_cipher_ssr",
+  {
+    title: "Retrieve CIPHER Symbolic Scar Registry",
+    description: [
+      "PURPOSE: Retrieves the contents of the CIPHER Symbolic Scar Registry (cipher_ssr.jsonl).",
+      "GUIDELINES: Invoke before generating architectural layouts to check for structural vulnerability topologies or false negatives."
+    ].join(" "),
+    inputSchema: z.object({}).strict(),
+  },
+  async () => {
+    try {
+      const data = await fsp.readFile(path.join(process.cwd(), "cipher_ssr.jsonl"), "utf-8");
+      return { content: [{ type: "text" as const, text: data }] };
+    } catch (e: any) {
+      if (e.code === "ENOENT") {
+        return { content: [{ type: "text" as const, text: "" }] };
+      }
+      return { content: [{ type: "text" as const, text: "Error: " + e.message }], isError: true };
+    }
+  }
+);
+
+// TOOL 19: update_cipher_ssr
+server.registerTool(
+  "update_cipher_ssr",
+  {
+    title: "Update CIPHER Symbolic Scar Registry",
+    description: [
+      "PURPOSE: Appends a new JSON object to the CIPHER Symbolic Scar Registry (cipher_ssr.jsonl).",
+      "GUIDELINES: Invoke when a structural failure or false negative is confirmed in the CI/CD topological graph."
+    ].join(" "),
+    inputSchema: z.object({
+      scar: z.any().describe("The scar object to append (will be stringified)."),
+    }).strict(),
+  },
+  async (params) => {
+    try {
+      const line = JSON.stringify(params.scar) + "\n";
+      await fsp.appendFile(path.join(process.cwd(), "cipher_ssr.jsonl"), line, "utf-8");
+      return { content: [{ type: "text" as const, text: "Successfully appended to cipher_ssr.jsonl" }] };
+    } catch (e: any) {
+      return { content: [{ type: "text" as const, text: "Error: " + e.message }], isError: true };
+    }
+  }
+);
+
 // TOOL 16: retrieve_kira_ssr
 server.registerTool(
   "retrieve_kira_ssr",
@@ -1030,9 +1102,9 @@ server.registerTool(
       return { content: [{ type: "text", text: data }] };
     } catch (e) {
       if ((e as NodeJS.ErrnoException).code === "ENOENT") {
-        return { content: [{ type: "text", text: "" }] };
+        return { content: [{ type: "text" as const, text: "" }] };
       }
-      return createErrorResponse("FILE_READ_ERROR", "Failed to read kira_scar_registry.jsonl", e);
+      return { content: [{ type: "text" as const, text: "Failed to read kira_scar_registry.jsonl" }], isError: true };
     }
   }
 );
@@ -1054,9 +1126,9 @@ server.registerTool(
     try {
       const line = JSON.stringify(params.scar) + "\n";
       await fsp.appendFile(path.join(process.cwd(), "kira_scar_registry.jsonl"), line, "utf-8");
-      return { content: [{ type: "text", text: "Successfully appended to kira_scar_registry.jsonl" }] };
+      return { content: [{ type: "text" as const, text: "Successfully appended to kira_scar_registry.jsonl" }] };
     } catch (e) {
-      return createErrorResponse("FILE_WRITE_ERROR", "Failed to update kira_scar_registry.jsonl", e);
+      return { content: [{ type: "text" as const, text: "Failed to update kira_scar_registry.jsonl" }], isError: true };
     }
   }
 );

@@ -141,6 +141,7 @@ export enum PipelineNodeType {
   KIRA_WEBHOOK_INGRESS = 'KiraWebhookIngress',
   KIRA_CARD_BUILDER = 'KiraCardBuilder',
   VORTEX_DCCD_ENFORCER = 'VortexDccdEnforcer',
+  CIPHER_SECURITY_GATE = 'CipherSecurityGate',
 }
 
 /**
@@ -169,6 +170,10 @@ export interface PipelineNode {
     encryptKey?: string;
     verificationToken?: string;
     cardSchema?: string;
+    // CIPHER Security fields
+    gateMode?: 'ADVISORY' | 'HARD_GATE' | 'HARD_GATE_STRICT';
+    threatPosture?: string;
+
     // Topological Persona fields
     personaRole?: string;
     contradictoryDirectives?: string[]; // PAL2v tension representation
