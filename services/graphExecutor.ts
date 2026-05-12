@@ -203,6 +203,48 @@ export const validateVortexTopology = (nodes: Node[], edges: Edge[]): JustifiedU
  * @param {Edge[]} edges - The array of edge definitions connecting the nodes.
  * @returns {JustifiedUncertaintyReport | null} The JUR containing contradictions if a validation error occurs, or null if valid.
  */
+/**
+ * Validates the generated Directed Acyclic Graph (DAG) for CIPHER security constraints.
+ * Enforces zero-trust topological barriers (e.g. Mereology Route Checks).
+ *
+ * @param {Node[]} nodes - The array of topological nodes.
+ * @param {Edge[]} edges - The array of edge definitions.
+ * @returns {JustifiedUncertaintyReport | null} The JUR containing contradictions if a validation error occurs, or null if valid.
+ */
+export const validateCipherTopology = (nodes: Node[], edges: Edge[]): JustifiedUncertaintyReport | null => {
+    const cipherNodes = nodes.filter(n => n.type === PipelineNodeType.CIPHER_SECURITY_GATE);
+
+    for (const cipher of cipherNodes) {
+        if (!(cipher.data as any).dccdSchema) {
+            return {
+                geometricDensityScore: 1.0,
+                ontologicalShear: "SCAR-CIPHER-001: Missing DCCDSchemaGuard in CIPHER Gate. Ontological Shear imminent. Zero-Trust failure.",
+                contradictions: ["MISSING_DCCD_SCHEMA", "ZERO_TRUST_VIOLATION"],
+                goldenRatioApplied: true
+            };
+        }
+    }
+
+    for (const edge of edges) {
+        const sourceNode = nodes.find(n => n.id === edge.source);
+        const targetNode = nodes.find(n => n.id === edge.target);
+
+        if (!sourceNode || !targetNode) continue;
+
+        // Mereology Route Check: Direct connection from potentially unsafe ingress to sensitive internal nodes without a CIPHER gate
+        if (sourceNode.type === PipelineNodeType.KIRA_WEBHOOK_INGRESS && targetNode.type === PipelineNodeType.VULCAN_SHARED_DATABASE) {
+             return {
+                geometricDensityScore: 1.0,
+                ontologicalShear: "SCAR-CIPHER-002: Unauthorized Mereological Trust Inheritance Detected. Webhook ingress cannot directly route to shared database without passing through a CIPHER Security Gate.",
+                contradictions: ["MEREOLOGICAL_MANDATE_VIOLATION", "TRUST_BOUNDARY_VIOLATION"],
+                goldenRatioApplied: true
+            };
+        }
+    }
+
+    return null; // Topology is valid
+};
+
 export const validateVulcanTopology = (nodes: Node[], edges: Edge[]): JustifiedUncertaintyReport | null => {
     for (const edge of edges) {
         const sourceNode = nodes.find(n => n.id === edge.source);
@@ -247,6 +289,7 @@ export const validateKiraTopology = (nodes: Node[]): JustifiedUncertaintyReport 
     for (const card of cardNodes) {
         if (!(card.data as any).cardSchema) {
             return {
+                geometricDensityScore: 1.0,
                 ontologicalShear: "SCAR-KIRA-005: Feishu Card Builder node missing DCCDSchemaGuard explicit schema. Ontological Shear imminent.",
                 contradictions: ["ANIONIC_VETO_VIOLATION", "MISSING_JSON_SCHEMA"],
                 goldenRatioApplied: true
@@ -273,6 +316,21 @@ export const executeGraph = async (nodes: Node[], edges: Edge[]): Promise<Genera
             timestamp: new Date().toISOString(),
             temperature: 0,
             jur: kiraJUR
+        }];
+    }
+
+    const cipherJUR = validateCipherTopology(nodes, edges);
+    if (cipherJUR) {
+        console.warn("CIPHER VALIDATION FAILED: ", cipherJUR.ontologicalShear);
+        return [{
+            id: 'cipher-error-halt',
+            basePrompt: 'SECURITY_HALT',
+            parameter: AestheticParameter.STYLE,
+            variations: [],
+            images: [],
+            timestamp: new Date().toISOString(),
+            temperature: 0,
+            jur: cipherJUR
         }];
     }
 

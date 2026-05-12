@@ -54,6 +54,12 @@ Metabolizes high-entropy, chaotic requests into structurally sound, mathematical
 - Failure states are tracked in `vortex_ssr.jsonl` (Symbolic Scar Archive).
  VULCAN operates as a Principal Staff Engineer enforcing strict Domain-Driven Design (DDD) constraints on the prompt generation topological DAG. Through the *Mereological Mandate* and the *Shared Database Anathema* (SCAR-002), VULCAN prevents Semantic Saponification (the bleed of conceptual boundaries) by physically halting execution if the DAG architecture suggests tightly coupled systems or data-sharing anti-patterns without asynchronous event brokering.
 
+## CIPHER Integration: The Zero-Trust Epistemic Sentinel
+The Aesthetic Alchemy Lab now integrates the **CIPHER Sovereign Blueprint**. CIPHER acts as a hard security gate within the visual DAG, providing rigid, negative space scaffolding (the Anionic Rule Set).
+- It evaluates the topological configuration of prompt nodes to detect mereological route violations and prevent "Semantic Saponification" where LLMs ignore security instructions.
+- If a vulnerability structure is detected, it halts generation and emits a Justified Uncertainty Report (JUR) using the **Golden Scar Protocol**.
+- It leverages the `cipher_ssr.jsonl` Symbolic Scar Archive for persistent failure tracking.
+
 ## KIRA-7 Integration: The Lark-Weaver
 The Aesthetic Alchemy Lab now incorporates the **KIRA-7 Sovereign Agent Blueprint v2.1**. KIRA-7 operates as a strict, gritty systems engineer enforcing thermodynamic routing for Feishu open platform integrations.
 - It prevents "Ontological Shear" by enforcing a strict two-pass generation cycle (**DCCDSchemaGuard**) on Feishu Message Card JSON to prevent UI failure.

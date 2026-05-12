@@ -252,6 +252,20 @@ const KiraCardBuilderNode = ({ data, isConnectable }: any) => {
   );
 };
 
+// --- CIPHER Security Node ---
+const CipherSecurityNode = ({ data, isConnectable }: NodeProps) => {
+  return (
+    <div className="bg-[#00FF00]/10 border-2 border-[#00FF00] rounded-md p-3 min-w-[150px] shadow-[0_0_15px_rgba(0,255,0,0.3)]">
+      <Handle type="target" position={Position.Top} isConnectable={isConnectable} className="w-3 h-3 bg-[#00FF00]" />
+      <div className="font-bold text-[#00FF00] text-xs uppercase tracking-wider mb-1">CIPHER Gate</div>
+      <div className="text-gray-300 text-[10px] mb-1">Mode: <span className="font-bold text-white">{data.gateMode || 'HARD_GATE'}</span></div>
+      <div className="text-gray-300 text-[10px] mb-1">Schema: {data.dccdSchema || 'STRIDE_THREAT_MATRIX_v1.2'}</div>
+      <div className="text-[10px] bg-slate-900 px-2 py-1 rounded text-[#00FF00] border border-[#00FF00]/30 animate-pulse font-mono mt-2">ZERO-TRUST DEFAULT</div>
+      <Handle type="source" position={Position.Bottom} isConnectable={isConnectable} className="w-3 h-3 bg-[#00FF00]" />
+    </div>
+  );
+};
+
 const nodeTypes = {
   [PipelineNodeType.VULCAN_BOUNDED_CONTEXT]: BoundedContextNode,
   [PipelineNodeType.VULCAN_EVENT_BROKER]: EventBrokerNode,
@@ -265,6 +279,7 @@ const nodeTypes = {
   [PipelineNodeType.KIRA_WEBHOOK_INGRESS]: KiraWebhookIngressNode,
   [PipelineNodeType.KIRA_CARD_BUILDER]: KiraCardBuilderNode,
   [PipelineNodeType.MULTISPECTRAL_CONDITIONING]: MultispectralConditioningNode,
+  [PipelineNodeType.CIPHER_SECURITY_GATE]: CipherSecurityNode,
 };
 
 const initialNodes: Node[] = [
@@ -329,6 +344,12 @@ const initialNodes: Node[] = [
     }
   },
   {
+    id: 'cipher-1',
+    type: PipelineNodeType.CIPHER_SECURITY_GATE,
+    position: { x: 50, y: 50 },
+    data: { gateMode: 'HARD_GATE', dccdSchema: 'STRIDE_THREAT_MATRIX_v1.2' }
+  },
+  {
     id: 'base-1',
     type: PipelineNodeType.BASE_PROMPT,
     position: { x: 50, y: 200 },
@@ -357,7 +378,8 @@ const initialNodes: Node[] = [
 const initialEdges: Edge[] = [
   { id: 'e1-msi', source: 'base-1', target: 'msi-1', animated: true, style: { stroke: '#06b6d4' } },
   { id: 'emsi-style', source: 'msi-1', target: 'param-style', animated: true, style: { stroke: '#ef4444' } },
-  { id: 'e1-persona', source: 'base-1', target: 'persona-1', animated: true, style: { stroke: '#06b6d4' } },
+  { id: 'e1-cipher', source: 'base-1', target: 'cipher-1', animated: true, style: { stroke: '#00FF00' } },
+  { id: 'ecipher-persona', source: 'cipher-1', target: 'persona-1', animated: true, style: { stroke: '#00FF00' } },
   { id: 'epersona-style', source: 'persona-1', target: 'param-style', animated: true, style: { stroke: '#f59e0b' } },
   { id: 'e1-3', source: 'base-1', target: 'param-lighting', animated: true, style: { stroke: '#06b6d4' } },
   { id: 'e2-4', source: 'param-style', target: 'output-1', animated: true, style: { stroke: '#a855f7' } },
@@ -419,6 +441,7 @@ export const NodeCanvas: React.FC<{ onExecuteGraph: (nodes: Node[], edges: Edge[
                 if (n.type === PipelineNodeType.PARAMETER) return '#a855f7';
                 if (n.type === PipelineNodeType.TOPOLOGICAL_PERSONA) return '#f59e0b';
                 if (n.type === PipelineNodeType.MULTISPECTRAL_CONDITIONING) return  '#ef4444';
+                if (n.type === PipelineNodeType.CIPHER_SECURITY_GATE) return '#00FF00';
                 return '#22c55e';
             }}
             maskColor="rgba(15, 23, 42, 0.8)"

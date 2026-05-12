@@ -160,6 +160,22 @@ As a software evaluator, I want my assessments structured through ALETHEON so th
 
 ### Epic 8: Causal Latent Sculpting (PROJECT_AURELIUS)
 
+### Epic 10: The Zero-Trust Epistemic Sentinel (CIPHER)
+**Description:** Implement CIPHER, a Tier 4 Sovereign Security Architect that operates as a physical node in the DAG to enforce zero-trust barriers (Anionic Rule Set) and prevent Semantic Saponification of security constraints.
+
+#### User Stories & Acceptance Criteria
+**US10.1: Topological Security Validation**
+As a security architect, I want the system to detect mereological trust inheritance violations in the DAG so that unsafe data does not bypass security validation nodes.
+*Acceptance Criteria:*
+- Implement `validateCipherTopology` in `graphExecutor.ts`.
+- Halts generation and outputs a Justified Uncertainty Report (JUR) upon finding a structural vulnerability.
+
+**US10.2: CIPHER Node Injection & Scar Registry**
+As a system operator, I want to physically add CIPHER barriers into my graph and track failure topologies.
+*Acceptance Criteria:*
+- Implement `CipherSecurityNode` (`CIPHER_SECURITY_GATE`) in the UI.
+- Maintain `cipher_ssr.jsonl` via MCP tools.
+
 ### Epic 9: VORTEX Deterministic Topology
 **Description:** Implement VORTEX-ARCHITECT to construct deterministic, negative space scaffolding around probabilistic generative queries, preventing "Semantic Saponification" and enforcing Stigmergic Concurrency.
 
