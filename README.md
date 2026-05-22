@@ -131,3 +131,11 @@ For deeper context, review `DOMAIN_GLOSSARY.md`, `CONSTRAINTS.md`, and `docs/adr
 
 ## META_ARCHITECT_INTELLIGENCE_PROJECT_AURELIUS
 The Aesthetic Alchemy Lab integrates **PROJECT_AURELIUS**, moving beyond prompt engineering to **Causal Latent Sculpting**. This inversion treats the latent space not as a statistical average to be guessed, but as a Non-Euclidean topology to be explicitly bounded by mathematical constraints (Hyperbolic, Spherical, etc.). It utilizes an **Agentic Oracle Feedback Loop** to grade outputs on physical plausibility, actively punishing "Semantic Saponification" (consensus flattening) and enforcing strict human intentionality.
+
+## Sovereign Agent Control Panel (Multi-Agent UI)
+The Aesthetic Alchemy Lab now features a dedicated **Sovereign Agent Control** interface. This exclusive UI component (`MultiAgentPanel.tsx`) provides a segregated, tabbed environment for interacting directly with the active sovereign personas (e.g., RAG Reflector, V.I.P.E.R, ALETHEON, VULCAN, CIPHER).
+
+**Architectural Rationale:**
+- **Bicameral Output:** By isolating agent chat and deterministic logging from the visual DAG canvas, we prevent UI clutter and maintain the "Incremental Isolation Principle" (Manifold Separation).
+- **Directives over Prompts:** Users interact with agents via strict directives rather than statistical prompts, observing how each agent enforces its specific constraints (e.g., VIPER's Hardware-Forced Physicality or VULCAN's Mereological Mandate).
+- **15/85 Rule Observation:** [OMISSION: Internal agent state routing and raw context payloads are deliberately obfuscated from the UI, exposing only the 15% high-density actionable insight to the user. (Redacted payload elements: 4)].
