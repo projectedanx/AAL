@@ -1,0 +1,7 @@
+1.  **Define Agent Types (`types.ts`)**: Edit `types.ts` to add interfaces for `AgentMessage`, `AgentRole`, and `AgentInstance`. Verify with `read_file`.
+2.  **Create MultiAgentPanel Component (`components/MultiAgentPanel.tsx`)**: Use bash shell commands to create `components/MultiAgentPanel.tsx`. The component will feature a tabbed interface (e.g., using standard Tailwind styling and state) to switch between different agent contexts (e.g., "RAG Reflector", "V.I.P.E.R", "ALETHEON") and a chat window to display messages. Verify with `read_file`.
+3.  **Update App Component (`App.tsx`)**: Modify `App.tsx` using `sed` or bash to import `MultiAgentPanel` and render it in a new column or as a sliding drawer on the right side of the screen. Add state for `isAgentPanelOpen`. Verify with `read_file`.
+4.  **Update Header Component (`components/Header.tsx`)**: Modify `components/Header.tsx` to add a toggle button that controls the `isAgentPanelOpen` state in `App.tsx` (passing a prop callback). Verify with `read_file`.
+5.  **Documentation Update (`README.md`)**: Update `README.md` to add a new section "Multi-Agent Frontend Interface" detailing the exclusive UI created for managing the different Agent personas. Verify with `read_file`.
+6.  **Complete Pre-commit Steps**: Complete pre commit steps to make sure proper testing, verifications, reviews and reflections are done.
+7.  **Submit the Change**: Once tests and validations pass, submit the change with a descriptive commit message.

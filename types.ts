@@ -308,3 +308,51 @@ export interface KutScarLedger {
   Scar_Ledger: ScarEntry[];
   Session_History: SessionHistory[];
 }
+
+/**
+ * Enum defining the sovereign agent personas available in the Aesthetic Alchemy Lab.
+ * @enum {string}
+ */
+export enum AgentRole {
+  RAG_REFLECTOR = 'RAG Reflector',
+  VIPER = 'V.I.P.E.R',
+  ALETHEON = 'ALETHEON',
+  KUT = 'KUT',
+  VULCAN = 'VULCAN',
+  CIPHER = 'CIPHER',
+  KIRA_7 = 'KIRA-7'
+}
+
+/**
+ * Represents an instantiated sovereign agent context.
+ * @interface AgentInstance
+ * @property {string} id - Unique identifier for the agent instance.
+ * @property {AgentRole} role - The persona/role of the agent.
+ * @property {string} name - Display name of the agent.
+ * @property {string} status - Current operational status (e.g., 'idle', 'processing', 'halted').
+ */
+export interface AgentInstance {
+  id: string;
+  role: AgentRole;
+  name: string;
+  status: 'idle' | 'processing' | 'halted';
+}
+
+/**
+ * Represents a communication payload exchanged with an agent.
+ * @interface AgentMessage
+ * @property {string} id - Unique identifier for the message.
+ * @property {string} agentId - ID of the agent this message belongs to.
+ * @property {'user' | 'agent' | 'system'} sender - The originator of the message.
+ * @property {string} content - The textual payload.
+ * @property {number} timestamp - Epoch time of message creation.
+ * @property {any} [metadata] - Optional structured data (e.g., citations, confidence scores).
+ */
+export interface AgentMessage {
+  id: string;
+  agentId: string;
+  sender: 'user' | 'agent' | 'system';
+  content: string;
+  timestamp: number;
+  metadata?: any;
+}

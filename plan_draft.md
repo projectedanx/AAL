@@ -1,0 +1,6 @@
+1.  **Analyze Agent Roster**: Review the agents described in `README.md` and `AGENTS-NextJS-Frontend.md` (e.g., RAG Agent, V.I.P.E.R, ALETHEON, KUT, VULCAN/VORTEX, CIPHER, KIRA-7).
+2.  **Design Multi-Agent Component**: Create a new React component `components/MultiAgentPanel.tsx`. It will feature a tabbed or side-nav interface to select active agent instances and a chat/interaction window to send queries/configurations and receive structured agent responses (e.g., RAG answers + citations).
+3.  **Integrate Component into App**: Modify `App.tsx` to include the `MultiAgentPanel.tsx`. Perhaps add a toggle in the `Header` or a side-panel to reveal the Multi-Agent Interface without disrupting the existing Node Canvas.
+4.  **Implement State Management**: Update `types.ts` to include agent interaction types (AgentQuery, AgentResponse, AgentConfig). Add local state in the new component or `App.tsx` to manage agent chat history.
+5.  **Documentation Updates**: Update `README.md` and `PRODUCT_STRATEGY.md` (if applicable) with the architectural decisions regarding the new multi-agent frontend component, noting lessons learned.
+6.  **Pre-commit checks**: Run linters, type checks, and tests as per `AGENTS.md` instructions.

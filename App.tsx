@@ -1,6 +1,7 @@
 /// file: App.tsx ///
 import React, { useState, useEffect, useMemo } from 'react';
 import Header from './components/Header';
+import MultiAgentPanel from './components/MultiAgentPanel';
 import NodeCanvas from './components/NodeCanvas';
 import ImageGrid from './components/ImageGrid';
 import HistoryPanel from './components/HistoryPanel';
@@ -20,6 +21,7 @@ const App: React.FC = () => {
   const [currentGenerationId, setCurrentGenerationId] = useState<string | null>(null);
   const [promptHistory, setPromptHistory] = useState<PromptHistoryEntry[]>([]);
   const [presets, setPresets] = useState<PromptPreset[]>([]);
+  const [isAgentPanelOpen, setIsAgentPanelOpen] = useState(false);
 
   useEffect(() => {
     try {
@@ -103,7 +105,7 @@ const App: React.FC = () => {
 
   return (
     <div className="bg-slate-900 text-slate-200 min-h-screen font-sans">
-      <Header />
+      <Header onToggleAgentPanel={() => setIsAgentPanelOpen(!isAgentPanelOpen)} />
       <main className="container mx-auto max-w-7xl p-4 sm:p-6 lg:p-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
           <div className="lg:col-span-3">
@@ -139,6 +141,7 @@ const App: React.FC = () => {
       <footer className="text-center py-4 text-xs text-slate-500">
         Pluriversal Topological Shift Enabled. Powered by Google Gemini.
       </footer>
+      <MultiAgentPanel isOpen={isAgentPanelOpen} onClose={() => setIsAgentPanelOpen(false)} />
     </div>
   );
 };
