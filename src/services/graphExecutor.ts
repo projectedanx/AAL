@@ -2,8 +2,8 @@
 import { Node, Edge } from '@xyflow/react';
 import { PipelineNodeType, GenerationResult, JustifiedUncertaintyReport, AestheticParameter } from '../types';
 import { generateAestheticImages } from './geminiService';
-import { GeometricCausalSculptor, NonEuclideanTopology, PhantomDimension } from '../PROJECT_AURELIUS/GeometricCognition';
-import { PlausibilityOracle, ProvenanceTracker } from '../PROJECT_AURELIUS/OracleFeedbackLoop';
+import { GeometricCausalSculptor, NonEuclideanTopology, PhantomDimension } from '../../PROJECT_AURELIUS/GeometricCognition';
+import { PlausibilityOracle, ProvenanceTracker } from '../../PROJECT_AURELIUS/OracleFeedbackLoop';
 
 /**
  * Interface representing a path traversed through the DAG.

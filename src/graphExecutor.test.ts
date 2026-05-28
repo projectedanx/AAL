@@ -4,8 +4,8 @@
 
 import test from 'node:test';
 import assert from 'node:assert';
-import { executeGraph } from '../services/graphExecutor.ts';
-import { PipelineNodeType } from '../types.ts';
+import { executeGraph } from './services/graphExecutor.ts';
+import { PipelineNodeType } from './types.ts';
 import { Node, Edge } from '@xyflow/react';
 
 test('Dialectical Synthesis Engine - suspends generation on Ontological Shear', async () => {

@@ -2,8 +2,8 @@
 import { z } from "zod";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { executeGraph } from "../services/graphExecutor.js";
-import { PipelineNode, PipelineEdge } from "../types.js";
+import { executeGraph } from "./services/graphExecutor.js";
+import { PipelineNode, PipelineEdge } from "./types.js";
 import fs from "fs";
 import { promises as fsp } from "fs";
 import path from "path";
