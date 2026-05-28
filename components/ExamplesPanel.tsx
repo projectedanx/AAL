@@ -15,11 +15,11 @@ interface ExamplesPanelProps {
 }
 
 /**
- * A sidebar component presenting curated generative presets.
- * Allows users to bootstrap complex aesthetic parameters quickly without manual entry.
+ * A UI panel providing example node configurations and prompt templates to help users understand the system.
  *
- * @param {ExamplesPanelProps} props - The configuration parameters.
- * @returns {JSX.Element} The rendered ExamplesPanel component.
+ * @param { examples, onSelect } - The React props for the component.
+ * @returns The rendered React element.
+ *
  */
 const ExamplesPanel: React.FC<ExamplesPanelProps> = ({ examples, onSelect }) => {
   return (

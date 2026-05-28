@@ -387,10 +387,11 @@ const initialEdges: Edge[] = [
 ];
 
 /**
- * React Component representing the interactive node-based canvas.
- * @param {object} props - Component properties.
- * @param {function} props.onExecuteGraph - Callback function triggered when the pipeline is executed.
- * @returns {JSX.Element} The rendered React component.
+ * React flow canvas component used to visually construct directed acyclic graphs representing generative image prompt pipelines.
+ *
+ * @param { onExecuteGraph } - The React props for the component.
+ * @returns The rendered React element.
+ *
  */
 export const NodeCanvas: React.FC<{ onExecuteGraph: (nodes: Node[], edges: Edge[]) => void }> = ({ onExecuteGraph }) => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);

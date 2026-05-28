@@ -121,27 +121,12 @@ const findPaths = (nodes: Node[], edges: Edge[]): TraversalPath[] => {
 };
 
 /**
- * Executes the Pluriversal DAG, mapping semantic trajectories to the Synthesis Engine.
- * This function resolves the graph topology into discrete generation requests and invokes the Gemini service.
+ * Validates the DAG structure against Betti-1 loops (cycles) to prevent infinite logical loops during generation.
  *
- * @param {Node[]} nodes - The array of nodes representing the current state of the generative graph.
- * @param {Edge[]} edges - The array of edges mapping the topological relationships between nodes.
- * @returns {Promise<GenerationResult[]>} A promise resolving to an array of GenerationResult objects embodying the diverse epistemic states produced by the graph.
- */
-
-/**
- * VULCAN Topology Validator
- * Enforces the Mereological Mandate and the Shared Database Anathema (SCAR-002)
- * via Failure-Informed Prompt Inversion (FIPI).
- */
-
-/**
- * Validates the generated Directed Acyclic Graph (DAG) for VORTEX physical constraints.
- * Detects Betti-1 (β1) Loops (cycles in the DAG) which cause logical infinite loops.
+ * @param nodes - The input parameter for the function.
+ * @param edges - The input parameter for the function.
+ * @returns The resulting execution output.
  *
- * @param {Node[]} nodes - The array of topological nodes representing generation parameters.
- * @param {Edge[]} edges - The array of edge definitions connecting the nodes.
- * @returns {JustifiedUncertaintyReport | null} The JUR containing contradictions if a validation error occurs, or null if valid.
  */
 export const validateVortexTopology = (nodes: Node[], edges: Edge[]): JustifiedUncertaintyReport | null => {
     // Basic Depth-First Search for cycle detection
@@ -196,20 +181,12 @@ export const validateVortexTopology = (nodes: Node[], edges: Edge[]): JustifiedU
 };
 
 /**
- * Validates the generated Directed Acyclic Graph (DAG) for VULCAN physical constraints.
- * Ensures the node linkages do not violate established topological logic.
+ * Enforces zero-trust topological barriers (Mereology Route Checks) to guarantee security boundaries in the node graph.
  *
- * @param {Node[]} nodes - The array of topological nodes representing generation parameters.
- * @param {Edge[]} edges - The array of edge definitions connecting the nodes.
- * @returns {JustifiedUncertaintyReport | null} The JUR containing contradictions if a validation error occurs, or null if valid.
- */
-/**
- * Validates the generated Directed Acyclic Graph (DAG) for CIPHER security constraints.
- * Enforces zero-trust topological barriers (e.g. Mereology Route Checks).
+ * @param nodes - The input parameter for the function.
+ * @param edges - The input parameter for the function.
+ * @returns The resulting execution output.
  *
- * @param {Node[]} nodes - The array of topological nodes.
- * @param {Edge[]} edges - The array of edge definitions.
- * @returns {JustifiedUncertaintyReport | null} The JUR containing contradictions if a validation error occurs, or null if valid.
  */
 export const validateCipherTopology = (nodes: Node[], edges: Edge[]): JustifiedUncertaintyReport | null => {
     const cipherNodes = nodes.filter(n => n.type === PipelineNodeType.CIPHER_SECURITY_GATE);
@@ -245,6 +222,14 @@ export const validateCipherTopology = (nodes: Node[], edges: Edge[]): JustifiedU
     return null; // Topology is valid
 };
 
+/**
+ * Validates the DAG against the Mereological Mandate (e.g., preventing shared database access without event brokers).
+ *
+ * @param nodes - The input parameter for the function.
+ * @param edges - The input parameter for the function.
+ * @returns The resulting execution output.
+ *
+ */
 export const validateVulcanTopology = (nodes: Node[], edges: Edge[]): JustifiedUncertaintyReport | null => {
     for (const edge of edges) {
         const sourceNode = nodes.find(n => n.id === edge.source);
@@ -277,12 +262,11 @@ export const validateVulcanTopology = (nodes: Node[], edges: Edge[]): JustifiedU
 };
 
 /**
- * Executes the generative sequence by parsing the provided DAG, validating its topology,
- * and calling the necessary models to create image variants based on the nodes.
+ * Ensures Feishu Card Builder nodes have a fully defined explicit schema to prevent invalid JSON webhooks.
  *
- * @param {Node[]} nodes - The array of nodes comprising the requested visual pipeline.
- * @param {Edge[]} edges - The connections establishing parent-child relationships across the graph.
- * @returns {Promise<GenerationResult[]>} A promise resolving to an array of finalized generation results, including the generated images.
+ * @param nodes - The input parameter for the function.
+ * @returns The resulting execution output.
+ *
  */
 export const validateKiraTopology = (nodes: Node[]): JustifiedUncertaintyReport | null => {
     const cardNodes = nodes.filter(n => n.type === PipelineNodeType.KIRA_CARD_BUILDER);
@@ -299,6 +283,14 @@ export const validateKiraTopology = (nodes: Node[]): JustifiedUncertaintyReport 
     return null;
 };
 
+/**
+ * The primary execution function that orchestrates DAG validation, path traversal, causal sculpting, and the final Gemini API generation calls.
+ *
+ * @param nodes - The input parameter for the function.
+ * @param edges - The input parameter for the function.
+ * @returns The resulting execution output.
+ *
+ */
 export const executeGraph = async (nodes: Node[], edges: Edge[]): Promise<GenerationResult[]> => {
 
 

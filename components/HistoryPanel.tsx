@@ -16,11 +16,11 @@ interface HistoryPanelProps {
 }
 
 /**
- * A sidebar component that lists the user's past generation trajectories.
- * Facilitates review and selection of previously generated Pluriversal graph outputs.
+ * A UI panel showing past generation results, enabling users to review previous runs and re-apply older parameters.
  *
- * @param {HistoryPanelProps} props - The configuration parameters.
- * @returns {JSX.Element | null} The rendered HistoryPanel component, or null if the generation history is empty.
+ * @param { generations, onSelect, currentGenerationId } - The React props for the component.
+ * @returns The rendered React element.
+ *
  */
 const HistoryPanel: React.FC<HistoryPanelProps> = ({ generations, onSelect, currentGenerationId }) => {
   if (generations.length === 0) {

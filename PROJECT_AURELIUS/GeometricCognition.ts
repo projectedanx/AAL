@@ -28,17 +28,18 @@ export interface PhantomDimension {
 }
 
 /**
- * The Causal Sculptor acts as the interface to the underlying generative model,
- * translating strict geometric requirements into prompt-level directives.
+ * Core engine module implementing Non-Euclidean topological constraints on textual prompts to enforce physical boundaries.
+ *
  */
 export class GeometricCausalSculptor {
     /**
-     * Constructs a meta-prompt that explicitly demands adherence to a given topology.
+     * Applies Non-Euclidean geometric constraints and phantom dimension influences to a base prompt to forcefully sculpt the generated latent space.
      *
-     * @param basePrompt - The initial subject/concept from the user.
-     * @param topology - The explicit geometric constraint to apply.
-     * @param phantomDims - An array of phantom dimensions to warp the space.
-     * @returns A structured prompt payload designed to override standard Euclidean biases.
+     * @param basePrompt - The input parameter for the function.
+     * @param topology - The input parameter for the function.
+     * @param phantomDims - The input parameter for the function.
+     * @returns Returns a value of type string.
+     *
      */
     public sculptTopology(basePrompt: string, topology: NonEuclideanTopology, phantomDims: PhantomDimension[]): string {
         let constraintString = `[STRICT ARCHITECTURAL CONSTRAINT: ${topology}]. Ensure all spatial relationships, vanishing points, and light behaviors strictly adhere to the mathematics of this topology.`;

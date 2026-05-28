@@ -21,12 +21,11 @@ interface ImageGridProps {
 }
 
 /**
- * A component that renders a responsive grid layout of generated images.
- * Facilitates visual review and interactive rating of the pluralistic aesthetic outputs derived from the DAG pipeline.
- * Manages loading states, error boundaries, and individual image rendering.
+ * A masonry-style image grid component responsible for displaying the final image generation results.
  *
- * @param {ImageGridProps} props - The configuration parameters for the grid.
- * @returns {JSX.Element | null} The rendered ImageGrid component, or null if no active data and not loading/error.
+ * @param { images, isLoading, onRateImage, error, jur } - The React props for the component.
+ * @returns The rendered React element.
+ *
  */
 const ImageGrid: React.FC<ImageGridProps> = ({ images, isLoading, onRateImage, error, jur }) => {
   if (isLoading) {

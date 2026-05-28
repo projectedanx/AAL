@@ -17,11 +17,11 @@ interface TooltipProps {
 }
 
 /**
- * A utility component that renders a stylized, directional tooltip on hover.
- * Encapsulates contextual hints for UI elements across the canvas without cluttering the layout.
+ * A simple, reusable tooltip wrapper component that displays an informational popover when users hover over its child elements.
  *
- * @param {TooltipProps} props - The configuration parameters for the tooltip.
- * @returns {JSX.Element} The rendered Tooltip component wrapping the provided children.
+ * @param { text, children, position = 'top', className = '' } - The React props for the component.
+ * @returns The rendered React element.
+ *
  */
 const Tooltip: React.FC<TooltipProps> = ({ text, children, position = 'top', className = '' }) => {
   const getPositionClasses = () => {

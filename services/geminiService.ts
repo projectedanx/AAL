@@ -8,13 +8,15 @@ const apiKey = import.meta.env?.VITE_API_KEY || process.env.API_KEY || 'dummy_ke
 const ai = new GoogleGenAI({ apiKey });
 
 /**
- * Generates a set of aesthetic images based on a base prompt and a set of variations via the AI model.
- * @param {string} basePrompt - The base prompt for the images.
- * @param {string[]} variations - The variations to apply to the base prompt.
- * @param {string} parameter - The parameter to vary (e.g., 'Style', 'Lighting').
- * @param {number} temperature - The temperature to use for the image generation.
- * @param {number} [seed] - The seed to use for the image generation.
- * @returns {Promise<Omit<GeneratedImage, 'id' | 'rating'>[]>} A promise that resolves to an array of generated image objects.
+ * Calls the Gemini API to generate aesthetic images using a base prompt, style variations, and a specific temperature setting.
+ *
+ * @param basePrompt - The input parameter for the function.
+ * @param variations - The input parameter for the function.
+ * @param parameter - The input parameter for the function.
+ * @param temperature - The input parameter for the function.
+ * @param seed - The input parameter for the function.
+ * @returns The resulting execution output.
+ *
  */
 export const generateAestheticImages = async (
   basePrompt: string,
