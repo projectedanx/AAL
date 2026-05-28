@@ -7,18 +7,17 @@
 import { NonEuclideanTopology } from './GeometricCognition';
 
 /**
- * Simulates a real-time differentiable ray-tracing engine to validate
- * the geometric and lighting consistency of the generated output.
+ * Agentic validator that examines image outputs to determine if they strictly adhere to physical constraints and avoid Semantic Saponification.
+ *
  */
 export class PlausibilityOracle {
     /**
-     * Evaluates an image against the requested topological constraints.
-     * In a full implementation, this would use PBR simulation or computer vision.
-     * Here, it provides the deterministic logic for the Oracle Agent.
+     * Validates the physical plausibility and semantic adherence of a generated image against strict topological guidelines.
      *
-     * @param imageSrc - The URL or base64 data of the generated image.
-     * @param topology - The topology that the image was supposed to adhere to.
-     * @returns A physical adherence score from 0.0 (Failed) to 1.0 (Perfect adherence).
+     * @param imageSrc - The input parameter for the function.
+     * @param topology - The input parameter for the function.
+     * @returns Returns a value of type number.
+     *
      */
     public evaluatePhysicalAdherence(imageSrc: string, topology: NonEuclideanTopology): number {
         // [∇] Simulation of Oracle Evaluation
@@ -37,20 +36,20 @@ export class PlausibilityOracle {
 }
 
 /**
- * Tracks the "Semantic Drift" and influence of historical iterations to
- * enforce dynamic debiasing and "ethical prompting."
+ * System module responsible for mapping and tracking semantic drift variations across iterative generation runs.
+ *
  */
 export class ProvenanceTracker {
     private iterationHistory: Map<string, number> = new Map();
 
     /**
-     * Tracks the drift of a specific iteration to ensure it does not revert
-     * to statistical norms (consensus flattening).
+     * Records semantic drift scores over time by comparing the original structural influence weight against the final adherence score.
      *
-     * @param iterationId - Unique ID for the generative iteration.
-     * @param baselineInfluence - The initial intended weight of the constraint.
-     * @param currentInfluence - The measured weight of the constraint in the output.
-     * @returns The calculated drift delta. If delta > threshold, intervention is required.
+     * @param iterationId - The input parameter for the function.
+     * @param baselineInfluence - The input parameter for the function.
+     * @param currentInfluence - The input parameter for the function.
+     * @returns Returns a value of type number.
+     *
      */
     public trackSemanticDrift(iterationId: string, baselineInfluence: number, currentInfluence: number): number {
         const driftDelta = Math.abs(baselineInfluence - currentInfluence);
@@ -67,7 +66,11 @@ export class ProvenanceTracker {
     }
 
     /**
-     * Retrieves the historical drift record for an iteration.
+     * Retrieves a specific semantic drift record by its unique identifier.
+     *
+     * @param iterationId - The input parameter for the function.
+     * @returns Returns a value of type number | undefined.
+     *
      */
     public getDriftRecord(iterationId: string): number | undefined {
         return this.iterationHistory.get(iterationId);

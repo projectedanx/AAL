@@ -17,11 +17,11 @@ interface PromptHistoryPanelProps {
 }
 
 /**
- * A sidebar component displaying a chronological log of past prompt executions.
- * Allows users to re-traverse previous epistemic paths by reloading historical configurations.
+ * A UI panel combining the preset, example, and history views into a single tabbed interface for easier navigation.
  *
- * @param {PromptHistoryPanelProps} props - The configuration parameters and event handlers.
- * @returns {JSX.Element | null} The rendered PromptHistoryPanel component, or null if history is empty.
+ * @param { prompts, onSelect, onDelete } - The React props for the component.
+ * @returns The rendered React element.
+ *
  */
 const PromptHistoryPanel: React.FC<PromptHistoryPanelProps> = ({ prompts, onSelect, onDelete }) => {
   const [searchTerm, setSearchTerm] = useState('');

@@ -11,8 +11,10 @@ import { executeGraph } from './services/graphExecutor';
 import { Node, Edge } from '@xyflow/react';
 
 /**
- * The main application component orchestrating the lab.
- * @returns {JSX.Element} The rendered React component.
+ * The main application entry point coordinating the NodeCanvas, side panels, and executing the generative pipeline logic.
+ *
+ * @returns The rendered React element.
+ *
  */
 const App: React.FC = () => {
   const [generations, setGenerations] = useState<GenerationResult[]>([]);

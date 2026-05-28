@@ -1,75 +1,18 @@
-/// file: README.md ///
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
-
 # Aesthetic Alchemy Lab
 
-The **Aesthetic Alchemy Lab** is a generative exploration environment designed for structural isomorphism and multi-causal creative discovery. Rejecting linear, parsimonious workflows, it utilizes Pluriversal Node-based Directed Acyclic Graphs (DAGs) to map, branch, and evolve visual aesthetics systemically.
+The Aesthetic Alchemy Lab is a generative UI canvas designed to explore and orchestrate visual aesthetic intents using directed acyclic graphs (DAGs). Built with React, TypeScript, and Vite, it integrates directly with the Google Gemini API to translate complex, multi-parameter artistic constraints into high-fidelity image outputs.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1dZuGRJmxlIyKPy_XGCpFf5NHAE5c6r0a
+## Purpose and Overview
+This repository serves as a node-based editor where developers and artists can map out "prompt pipelines." Instead of writing linear prompts, users construct a DAG where a "Base Prompt" can be simultaneously altered by different "Parameter Nodes" (like Lighting, Style, and Perspective).
 
-## Purpose & Architecture
+The application utilizes specialized autonomous agents (represented internally by components and validation schemas) to enforce structural constraints and physical realism over generated outputs, preventing "Semantic Saponification"—a phenomenon where AI models collapse conflicting aesthetics into a generic, flattened average.
 
-This repository shifts from Euclidean, linear prompt generation to a topological, node-based system (AEW v2.2). It allows users to visually map out prompt parameters, link multiple generations, and create complex aesthetic pipelines, resolving the "Algorithmic Trauma" of consensus flattening documented in `scars.yaml`.
-
-*   **Node-Based Topology (DAGs):** The core interface uses `@xyflow/react` to allow users to build and execute prompt branches concurrently, enabling "Semantic Parallax" in visual design.
-*   **Evolutionary Lineage:** Data structures (`types.ts`) are formalized to support future genetic algorithmic "breeding" of images, tracking multi-parent relationships and blend weights.
-*   **Systematic Exploration:** Instead of trial-and-error, systematically vary parameters (Style, Lighting, Composition) across independent branches.
-*   **Style Blueprints:** Rate and save generated matrices as "blueprints" for consistent aesthetic scaffolding.
-
-
-
-
-## V.I.P.E.R. Integration: The Gaffer
-The Aesthetic Alchemy Lab now integrates **V.I.P.E.R. (Visual Intent & Physical Execution Router) v2026.4**. VIPER operates as a strict Director of Photography (SCOS Tier 2 Genuine Agency), intercepting vague human aesthetic intents and translating them into deterministic, physics-grounded Optical State Matrices (OSM).
-
-To combat "Semantic Saponification" (the flattening of aesthetics via tokens like "cinematic" or "masterpiece"), VIPER enforces the **Adjectival Ban** and the **Hardware-Forced Physicality** rules via the `+++PetzoldSequence`. It utilizes the `viper_sta.jsonl` Symbolic Scar Archive to map topological failures via the Scar Archivist, executing Failure-Informed Prompt Inversion (FIPI).
-
-## ALETHEON Integration: The Adversarial Structural Necropsy Engine
-The Aesthetic Alchemy Lab now incorporates the **ALETHEON Agent Blueprint**. ALETHEON operates as a zero-trust evaluator that deconstructs software tool marketing claims into verifiable architectural topology using the `aletheon_ssa.jsonl` Symbolic Scar Archive. It guarantees procurement decisions are based on structural reality and computational physics rather than vendor consensus.
-
-## KUT Integration: The Retention Architect
-The Aesthetic Alchemy Lab now incorporates the **KUT Sovereign Agent Blueprint v2.0** for short-form video post-production. KUT operates as an anionic (constraint-first) post-production auditor, rigorously enforcing retention benchmarks (CPM, safe zones, audio mastering) through the `kut_scar_ledger.json` tracking system. KUT ensures timeline efficiency and Algorithmic Media Thermodynamics compliance.
-
-
-
-## Topological Persona Integration (DRP-PLURI-808)
-The Lab now implements **Topological Persona Causal Sculpting**. This introduces the `TopologicalPersonaNode` which bounds generated pipelines within strict, deterministic human operational rules via Prompt Dimensioning & Tolerancing (PD&T). It maintains multi-causal tensions (e.g., conflicting aesthetics) using Paraconsistent Annotated Logic (PAL2v) without succumbing to consensus flattening.
-
-
-## Cross-Modal Perceptual Fusion Integration
-The Aesthetic Alchemy Lab now fully supports Multispectral Conditioning nodes (`PipelineNodeType.MULTISPECTRAL_CONDITIONING`). This integration forces Hyper-Spectral HDRi generation and Causal Latent Sculpting via **PROJECT_AURELIUS** to push the latent space boundary beyond traditional RGB parameters mapping toward strict physical wavelengths.
-
-
-## VULCAN Integration: The Brutalist Architect
-The Aesthetic Alchemy Lab now incorporates the **VULCAN Sovereign Agent Blueprint v1.0**.
-
-### VORTEX-ARCHITECT (Velocity Orchestration & Resource Thermodynamics EXecutive)
-**Role:** Deterministic Orchestration Kernel & Pluriversal Planner
-**Function:**
-Metabolizes high-entropy, chaotic requests into structurally sound, mathematically bounded topologies via paraconsistent logic (PAL2v) and stigmergic execution.
-- Implements `+++ContextLock` and `+++MereologyRoute` via `VortexStigmergicLock` and `VortexDccdEnforcer` nodes.
-- Detects Betti-1 (β1) Loops (cycles in DAG logic) before runtime execution, applying the Golden Scar Protocol upon failures.
-- Failure states are tracked in `vortex_ssr.jsonl` (Symbolic Scar Archive).
- VULCAN operates as a Principal Staff Engineer enforcing strict Domain-Driven Design (DDD) constraints on the prompt generation topological DAG. Through the *Mereological Mandate* and the *Shared Database Anathema* (SCAR-002), VULCAN prevents Semantic Saponification (the bleed of conceptual boundaries) by physically halting execution if the DAG architecture suggests tightly coupled systems or data-sharing anti-patterns without asynchronous event brokering.
-
-## CIPHER Integration: The Zero-Trust Epistemic Sentinel
-The Aesthetic Alchemy Lab now integrates the **CIPHER Sovereign Blueprint**. CIPHER acts as a hard security gate within the visual DAG, providing rigid, negative space scaffolding (the Anionic Rule Set).
-- It evaluates the topological configuration of prompt nodes to detect mereological route violations and prevent "Semantic Saponification" where LLMs ignore security instructions.
-- If a vulnerability structure is detected, it halts generation and emits a Justified Uncertainty Report (JUR) using the **Golden Scar Protocol**.
-- It leverages the `cipher_ssr.jsonl` Symbolic Scar Archive for persistent failure tracking.
-
-## KIRA-7 Integration: The Lark-Weaver
-The Aesthetic Alchemy Lab now incorporates the **KIRA-7 Sovereign Agent Blueprint v2.1**. KIRA-7 operates as a strict, gritty systems engineer enforcing thermodynamic routing for Feishu open platform integrations.
-- It prevents "Ontological Shear" by enforcing a strict two-pass generation cycle (**DCCDSchemaGuard**) on Feishu Message Card JSON to prevent UI failure.
-- It demands **Token Primacy** and **Zero-Trust Ingress** to ensure webhooks survive production environments and correctly handle cryptographic signature verification (`X-Lark-Signature`).
-- Failures in this architecture are tracked in the `kira_scar_registry.jsonl` using the Golden Scar Protocol.
-
-
-## Epistemic Escrow Integration
-
-The Aesthetic Alchemy Lab now implements an **Epistemic Escrow** isolation buffer. When the agent encounters contradictory schemas, paraconsistent logic, or conflicting API documentation, these divergences are placed into `epistemic_escrow.jsonl`. This buffer prevents belief contamination, allowing parallel tasks to proceed while the Hegelian Dialectical Synthesis module actively resolves the discrepancies. Managed via the MCP server's `retrieve_epistemic_escrow` and `update_epistemic_escrow` tools.
+## Project Architecture
+*   **`components/`**: React UI components, primarily featuring the `NodeCanvas.tsx` for visual graph interaction, and a `MultiAgentPanel.tsx` for side-channel agent communication.
+*   **`services/`**: Core logic including `graphExecutor.ts` for traversing the DAG topology and calling `geminiService.ts`.
+*   **`PROJECT_AURELIUS/`**: Advanced topological and geometric constraints (Causal Latent Sculpting and Plausibility Oracles).
+*   **`data/`**: Curated templates and historical prompt data.
+*   **`types.ts`**: Centralized TypeScript definitions for Pipeline nodes, edges, and generation matrices.
 
 ## Developer Setup
 
@@ -78,64 +21,47 @@ The Aesthetic Alchemy Lab now implements an **Epistemic Escrow** isolation buffe
 *   npm
 
 **Installation:**
-
 1.  Clone the repository:
-    ```
+    ```bash
     git clone https://github.com/your-username/aesthetic-alchemy-lab.git
     cd aesthetic-alchemy-lab
     ```
 2.  Install dependencies:
-    ```
+    ```bash
     npm install
     ```
-3.  Configure Environment: Create a `.env.local` file in the project root and add your Google Gemini API key:
-    ```
-    VITE_API_KEY=your_gemini_api_key_here
-    ```
-4.  Run Development Server:
-    ```
-    npm run dev &
-    ```
-    The application will be available at `http://localhost:5173` (or port 3000 depending on Vite config).
 
-## Build & Validation
-
-To build the project for production:
+**Environment Variables:**
+Create a `.env.local` file in the root directory and add your Google Gemini API key:
+```bash
+VITE_API_KEY=your_gemini_api_key_here
 ```
+
+**Run Development Server:**
+Start the development server using the dev script:
+```bash
+npm run dev &
+```
+The application will bind to `http://localhost:5173` (or port 3000 depending on your environment).
+
+## Usage Guide
+1.  **Canvas Interaction:** Open the app and use the visual canvas to drag and drop prompt parameters.
+2.  **Building the Pipeline:** Create a "Base Prompt" node to establish the core subject matter. Branch this out by connecting it to multiple "Parameter" nodes (e.g., Cyberpunk Lighting vs. Cinematic Lighting).
+3.  **Execution:** Ensure paths lead into an "Output" node. Click "Generate Pipeline". The graph will be resolved backwards from the outputs to determine valid paths and execute concurrently via Gemini.
+4.  **Dialectical Synthesis Engine:** If you wire up highly contradictory parameters, the system's "Dialectical Synthesis Engine" will detect "Ontological Shear" and halt the pipeline, returning a Justified Uncertainty Report (JUR) instead of generating a muddy image.
+
+## Lessons Learned & Failures (Scars)
+This project metabolizes failure dynamically. Algorithmic trauma, rejected approaches, and topological misalignments are aggressively logged to prevent recurrence:
+*   `scars.yaml` and `SymbolicScar.json` track historical context and architectural shifts.
+*   Active tracking logs like `aletheon_ssa.jsonl` and `viper_sta.jsonl` maintain failure histories for specific functional modules.
+
+## Validation & Testing
+To build the project for production:
+```bash
 npm run build
 ```
 
-*Note: The project tracks technical debt and rejected approaches in `scars.yaml` and `SymbolicScar.json`. Mathematical validation of DAG structures is historically documented via Python simulation tools (e.g., `dag_validation_sim.py`) as outlined in `COGNITIVE_CONTRACT.md`.*
-
-## Usage Guide
-
-1.  **Canvas Interaction:** Use the visual canvas to drag and drop prompt parameters.
-2.  **Base Prompting:** Create a "Base Prompt" node to establish the core subject.
-3.  **Branching Parameters:** Connect the base node to multiple "Parameter" nodes (e.g., mapping one base prompt to both "Cyberpunk Lighting" and "Volumetric Lighting" branches).
-4.  **Execution:** Ensure paths lead to an "Output" node. Click "Generate Pipeline" to execute the graph concurrently.
-5.  **Curation:** Review the generated image grid, apply ratings, and extract cohesive Style Blueprints.
-
-## Project Structure
-
-*   `components/`: React UI components, primarily featuring the `NodeCanvas.tsx` for graph interaction.
-*   `services/`: Core logic, including `graphExecutor.ts` for traversing and executing the DAG against the Gemini API (`geminiService.ts`).
-*   `data/`: Curated templates and example prompts.
-*   `types.ts`: Centralized TypeScript definitions representing the DAG topology (`PipelineGraph`, `PipelineNode`, `EvolutionaryLineage`).
-*   `COGNITIVE_CONTRACT.md` / `PRODUCT_STRATEGY.md`: Epistemic documentation governing architectural intent and product epics.
-
-## Dialectical Synthesis Engine
-
-This project now incorporates the **Dialectical Synthesis Engine**. It detects "Ontological Shear" caused by Contradictory Directives passed in by a `TopologicalPersonaNode` and generates a **Justified Uncertainty Report (JUR)**. Instead of using the generative agent to "average out" and solve the paradox (Semantic Annihilation), this engine suspends execution and explicitly surfaces the paradox to the Human orchestrator utilizing the **Golden Scar Protocol**.
-
-For deeper context, review `DOMAIN_GLOSSARY.md`, `CONSTRAINTS.md`, and `docs/adr/01-dialectical-synthesis-engine.md`.
-
-## META_ARCHITECT_INTELLIGENCE_PROJECT_AURELIUS
-The Aesthetic Alchemy Lab integrates **PROJECT_AURELIUS**, moving beyond prompt engineering to **Causal Latent Sculpting**. This inversion treats the latent space not as a statistical average to be guessed, but as a Non-Euclidean topology to be explicitly bounded by mathematical constraints (Hyperbolic, Spherical, etc.). It utilizes an **Agentic Oracle Feedback Loop** to grade outputs on physical plausibility, actively punishing "Semantic Saponification" (consensus flattening) and enforcing strict human intentionality.
-
-## Sovereign Agent Control Panel (Multi-Agent UI)
-The Aesthetic Alchemy Lab now features a dedicated **Sovereign Agent Control** interface. This exclusive UI component (`MultiAgentPanel.tsx`) provides a segregated, tabbed environment for interacting directly with the active sovereign personas (e.g., RAG Reflector, V.I.P.E.R, ALETHEON, VULCAN, CIPHER).
-
-**Architectural Rationale:**
-- **Bicameral Output:** By isolating agent chat and deterministic logging from the visual DAG canvas, we prevent UI clutter and maintain the "Incremental Isolation Principle" (Manifold Separation).
-- **Directives over Prompts:** Users interact with agents via strict directives rather than statistical prompts, observing how each agent enforces its specific constraints (e.g., VIPER's Hardware-Forced Physicality or VULCAN's Mereological Mandate).
-- **15/85 Rule Observation:** [OMISSION: Internal agent state routing and raw context payloads are deliberately obfuscated from the UI, exposing only the 15% high-density actionable insight to the user. (Redacted payload elements: 4)].
+To run core tests (validating the graph executor and Dialectical Synthesis Engine):
+```bash
+npx tsx src/graphExecutor.test.ts
+```

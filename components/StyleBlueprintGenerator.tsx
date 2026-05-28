@@ -13,11 +13,11 @@ interface StyleBlueprintGeneratorProps {
 }
 
 /**
- * A component that analyzes rated images within a generation result to extract a "Style Blueprint".
- * Synthesizes a JSON schema representing the successful aesthetic parameters, which can be copied for external use.
+ * A UI component that extracts reusable style blueprints from successful image generation results.
  *
- * @param {StyleBlueprintGeneratorProps} props - The configuration parameters.
- * @returns {JSX.Element | null} The rendered StyleBlueprintGenerator component, or null if no highly rated images exist.
+ * @param { generation } - The React props for the component.
+ * @returns The rendered React element.
+ *
  */
 const StyleBlueprintGenerator: React.FC<StyleBlueprintGeneratorProps> = ({ generation }) => {
   const [isCopied, setIsCopied] = useState(false);

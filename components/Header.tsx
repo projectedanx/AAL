@@ -6,10 +6,11 @@ interface HeaderProps {
 }
 
 /**
- * A component that displays the application header.
- * Provides consistent branding and navigation anchoring across the topological canvas.
- * @param {HeaderProps} props - The properties for the component.
- * @returns {JSX.Element} The rendered Header component.
+ * React component representing the top navigation bar, containing the app title and an optional button to toggle the Sovereign Agents panel.
+ *
+ * @param { onToggleAgentPanel } - The React props for the component.
+ * @returns The rendered React element.
+ *
  */
 const Header: React.FC<HeaderProps> = ({ onToggleAgentPanel }) => {
   return (

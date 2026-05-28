@@ -18,11 +18,11 @@ const DEFAULT_AGENTS: AgentInstance[] = [
 ];
 
 /**
- * A dedicated interface panel for multi-agent interaction.
- * Provides a tabbed view for sovereign personas and a chat interface for directives.
+ * A segregated interface for interacting directly with Sovereign Agents, keeping agent configurations separate from the visual node canvas.
  *
- * @param {MultiAgentPanelProps} props - The properties for the component.
- * @returns {JSX.Element | null} The rendered React component or null if closed.
+ * @param { isOpen, onClose } - The React props for the component.
+ * @returns The rendered React element.
+ *
  */
 const MultiAgentPanel: React.FC<MultiAgentPanelProps> = ({ isOpen, onClose }) => {
   const [activeAgentId, setActiveAgentId] = useState<string>(DEFAULT_AGENTS[0].id);

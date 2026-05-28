@@ -17,11 +17,11 @@ interface PresetsPanelProps {
 }
 
 /**
- * A sidebar component allowing users to manage and apply saved generative presets.
- * Supports the preservation of successful aesthetic configurations across sessions.
+ * A UI panel displaying saved generative preset topologies, allowing users to rapidly load common DAG configurations.
  *
- * @param {PresetsPanelProps} props - The configuration parameters and event handlers.
- * @returns {JSX.Element | null} The rendered PresetsPanel component, or null if no presets exist.
+ * @param { presets, onSelect, onDelete } - The React props for the component.
+ * @returns The rendered React element.
+ *
  */
 const PresetsPanel: React.FC<PresetsPanelProps> = ({ presets, onSelect, onDelete }) => {
   if (presets.length === 0) {
