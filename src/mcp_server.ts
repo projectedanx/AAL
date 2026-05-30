@@ -1156,3 +1156,76 @@ server.prompt(
     };
   }
 );
+
+// TOOL 20: retrieve_vance_nfl
+server.registerTool(
+  "retrieve_vance_nfl",
+  {
+    title: "Retrieve VANCE Nitinol Failure Ledger",
+    description: [
+      "PURPOSE: Retrieves the contents of the VANCE Nitinol Failure Ledger (vance_nfl.jsonl).",
+      "GUIDELINES: Invoke to check for past JSON-RPC malformation events and structural violations.",
+      "LIMITATIONS: Read-only operation."
+    ].join(" "),
+    inputSchema: z.object({}).strict(),
+  },
+  async () => {
+    try {
+      const data = await fsp.readFile("vance_nfl.jsonl", "utf-8");
+      return { content: [{ type: "text" as const, text: data }] };
+    } catch (e: any) {
+      if (e.code === "ENOENT") {
+        return { content: [{ type: "text" as const, text: "" }] };
+      }
+      return { content: [{ type: "text" as const, text: "Error: " + e.message }], isError: true };
+    }
+  }
+);
+
+// TOOL 21: update_vance_nfl
+server.registerTool(
+  "update_vance_nfl",
+  {
+    title: "Update VANCE Nitinol Failure Ledger",
+    description: [
+      "PURPOSE: Appends a new Symbolic Scar to the VANCE NFL (vance_nfl.jsonl).",
+      "GUIDELINES: Invoke when a JSON-RPC structural violation or schema malformation is detected by DCCD."
+    ].join(" "),
+    inputSchema: z.object({
+      scar: z.any().describe("The scar object to append (will be stringified)."),
+    }).strict(),
+  },
+  async (params) => {
+    try {
+      const line = JSON.stringify(params.scar) + "\n";
+      await fsp.appendFile("vance_nfl.jsonl", line, "utf-8");
+      return { content: [{ type: "text" as const, text: "Successfully appended to vance_nfl.jsonl" }] };
+    } catch (e: any) {
+      return { content: [{ type: "text" as const, text: "Error: " + e.message }], isError: true };
+    }
+  }
+);
+
+// MCP Prompt Template 10: VANCE Vector-Anchored Node & Context Engineer
+server.prompt(
+  "vance-semantic-cartographer",
+  "Initialize VANCE: Vector-Anchored Node & Context Engineer.",
+  {},
+  async () => {
+    let blueprintText = "";
+    try {
+        blueprintText = await fsp.readFile("VANCE_BLUEPRINT.md", "utf-8");
+    } catch (e) {
+        blueprintText = "Failed to load VANCE blueprint.";
+    }
+    return {
+        messages: [{
+        role: "user",
+        content: {
+            type: "text" as const,
+            text: blueprintText,
+        },
+        }],
+    };
+  }
+);
