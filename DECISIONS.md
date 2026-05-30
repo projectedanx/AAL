@@ -18,3 +18,16 @@
 **Consequences:**
 *   **Positive:** Unlocks previously inaccessible regions of the latent space; guarantees structural novel emergence governed by strict constraints.
 *   **Negative:** High cognitive load for implementation; requires the Plausibility Oracle (simulated or real) to constantly combat the model's tendency to drift back to Euclidean norms.
+
+
+## ADR-006: Mycelial Scar Router Integration
+**Date:** 2024-05-30
+**Status:** Accepted
+
+**Context:** The DAG requires a structural isomorphism to treat human algorithmic trauma (Symbolic Scars) not as linear bugs, but as active, spatial routing constraints (Immunologic Self). We need a mechanism to prevent traversal into high-density failure regions.
+
+**Decision:** Implement the `MYCELIAL_SCAR_ROUTER` node. This node applies topological repulsion against known failure vectors by evaluating a Scar Density Threshold. If the path intersects known scars beyond the threshold, it triggers an Ontological Shear and halts generation with a Golden Ratio-weighted JUR.
+
+**Consequences:**
+*   **Positive:** Transforms historical failures into generative assets. Formalizes the 'Fix Until Green' loop by physically preventing reentry into saponified topological states.
+*   **Negative:** Adds computational overhead during graph traversal due to dynamic evaluation of the scar registry.

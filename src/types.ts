@@ -142,6 +142,7 @@ export enum PipelineNodeType {
   KIRA_CARD_BUILDER = 'KiraCardBuilder',
   VORTEX_DCCD_ENFORCER = 'VortexDccdEnforcer',
   CIPHER_SECURITY_GATE = 'CipherSecurityGate',
+  MYCELIAL_SCAR_ROUTER = 'MycelialScarRouter',
 }
 
 /**
@@ -173,6 +174,10 @@ export interface PipelineNode {
     // CIPHER Security fields
     gateMode?: 'ADVISORY' | 'HARD_GATE' | 'HARD_GATE_STRICT';
     threatPosture?: string;
+
+    // Mycelial Scar Router fields
+    scarThreshold?: number;
+    activeScars?: string[];
 
     // Topological Persona fields
     personaRole?: string;

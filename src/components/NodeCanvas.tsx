@@ -266,6 +266,25 @@ const CipherSecurityNode = ({ data, isConnectable }: NodeProps) => {
   );
 };
 
+
+// --- Mycelial Scar Router Node ---
+const MycelialScarRouterNode = ({ data, isConnectable }: NodeProps) => {
+  return (
+    <div className="bg-[#FF4500]/10 border-2 border-[#FF4500] rounded-md p-3 min-w-[150px] shadow-[0_0_15px_rgba(255,69,0,0.3)]">
+      <Handle type="target" position={Position.Top} isConnectable={isConnectable} className="w-3 h-3 bg-[#FF4500]" />
+      <div className="font-bold text-[#FF4500] text-xs uppercase tracking-wider mb-1">Mycelial Scar Router</div>
+      <div className="text-gray-300 text-[10px] mb-1">Threshold: <span className="font-bold text-white">{data.scarThreshold || 1.618}</span></div>
+      <div className="text-[10px] bg-slate-900 px-2 py-1 rounded text-[#FF4500] border border-[#FF4500]/30 font-mono mt-2 flex flex-col gap-1">
+        <span>Active Scars:</span>
+        {((data.activeScars as string[]) || []).map((scar: string, idx: number) => (
+          <span key={idx} className="bg-[#FF4500]/20 px-1 rounded">- {scar}</span>
+        ))}
+      </div>
+      <Handle type="source" position={Position.Bottom} isConnectable={isConnectable} className="w-3 h-3 bg-[#FF4500]" />
+    </div>
+  );
+};
+
 const nodeTypes = {
   [PipelineNodeType.VULCAN_BOUNDED_CONTEXT]: BoundedContextNode,
   [PipelineNodeType.VULCAN_EVENT_BROKER]: EventBrokerNode,
@@ -280,9 +299,17 @@ const nodeTypes = {
   [PipelineNodeType.KIRA_CARD_BUILDER]: KiraCardBuilderNode,
   [PipelineNodeType.MULTISPECTRAL_CONDITIONING]: MultispectralConditioningNode,
   [PipelineNodeType.CIPHER_SECURITY_GATE]: CipherSecurityNode,
+  [PipelineNodeType.MYCELIAL_SCAR_ROUTER]: MycelialScarRouterNode,
 };
 
 const initialNodes: Node[] = [
+  {
+    id: 'mycelial-1',
+    type: PipelineNodeType.MYCELIAL_SCAR_ROUTER,
+    position: { x: 50, y: -50 },
+    data: { scarThreshold: 1.618, activeScars: ['SCAR-004', 'SCAR-KIRA-005'] }
+  },
+
   {
     id: 'vortex-lock-1',
     type: PipelineNodeType.VORTEX_STIGMERGIC_LOCK,
@@ -376,6 +403,8 @@ const initialNodes: Node[] = [
 ];
 
 const initialEdges: Edge[] = [
+  { id: 'emycelial', source: 'base-1', target: 'mycelial-1', animated: true, style: { stroke: '#FF4500' } },
+
   { id: 'e1-msi', source: 'base-1', target: 'msi-1', animated: true, style: { stroke: '#06b6d4' } },
   { id: 'emsi-style', source: 'msi-1', target: 'param-style', animated: true, style: { stroke: '#ef4444' } },
   { id: 'e1-cipher', source: 'base-1', target: 'cipher-1', animated: true, style: { stroke: '#00FF00' } },
