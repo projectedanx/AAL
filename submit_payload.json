@@ -1,4 +1,4 @@
 {
-  "title": "feat(cipher): Integrate CIPHER Zero-Trust Epistemic Sentinel",
-  "body": "This PR integrates CIPHER, a Tier 4 Sovereign Security Architect that operates as a physical node in the DAG to enforce zero-trust barriers (Anionic Rule Set) and prevent Semantic Saponification of security constraints.\n\n- Implemented CipherSecurityNode in DAG Canvas.\n- Extended types.ts with CIPHER_SECURITY_GATE and payload fields.\n- Updated graphExecutor.ts with validateCipherTopology for mereological checks.\n- Added cipher-zero-trust-sentinel prompt and cipher_ssr.jsonl MCP tools.\n- Generated CIPHER_BLUEPRINT.md and CIPHER_EMERGENCE_PLAN documentation.\n- Updated PRODUCT_STRATEGY.md and README.md with Epic 10 details."
+  "branch_name": "feat-vance-integration",
+  "commit_message": "feat: integrate VANCE agent for LSP semantic cartography\n\n- Add complete VANCE blueprint outlining semantic graph architecture\n- Register MCP tools for VANCE Nitinol Failure Ledger (NFL)\n- Add pattern_inventory.json and retrieval_manifest.json to establish constraint metrics"
 }
