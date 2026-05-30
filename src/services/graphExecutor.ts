@@ -268,6 +268,37 @@ export const validateVulcanTopology = (nodes: Node[], edges: Edge[]): JustifiedU
  * @returns The resulting execution output.
  *
  */
+
+/**
+ * Evaluates the DAG against the Mycelial Scar Router's density threshold.
+ *
+ * @param nodes - The input parameter for the function.
+ * @returns The resulting execution output.
+ */
+export const validateMycelialTopology = (nodes: Node[]): JustifiedUncertaintyReport | null => {
+    const mycelialNodes = nodes.filter(n => n.type === PipelineNodeType.MYCELIAL_SCAR_ROUTER);
+
+    for (const node of mycelialNodes) {
+        const threshold = (node.data as any).scarThreshold || 1.618;
+        const activeScars = (node.data as any).activeScars || [];
+
+        // Calculate density: assuming each scar has a baseline weight of 1.0
+        // In a real system, weights might vary, but for this simulation we use count * 1.0
+        const density = activeScars.length * 1.0;
+
+        if (density >= threshold) {
+            return {
+                geometricDensityScore: density,
+                ontologicalShear: `SCAR-MYCELIAL-001: Scar density (${density}) exceeds threshold (${threshold}). Topological repulsion applied via Mycelial Scar Router.`,
+                contradictions: ["MYCELIAL_THRESHOLD_BREACH", "SCOLIOTIC_TOPOLOGY"],
+                goldenRatioApplied: true
+            };
+        }
+    }
+
+    return null;
+};
+
 export const validateKiraTopology = (nodes: Node[]): JustifiedUncertaintyReport | null => {
     const cardNodes = nodes.filter(n => n.type === PipelineNodeType.KIRA_CARD_BUILDER);
     for (const card of cardNodes) {
@@ -296,6 +327,22 @@ export const executeGraph = async (nodes: Node[], edges: Edge[]): Promise<Genera
 
     // --- VORTEX-ARCHITECT Topological Validation ---
     // --- KIRA-7 Topological Validation ---
+
+    const mycelialJUR = validateMycelialTopology(nodes);
+    if (mycelialJUR) {
+        console.warn("MYCELIAL VALIDATION FAILED: ", mycelialJUR.ontologicalShear);
+        return [{
+            id: "mycelial-error-halt",
+            basePrompt: "ARCHITECTURAL_HALT",
+            parameter: AestheticParameter.STYLE,
+            variations: [],
+            images: [],
+            timestamp: new Date().toISOString(),
+            temperature: 0,
+            jur: mycelialJUR
+        }];
+    }
+
     const kiraJUR = validateKiraTopology(nodes);
     if (kiraJUR) {
         console.warn("KIRA VALIDATION FAILED: ", kiraJUR.ontologicalShear);

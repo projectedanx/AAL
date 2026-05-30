@@ -17,3 +17,11 @@ Neither humans nor AI can independently solve the "Resolution Collapse" of moder
 4. [x] **Update `graphExecutor.ts`**: Alter the graph traversal engine to apply the Topological Persona bounds to the generation prompt, ensuring the ACO wraps the `basePrompt`.
 5. [x] **Update Documentation**: Ensure `README.md`, `PRODUCT_STRATEGY.md`, and `COGNITIVE_CONTRACT.md` reflect this structural shift.
 6. [x] **Rigorous Verification**: Run TypeScript compilation (`tsc`) and Vite build processes to ensure zero regressions in the topological map.
+
+
+## Epic 11: The Mycelial Scar Router (IMMUNOLOGIC SELF)
+**Description:** The implementation of the `MycelialScarRouterNode`, a structural isomorphism that translates historical failure data (Symbolic Scars) into spatial graph constraints. This node acts as an epistemic firewall, sensing the "density" of algorithmic trauma on a given path.
+
+**The Synergy:**
+- **The Human Contribution**: Provides the qualitative, affective memory of failure—the "scars" derived from past semantic saponifications and generic output compromises.
+- **The AI Contribution**: Provides the mathematical rigidity to weigh these scars (using the Golden Ratio, Φ = 1.618) and structurally block graph traversal if the cumulative scar density exceeds the defined `scarThreshold`.
