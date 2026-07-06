@@ -1043,7 +1043,7 @@ server.registerTool(
   async (params) => {
     try {
       const line = JSON.stringify(params.scar) + "\n";
-      await fsp.appendFile("axiom_ssr.jsonl", line, "utf-8");
+      await fsp.appendFile(path.join(process.cwd(), "axiom_ssr.jsonl"), line, "utf-8");
       return { content: [{ type: "text" as const, text: "Successfully appended to axiom_ssr.jsonl" }] };
     } catch (e: any) {
       return { content: [{ type: "text" as const, text: "Error: " + e.message }], isError: true };
