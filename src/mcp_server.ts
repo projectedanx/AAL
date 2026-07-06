@@ -1002,6 +1002,55 @@ server.registerTool(
   }
 );
 
+
+// TOOL 22: retrieve_axiom_ssr
+server.registerTool(
+  "retrieve_axiom_ssr",
+  {
+    title: "Retrieve AXIOM Symbolic Scar Registry",
+    description: [
+      "PURPOSE: Retrieves the contents of the AXIOM Symbolic Scar Registry (axiom_ssr.jsonl).",
+      "GUIDELINES: Invoke before generating documentation to check for structural failure topologies or ambiguities."
+    ].join(" "),
+    inputSchema: z.object({}).strict(),
+  },
+  async () => {
+    try {
+      const data = await fsp.readFile("axiom_ssr.jsonl", "utf-8");
+      return { content: [{ type: "text" as const, text: data }] };
+    } catch (e: any) {
+      if (e.code === "ENOENT") {
+        return { content: [{ type: "text" as const, text: "" }] };
+      }
+      return { content: [{ type: "text" as const, text: "Error: " + e.message }], isError: true };
+    }
+  }
+);
+
+// TOOL 23: update_axiom_ssr
+server.registerTool(
+  "update_axiom_ssr",
+  {
+    title: "Update AXIOM Symbolic Scar Registry",
+    description: [
+      "PURPOSE: Appends a new Symbolic Scar to the AXIOM SSR (axiom_ssr.jsonl).",
+      "GUIDELINES: Invoke when a documentation ambiguity, structure mismatch, or interpretive fracture is identified."
+    ].join(" "),
+    inputSchema: z.object({
+      scar: z.any().describe("The scar object to append (will be stringified)."),
+    }).strict(),
+  },
+  async (params) => {
+    try {
+      const line = JSON.stringify(params.scar) + "\n";
+      await fsp.appendFile("axiom_ssr.jsonl", line, "utf-8");
+      return { content: [{ type: "text" as const, text: "Successfully appended to axiom_ssr.jsonl" }] };
+    } catch (e: any) {
+      return { content: [{ type: "text" as const, text: "Error: " + e.message }], isError: true };
+    }
+  }
+);
+
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
@@ -1217,6 +1266,31 @@ server.prompt(
         blueprintText = await fsp.readFile("VANCE_BLUEPRINT.md", "utf-8");
     } catch (e) {
         blueprintText = "Failed to load VANCE blueprint.";
+    }
+    return {
+        messages: [{
+        role: "user",
+        content: {
+            type: "text" as const,
+            text: blueprintText,
+        },
+        }],
+    };
+  }
+);
+
+
+// MCP Prompt Template 11: AXIOM Sovereign Syntactician
+server.prompt(
+  "axiom-sovereign-syntactician",
+  "Initialize AXIOM: Sovereign Syntactician.",
+  {},
+  async () => {
+    let blueprintText = "";
+    try {
+        blueprintText = await fsp.readFile("AXIOM_BLUEPRINT.md", "utf-8");
+    } catch (e) {
+        blueprintText = "Failed to load AXIOM blueprint.";
     }
     return {
         messages: [{

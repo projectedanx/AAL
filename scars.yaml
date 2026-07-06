@@ -50,3 +50,10 @@
   description: "0xCARTO Documentation Synthesis Extrusion"
   resolution: "Generated Tiers 1-5 documentation detailing repository topologies, entropy scores (0.75), and silent required env vars (GEMINI_API_KEY). Artifacts committed to docs/ directory."
   topology_impact: "Formalized missing CI/CD structure and validated Ground Truth Isomorphism via AST/FileSystem read protocols."
+
+- id: SCAR-1717462000
+  date: 2026-03-27
+  context: "Integration of AXIOM Sovereign Syntactician"
+  failure_mode: "Documentation ambiguity and semantic saponification"
+  resolution: "Implemented AXIOM_BLUEPRINT.md, axiom_ssr.jsonl, and MCP server endpoints for AXIOM to enforce deterministic API documentation"
+  tags: ["documentation", "axiom", "epistemic-rigor"]

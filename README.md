@@ -65,3 +65,6 @@ To run core tests (validating the graph executor and Dialectical Synthesis Engin
 ```bash
 npx tsx src/graphExecutor.test.ts
 ```
+
+## AXIOM Integration
+This repository integrates AXIOM, a Sovereign Syntactician for generating deterministic, legally binding technical documentation. AXIOM's blueprint is located in `AXIOM_BLUEPRINT.md` and failure modes are tracked in `axiom_ssr.jsonl`. AXIOM's MCP server endpoints (`retrieve_axiom_ssr`, `update_axiom_ssr`) enforce zero-ambiguity API constraints.
