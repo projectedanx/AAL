@@ -1016,7 +1016,7 @@ server.registerTool(
   },
   async () => {
     try {
-      const data = await fsp.readFile("axiom_ssr.jsonl", "utf-8");
+      const data = await fsp.readFile(path.join(process.cwd(), "axiom_ssr.jsonl"), "utf-8");
       return { content: [{ type: "text" as const, text: data }] };
     } catch (e: any) {
       if (e.code === "ENOENT") {
