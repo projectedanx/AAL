@@ -1,2 +1,3 @@
-Instability: Root directory saturated with loose scripts (Python, Bash, JS) and non-deterministic dependency versions using caret ranges.
-Fortification: Swept non-config scripts into `scripts/` and `tests/` directories. Pinned all dependencies in `package.json` to exact semantic versions.
+# Journal Entry (.jules/superintendent.md)
+Instability: The root directory was cluttered with ad-hoc Python scripts (`fix_canvas.py`, `patch_canvas.py`, etc.) and zero-byte artifact files (`vite`, `aesthetic-alchemy-lab@0.0.0`), violating strict root hygiene. Dependency constraints were completely rigid without allowing safe minor/patch upgrades, causing potential update friction.
+Fortification: Swept all non-standard `.py` and artifact files from the root to enforce the "hallway" rule. Standardized `package.json` to allow minor and patch version bumps (`^`) for dependency flexibility while maintaining explicit semantic version floors.
