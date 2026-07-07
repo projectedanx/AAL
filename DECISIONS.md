@@ -31,3 +31,8 @@
 **Consequences:**
 *   **Positive:** Transforms historical failures into generative assets. Formalizes the 'Fix Until Green' loop by physically preventing reentry into saponified topological states.
 *   **Negative:** Adds computational overhead during graph traversal due to dynamic evaluation of the scar registry.
+
+### [006] VORTEX-ARCHITECT Constraints Enforcement
+* **Context:** We need to enforce strict deterministic boundaries on prompt generation to prevent Semantic Saponification via the VORTEX-ARCHITECT persona.
+* **Decision:** We mandate that `VORTEX_DCCD_ENFORCER` nodes define a `dccdSchema` and `VORTEX_STIGMERGIC_LOCK` nodes define an anchor/label. The DAG execution will halt with a JUR if these constraints are violated.
+* **Consequences:** Prevents logic shearing and enforces Draft-Conditioned Constrained Decoding, but requires stricter node configuration. (See `docs/adr/006-vortex-architect-constraints.md`)

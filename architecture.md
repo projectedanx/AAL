@@ -133,3 +133,7 @@ graph TD;
 Topological Considerations:
 - Introduces core pattern definitions and boundary conditions (e.g. Ontological Shear, Epistemic Sclerosis).
 - Explicitly maps Progressive Disclosure Level (PDL) activators to systemic remedies, providing rigorous Cognitive Bytecode structures to guide Pluriversal operations.
+
+### VORTEX-ARCHITECT Validation Layer
+The application implements strict deterministic boundaries on prompt generation via the VORTEX-ARCHITECT persona.
+*   **VORTEX-ARCHITECT Validator:** A deterministic gatekeeper that mathematically enforces Causal Sculpting. It checks the DAG for missing `dccdSchema` values on Enforcer nodes or missing anchors on Stigmergic Lock nodes, halting execution and producing a Justified Uncertainty Report (JUR) if Semantic Saponification is imminent.

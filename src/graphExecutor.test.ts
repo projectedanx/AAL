@@ -91,3 +91,71 @@ test('Mycelial Scar Router - suspends generation on scar density threshold breac
     assert.match(results[0].jur?.ontologicalShear || '', /Scar density/);
     assert.strictEqual(results[0].images.length, 0);
 });
+
+test('VORTEX-ARCHITECT - suspends generation on missing dccdSchema', async () => {
+    const nodes: Node[] = [
+        {
+            id: 'base-1',
+            type: PipelineNodeType.BASE_PROMPT,
+            position: { x: 0, y: 0 },
+            data: { value: 'A test prompt' }
+        },
+        {
+            id: 'vortex-dccd-1',
+            type: PipelineNodeType.VORTEX_DCCD_ENFORCER,
+            position: { x: 100, y: 0 },
+            data: {} // Missing dccdSchema
+        },
+        {
+            id: 'output-1',
+            type: PipelineNodeType.OUTPUT,
+            position: { x: 300, y: 0 },
+            data: {}
+        }
+    ];
+
+    const edges: Edge[] = [
+        { id: 'e1', source: 'base-1', target: 'vortex-dccd-1' },
+        { id: 'e2', source: 'vortex-dccd-1', target: 'output-1' }
+    ];
+
+    const results = await executeGraph(nodes, edges);
+    assert.strictEqual(results.length, 1);
+    assert.ok(results[0].jur);
+    assert.match(results[0].jur?.ontologicalShear || '', /dccdSchema/);
+    assert.strictEqual(results[0].images.length, 0);
+});
+
+test('VORTEX-ARCHITECT - suspends generation on missing stigmergic lock anchor', async () => {
+    const nodes: Node[] = [
+        {
+            id: 'base-1',
+            type: PipelineNodeType.BASE_PROMPT,
+            position: { x: 0, y: 0 },
+            data: { value: 'A test prompt' }
+        },
+        {
+            id: 'vortex-lock-1',
+            type: PipelineNodeType.VORTEX_STIGMERGIC_LOCK,
+            position: { x: 100, y: 0 },
+            data: {} // Missing label/anchor
+        },
+        {
+            id: 'output-1',
+            type: PipelineNodeType.OUTPUT,
+            position: { x: 300, y: 0 },
+            data: {}
+        }
+    ];
+
+    const edges: Edge[] = [
+        { id: 'e1', source: 'base-1', target: 'vortex-lock-1' },
+        { id: 'e2', source: 'vortex-lock-1', target: 'output-1' }
+    ];
+
+    const results = await executeGraph(nodes, edges);
+    assert.strictEqual(results.length, 1);
+    assert.ok(results[0].jur);
+    assert.match(results[0].jur?.ontologicalShear || '', /anchor\/label/);
+    assert.strictEqual(results[0].images.length, 0);
+});

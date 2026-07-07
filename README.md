@@ -5,7 +5,7 @@ The Aesthetic Alchemy Lab is a generative UI canvas designed to explore and orch
 ## Purpose and Overview
 This repository serves as a node-based editor where developers and artists can map out "prompt pipelines." Instead of writing linear prompts, users construct a DAG where a "Base Prompt" can be simultaneously altered by different "Parameter Nodes" (like Lighting, Style, and Perspective).
 
-The application utilizes specialized autonomous agents (represented internally by components and validation schemas) to enforce structural constraints and physical realism over generated outputs, preventing "Semantic Saponification"—a phenomenon where AI models collapse conflicting aesthetics into a generic, flattened average.
+The application utilizes specialized autonomous agents (represented internally by components and validation schemas) to enforce structural constraints and physical realism over generated outputs, preventing "Semantic Saponification"—a phenomenon where AI models collapse conflicting aesthetics into a generic, flattened average. Key enforcers like the VORTEX-ARCHITECT validate DAG topologies to strictly clamp output structures using Draft-Conditioned Constrained Decoding (DCCD) and Semantic Mutex Locks.
 
 ## Project Architecture
 *   **`components/`**: React UI components, primarily featuring the `NodeCanvas.tsx` for visual graph interaction, and a `MultiAgentPanel.tsx` for side-channel agent communication.

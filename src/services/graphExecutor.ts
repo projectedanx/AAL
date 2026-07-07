@@ -177,6 +177,30 @@ export const validateVortexTopology = (nodes: Node[], edges: Edge[]): JustifiedU
         };
     }
 
+    const vortexDccdNodes = nodes.filter(n => n.type === PipelineNodeType.VORTEX_DCCD_ENFORCER);
+    for (const node of vortexDccdNodes) {
+        if (!(node.data as any).dccdSchema) {
+            return {
+                geometricDensityScore: 1.0,
+                ontologicalShear: "SCAR-VORTEX-DCCD: VORTEX_DCCD_ENFORCER node missing dccdSchema. Draft-Conditioned Constrained Decoding cannot be enforced.",
+                contradictions: ["MISSING_DCCD_SCHEMA", "PROJECTION_TAX_IMMINENT"],
+                goldenRatioApplied: true
+            };
+        }
+    }
+
+    const vortexLockNodes = nodes.filter(n => n.type === PipelineNodeType.VORTEX_STIGMERGIC_LOCK);
+    for (const node of vortexLockNodes) {
+        if (!(node.data as any).label && !(node.data as any).anchor) {
+            return {
+                geometricDensityScore: 1.0,
+                ontologicalShear: "SCAR-VORTEX-LOCK: VORTEX_STIGMERGIC_LOCK node missing anchor/label. Semantic Mutex Failure imminent.",
+                contradictions: ["MISSING_STIGMERGIC_ANCHOR", "EPISTEMIC_PHEROMONE_ABSENT"],
+                goldenRatioApplied: true
+            };
+        }
+    }
+
     return null; // Topology is valid (acyclic)
 };
 
