@@ -75,3 +75,9 @@ This repository integrates AXIOM, a Sovereign Syntactician for generating determ
 - **Finding:** Module exceeded cognitive complexity threshold due to God Object anti-pattern (1305 lines).
 - **Hypothesis:** Decoupling MCP tool registration into `src/mcp_tools/` will resolve this.
 - **Status:** Plan accepted and logged to `senescence_audit.json`.
+
+## Context Engineering 2.0 & Personal Knowledge Corpus (PKC)
+This repository implements the **Personal Knowledge Corpus (PKC)** Framework to invert the stateless nature of standard generative AI workflows.
+*   **`pkc_manifest.yml`**: A mathematically and cryptographically bounded YAML schema that serves as an Executable Context Bundle (CxB). It tracks semantic drift, topological integrity, and enforces Meaning Space Anchors.
+*   **Git-Anchored Context Hashing CLI Pipeline**: A `.git/hooks/pre-commit` script automatically seals and computes SHA-256 hashes of markdown files to prevent "data drift".
+*   **Flesh-to-Symbol Ingestion Loop**: The `zotero_ingestion_loop.py` serves as a background OCR engine linking new unstructured PDF content into the structural PKC graph via Llama-3-8B semantic relationships.
