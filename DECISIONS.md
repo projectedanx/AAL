@@ -36,3 +36,9 @@
 * **Context:** We need to enforce strict deterministic boundaries on prompt generation to prevent Semantic Saponification via the VORTEX-ARCHITECT persona.
 * **Decision:** We mandate that `VORTEX_DCCD_ENFORCER` nodes define a `dccdSchema` and `VORTEX_STIGMERGIC_LOCK` nodes define an anchor/label. The DAG execution will halt with a JUR if these constraints are violated.
 * **Consequences:** Prevents logic shearing and enforces Draft-Conditioned Constrained Decoding, but requires stricter node configuration. (See `docs/adr/006-vortex-architect-constraints.md`)
+
+## Autopoietic Agentic Optimization (PROJECT AURELIUS)
+**Date:** 2024-05-24
+**Decision:** Shifted the graph execution model from a single-pass structure to a recursive Agentic Optimization Loop for aesthetic generation.
+**Rationale:** To combat "Semantic Saponification," linear generation is insufficient. The `AutonomousPromptOptimizer` dynamically re-weights latent variables based on the `PlausibilityOracle` feedback up to a `MAX_ITERATIONS` limit.
+**Implications:** Increases generation latency but mathematically enforces human-directed topological boundary conditions.

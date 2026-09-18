@@ -3,7 +3,7 @@ import { Node, Edge } from '@xyflow/react';
 import { PipelineNodeType, GenerationResult, JustifiedUncertaintyReport, AestheticParameter } from '../types';
 import { generateAestheticImages } from './geminiService';
 import { GeometricCausalSculptor, NonEuclideanTopology, PhantomDimension } from '../../PROJECT_AURELIUS/GeometricCognition';
-import { PlausibilityOracle, ProvenanceTracker } from '../../PROJECT_AURELIUS/OracleFeedbackLoop';
+import { PlausibilityOracle, ProvenanceTracker, AutonomousPromptOptimizer } from '../../PROJECT_AURELIUS/OracleFeedbackLoop';
 
 /**
  * Interface representing a path traversed through the DAG.
@@ -489,6 +489,7 @@ export const executeGraph = async (nodes: Node[], edges: Edge[]): Promise<Genera
     const causalSculptor = new GeometricCausalSculptor();
     const oracle = new PlausibilityOracle();
     const provenance = new ProvenanceTracker();
+const optimizer = new AutonomousPromptOptimizer();
     const results: GenerationResult[] = [];
 
     // Process paths. We group by basePrompt and parameter for the UI's historical structure,
@@ -514,6 +515,9 @@ export const executeGraph = async (nodes: Node[], edges: Edge[]): Promise<Genera
             const jur = synthesizeJUR(group.originalPath);
 
             let mappedImages: any[] = [];
+            const resultId = crypto.randomUUID();
+            let adherenceScore: number | undefined;
+            let semanticDrift: number | undefined;
 
             if (jur) {
                 // Suspended generation on Ontological Shear
@@ -523,32 +527,45 @@ export const executeGraph = async (nodes: Node[], edges: Edge[]): Promise<Genera
 
                 // PROJECT AURELIUS: Causal Latent Sculpting
                 const topology = NonEuclideanTopology.HYPERBOLIC; // Default paraconsistent bound
-                const phantomDims: PhantomDimension[] = (group.spectralTargets || []).map(t => ({
+                let phantomDims: PhantomDimension[] = (group.spectralTargets || []).map(t => ({
                     id: crypto.randomUUID(),
                     metric: `Wavelength: ${t.wavelength}nm, FWHM: ${t.fwhm}nm (${t.target})`,
                     influence_weight: 1.0
                 }));
 
-                const sculptedPrompt = causalSculptor.sculptTopology(group.basePrompt, topology, phantomDims);
+                const MAX_ITERATIONS = 3;
+                const TARGET_ADHERENCE = 0.85; // Target threshold for Oracle
+                let currentIteration = 0;
+                adherenceScore = 0;
 
-                const images = await generateAestheticImages(sculptedPrompt, uniqueVariations, group.parameter, 0.5);
-                mappedImages = images.map(img => ({
-                    ...img,
-                    id: crypto.randomUUID(),
-                }));
-            }
+                while (currentIteration < MAX_ITERATIONS && adherenceScore < TARGET_ADHERENCE) {
+                    currentIteration++;
+                    provenance.recordDimensionLineage(resultId, phantomDims);
 
-            const resultId = crypto.randomUUID();
-            let adherenceScore: number | undefined;
-            let semanticDrift: number | undefined;
+                    const sculptedPrompt = causalSculptor.sculptTopology(group.basePrompt, topology, phantomDims);
 
-            if (!jur && mappedImages.length > 0) {
-                // PROJECT AURELIUS: Plausibility Oracle Evaluation
-                const sampleImage = mappedImages[0].src;
-                adherenceScore = oracle.evaluatePhysicalAdherence(sampleImage, NonEuclideanTopology.HYPERBOLIC);
+                    // Attempt generation
+                    const images = await generateAestheticImages(sculptedPrompt, uniqueVariations, group.parameter, 0.5);
+                    mappedImages = images.map(img => ({
+                        ...img,
+                        id: crypto.randomUUID(),
+                    }));
 
-                // Assuming baseline influence of 1.0 for the strict topology
-                semanticDrift = provenance.trackSemanticDrift(resultId, 1.0, adherenceScore);
+                    if (mappedImages.length > 0) {
+                        const sampleImage = mappedImages[0].src;
+                        adherenceScore = oracle.evaluatePhysicalAdherence(sampleImage, topology);
+
+                        if (adherenceScore < TARGET_ADHERENCE && currentIteration < MAX_ITERATIONS) {
+                            phantomDims = optimizer.optimizeDimensions(adherenceScore, TARGET_ADHERENCE, phantomDims);
+                        }
+                    } else {
+                        break; // Stop if generation fails entirely
+                    }
+                }
+
+                if (mappedImages.length > 0) {
+                    semanticDrift = provenance.trackSemanticDrift(resultId, 1.0, adherenceScore);
+                }
             }
 
             results.push({
