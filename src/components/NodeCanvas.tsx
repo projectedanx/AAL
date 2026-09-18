@@ -285,6 +285,32 @@ const MycelialScarRouterNode = ({ data, isConnectable }: NodeProps) => {
   );
 };
 
+
+// --- Project Manager Persona Node ---
+const ProjectManagerPersonaNode = ({ data, isConnectable }: NodeProps) => {
+  return (
+    <div className="bg-[#4169E1]/10 border-2 border-[#4169E1] rounded-md p-3 min-w-[200px] shadow-[0_0_15px_rgba(65,105,225,0.3)]">
+      <Handle type="target" position={Position.Top} isConnectable={isConnectable} className="w-3 h-3 bg-[#4169E1]" />
+      <div className="font-bold text-[#4169E1] text-xs uppercase tracking-wider mb-1">PM Persona (Metrology)</div>
+      <div className="text-gray-300 text-[10px] mb-1">Role: <span className="font-bold text-white">{data.personaRole || 'Strategic Integration PM'}</span></div>
+
+      <div className="mt-2 text-[10px] bg-slate-900 px-2 py-1 rounded text-[#4169E1] border border-[#4169E1]/30">
+        <div className="font-mono font-bold mb-1 border-b border-[#4169E1]/30 pb-1">PDT_SPECIFICATION_BLOCK</div>
+        <div className="mb-1 italic">DATUMS:</div>
+        <div className="pl-1">- A: ROLE</div>
+        <div className="pl-1">- B: TASK</div>
+        <div className="pl-1">- C: CONTEXT</div>
+        <div className="mt-1 mb-1 italic">FEATURES:</div>
+        <div className="pl-1">- F1_Persona_Confidence</div>
+        <div className="pl-1">- F2_Empirical_Mapping</div>
+        <div className="pl-1">- F3_Zachman_Workflow</div>
+      </div>
+
+      <Handle type="source" position={Position.Bottom} isConnectable={isConnectable} className="w-3 h-3 bg-[#4169E1]" />
+    </div>
+  );
+};
+
 const nodeTypes = {
   [PipelineNodeType.VULCAN_BOUNDED_CONTEXT]: BoundedContextNode,
   [PipelineNodeType.VULCAN_EVENT_BROKER]: EventBrokerNode,
@@ -300,9 +326,25 @@ const nodeTypes = {
   [PipelineNodeType.MULTISPECTRAL_CONDITIONING]: MultispectralConditioningNode,
   [PipelineNodeType.CIPHER_SECURITY_GATE]: CipherSecurityNode,
   [PipelineNodeType.MYCELIAL_SCAR_ROUTER]: MycelialScarRouterNode,
+  [PipelineNodeType.PROJECT_MANAGER_PERSONA]: ProjectManagerPersonaNode,
 };
 
 const initialNodes: Node[] = [
+
+  {
+    id: 'pm-persona-1',
+    type: PipelineNodeType.PROJECT_MANAGER_PERSONA,
+    position: { x: 300, y: 50 },
+    data: {
+      personaRole: 'Strategic Integration Project Manager',
+      zachmanMapping: true,
+      pdtSpecificationBlock: {
+        datums: ['A: ROLE', 'B: TASK', 'C: CONTEXT'],
+        features: ['F1', 'F2', 'F3']
+      }
+    }
+  },
+
   {
     id: 'mycelial-1',
     type: PipelineNodeType.MYCELIAL_SCAR_ROUTER,
@@ -403,6 +445,10 @@ const initialNodes: Node[] = [
 ];
 
 const initialEdges: Edge[] = [
+
+  { id: 'ecipher-pm', source: 'cipher-1', target: 'pm-persona-1', animated: true, style: { stroke: '#4169E1' } },
+  { id: 'epm-persona', source: 'pm-persona-1', target: 'persona-1', animated: true, style: { stroke: '#4169E1' } },
+
   { id: 'emycelial', source: 'base-1', target: 'mycelial-1', animated: true, style: { stroke: '#FF4500' } },
 
   { id: 'e1-msi', source: 'base-1', target: 'msi-1', animated: true, style: { stroke: '#06b6d4' } },
@@ -472,6 +518,7 @@ export const NodeCanvas: React.FC<{ onExecuteGraph: (nodes: Node[], edges: Edge[
                 if (n.type === PipelineNodeType.TOPOLOGICAL_PERSONA) return '#f59e0b';
                 if (n.type === PipelineNodeType.MULTISPECTRAL_CONDITIONING) return  '#ef4444';
                 if (n.type === PipelineNodeType.CIPHER_SECURITY_GATE) return '#00FF00';
+                if (n.type === PipelineNodeType.PROJECT_MANAGER_PERSONA) return '#4169E1';
                 return '#22c55e';
             }}
             maskColor="rgba(15, 23, 42, 0.8)"

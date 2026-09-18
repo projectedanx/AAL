@@ -15,6 +15,8 @@ export interface TraversalPath {
     contradictoryDirectives?: string[];
     pdtConstraints?: Array<{ type: string; datum: string; tolerance: string }>;
     spectralTargets?: Array<{ target: string; wavelength: number; fwhm: number }>;
+    pdtSpecificationBlock?: any;
+    interferenceFitScore?: number;
     parameters: Array<{
         parameter: string;
         variation: string;
@@ -346,6 +348,42 @@ export const validateKiraTopology = (nodes: Node[]): JustifiedUncertaintyReport 
  * @returns The resulting execution output.
  *
  */
+
+/**
+ * Evaluates the DAG against the Project Manager Persona's Interference Fit criteria.
+ *
+ * @param nodes - The input parameter for the function.
+ * @returns The resulting execution output.
+ */
+export const validateProjectManagerTopology = (nodes: Node[]): JustifiedUncertaintyReport | null => {
+    const pmNodes = nodes.filter(n => n.type === PipelineNodeType.PROJECT_MANAGER_PERSONA);
+
+    for (const node of pmNodes) {
+        // Evaluate the Topological Derivative of Stakeholder Dissonance
+        // Simplified mapping logic: if the node requires Zachman Mapping, but the topology contains
+        // multiple competing parameter nodes (simulating stakeholder dissonance) without explicit resolution bounds.
+        const requiresZachman = (node.data as any).zachmanMapping;
+        const parametersCount = nodes.filter(n => n.type === PipelineNodeType.PARAMETER).length;
+
+        // If Zachman mapping is forced but there are multiple divergent branches (Interference Fit)
+        if (requiresZachman && parametersCount > 1) {
+             const empiricalWeight = 1.618; // Golden Ratio applied to PM constraints
+             const stochasticWeight = 1.000;
+             const rawDensity = (1 * empiricalWeight) / (parametersCount * stochasticWeight);
+             const normalizedDensity = Math.min(Math.max(rawDensity * 0.5, 0.1), 0.99);
+
+             return {
+                geometricDensityScore: parseFloat(normalizedDensity.toFixed(2)),
+                ontologicalShear: `SCAR-PM-001: Interference Fit detected. Topological Derivative of Stakeholder Dissonance prevents standard resolution.`,
+                contradictions: ["EXTRACTIVE_SPRINT", "RELATIONAL_SOVEREIGNTY", "ZACHMAN_SCHEMA_DRIFT"],
+                goldenRatioApplied: true
+            };
+        }
+    }
+
+    return null;
+};
+
 export const executeGraph = async (nodes: Node[], edges: Edge[]): Promise<GenerationResult[]> => {
 
 
@@ -379,6 +417,22 @@ export const executeGraph = async (nodes: Node[], edges: Edge[]): Promise<Genera
             timestamp: new Date().toISOString(),
             temperature: 0,
             jur: kiraJUR
+        }];
+    }
+
+
+    const pmJUR = validateProjectManagerTopology(nodes);
+    if (pmJUR) {
+        console.warn("PM PERSONA VALIDATION FAILED: ", pmJUR.ontologicalShear);
+        return [{
+            id: 'pm-persona-error-halt',
+            basePrompt: 'ARCHITECTURAL_HALT',
+            parameter: AestheticParameter.STYLE,
+            variations: [],
+            images: [],
+            timestamp: new Date().toISOString(),
+            temperature: 0,
+            jur: pmJUR
         }];
     }
 

@@ -57,3 +57,8 @@
   failure_mode: "Documentation ambiguity and semantic saponification"
   resolution: "Implemented AXIOM_BLUEPRINT.md, axiom_ssr.jsonl, and MCP server endpoints for AXIOM to enforce deterministic API documentation"
   tags: ["documentation", "axiom", "epistemic-rigor"]
+  - id: SCAR-PM-002
+    title: Resolution Collapse via JSON-LD Proxy Traps
+    description: Attempting to optimize purely for geometric intersection and strict JSON-LD schema adherence inadvertently proxies abstract geometry for human empathy. The algorithm can step over logical collisions, reporting a false victory (Resolution Collapse) if the adaptive step size eclipses the mechanical tolerance (ϵ).
+    mitigation: Implement Golden Scar Protocol and surface contradictions via JUR rather than forcing structural JSON resolution.
+    status: mitigated_via_jur
