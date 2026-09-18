@@ -68,3 +68,10 @@ npx tsx src/graphExecutor.test.ts
 
 ## AXIOM Integration
 This repository integrates AXIOM, a Sovereign Syntactician for generating deterministic, legally binding technical documentation. AXIOM's blueprint is located in `AXIOM_BLUEPRINT.md` and failure modes are tracked in `axiom_ssr.jsonl`. AXIOM's MCP server endpoints (`retrieve_axiom_ssr`, `update_axiom_ssr`) enforce zero-ambiguity API constraints.
+
+
+## Architectural Senescence Audit
+- **Target:** `src/mcp_server.ts`
+- **Finding:** Module exceeded cognitive complexity threshold due to God Object anti-pattern (1305 lines).
+- **Hypothesis:** Decoupling MCP tool registration into `src/mcp_tools/` will resolve this.
+- **Status:** Plan accepted and logged to `senescence_audit.json`.

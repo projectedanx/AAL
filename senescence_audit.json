@@ -1,0 +1,12 @@
+{
+  "outcome_type": "ACCEPTED_PLAN",
+  "target_module": "src/mcp_server.ts",
+  "initial_cognitive_complexity_score": 1305,
+  "hypothesis_summary": "Extracting monolithic inline MCP tool definitions from src/mcp_server.ts into a modular src/mcp_tools/ directory will drastically reduce the Cognitive Complexity of the orchestration kernel without violating the JSON-RPC Stdio contract.",
+  "ACU_robustness_score": 0.92,
+  "tension_metric": {
+    "novelty_score": 0.40,
+    "grounding_score": 0.95
+  },
+  "justification_or_plan": "1. Create directory `src/mcp_tools/`. 2. Incrementally extract individual tools (e.g., retrieve_scar_archive, update_dax_ssr) into separate files exporting a setup/registration function or configuration object. 3. Refactor `src/mcp_server.ts` to import these configurations and register them cleanly. 4. Verify TypeScript compilation and MCP standard I/O communication."
+}
