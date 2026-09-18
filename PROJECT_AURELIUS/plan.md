@@ -17,12 +17,12 @@ The core issue is "Semantic Saponification" (consensus flattening) and "Algorith
     - [ ] Create `PROJECT_AURELIUS/GeometricCognition.ts` outlining an interface for mapping "Phantom Dimensions" to Gemini API parameters (e.g., using specific negative prompts, structural keywords, and temperature/seed constraints to force non-Euclidean generation).
     - [ ] Define the `NonEuclideanTopology` type (Hyperbolic, Spherical, Riemannian).
 - [ ] **Phase 2: Agentic Auto-Optimization & Provenance**
-    - [ ] Create `PROJECT_AURELIUS/OracleFeedbackLoop.ts`.
-    - [ ] Implement a stub for a "Plausibility Oracle" function that evaluates generated image metadata (since real-time PBR simulation is outside scope, we simulate the *logic* of the oracle).
-    - [ ] Implement a `ProvenanceTracker` class to track the "Semantic Drift" and historical influence of iterations.
+    - [x] Create `PROJECT_AURELIUS/OracleFeedbackLoop.ts`.
+    - [x] Implement a stub for a "Plausibility Oracle" function that evaluates generated image metadata (since real-time PBR simulation is outside scope, we simulate the *logic* of the oracle).
+    - [x] Implement a `ProvenanceTracker` class to track the "Semantic Drift" and historical influence of iterations.
 - [ ] **Phase 3: Cross-Modal Perceptual Fusion (Conceptual Framework)**
     - [ ] Create `PROJECT_AURELIUS/CrossModalFusion.md` detailing the architectural changes needed to integrate "Multispectral Imaging (MSI)" parameters into the existing DAG topology (`types.ts` and `graphExecutor.ts`).
 - [ ] **Documentation & Finalization**
-    - [ ] Update `README.md` and/or `PRODUCT_STRATEGY.md` with the new PROJECT_AURELIUS insights.
-    - [ ] Update `DECISIONS.md` to reflect the architectural choice of paraconsistent geometric navigation.
+    - [x] Update `README.md` and/or `PRODUCT_STRATEGY.md` with the new PROJECT_AURELIUS insights.
+    - [x] Update `DECISIONS.md` to reflect the architectural choice of paraconsistent geometric navigation.
     - [ ] Complete pre-commit verifications.
