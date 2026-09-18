@@ -137,3 +137,18 @@ Topological Considerations:
 ### VORTEX-ARCHITECT Validation Layer
 The application implements strict deterministic boundaries on prompt generation via the VORTEX-ARCHITECT persona.
 *   **VORTEX-ARCHITECT Validator:** A deterministic gatekeeper that mathematically enforces Causal Sculpting. It checks the DAG for missing `dccdSchema` values on Enforcer nodes or missing anchors on Stigmergic Lock nodes, halting execution and producing a Justified Uncertainty Report (JUR) if Semantic Saponification is imminent.
+
+### Phase 5 Topology: Context Engineering 2.0 (PKC Framework)
+The system transitions from an un-indexed "bag of words" into a formally bounded **Personal Knowledge Corpus (PKC)** utilizing a `pkc_manifest.yml` schema.
+
+```mermaid
+graph TD;
+    Client[Unstructured Plaintext Vault] -->|YAML Parsing / Git Hashing| Schema[Sovereign PKC YAML Specification];
+    Schema -->|Hybrid Embedding Search| Bundle[Executable Context Bundle - CxB];
+    Bundle --> Engine[Grounded AI Reasoning Engine];
+```
+
+Topological Considerations:
+- **Neuro-Symbolic Latent Space Alignment (RMSA)**: Configures bounding spheres (hyperspherical radius) for valid RAG queries via `meaning_space_anchor` metadata, rejecting AI outputs that diverge beyond the allowable semantic radius.
+- **Data Integrity & Cryptographic Sealing**: `.git/hooks/pre-commit` automates context hashing to detect state desynchronization.
+- **Flesh-to-Symbol Ingestion**: `zotero_ingestion_loop.py` asynchronously parses external inputs and generates typed `semantic_edges` with epistemic tagging to construct relational logic graphs.

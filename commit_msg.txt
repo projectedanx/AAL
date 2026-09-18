@@ -1,0 +1,6 @@
+feat: Implement PKC Framework integration (Context Engineering 2.0)
+
+- Added `pkc_manifest.yml` as the declarative schema boundary.
+- Implemented Git-Anchored Context Hashing CLI Pipeline (`.git/hooks/pre-commit`).
+- Created Automated Flesh-to-Symbol Ingestion Loop (`zotero_ingestion_loop.py`).
+- Updated `README.md` and `architecture.md` with PKC framework concepts.
