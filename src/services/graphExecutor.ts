@@ -4,6 +4,8 @@ import { PipelineNodeType, GenerationResult, JustifiedUncertaintyReport, Aesthet
 import { generateAestheticImages } from './geminiService';
 import { GeometricCausalSculptor, NonEuclideanTopology, PhantomDimension } from '../../PROJECT_AURELIUS/GeometricCognition';
 import { PlausibilityOracle, ProvenanceTracker, AutonomousPromptOptimizer } from '../../PROJECT_AURELIUS/OracleFeedbackLoop';
+import { applySemanticFirewall, computeSemanticDriftScore, triggerEpistemicEscrow } from './qedSecurityLayer.js';
+
 
 /**
  * Interface representing a path traversed through the DAG.
@@ -486,6 +488,62 @@ export const executeGraph = async (nodes: Node[], edges: Edge[]): Promise<Genera
     // -------------------------------------
 
     const paths = findPaths(nodes, edges);
+
+    // [QED] Semantic Firewall interception
+    const fullQueryContext = paths.map(p => p.basePrompt + ' ' + p.parameters.map(param => param.variation).join(' ')).join(' ');
+    if (!applySemanticFirewall(fullQueryContext, [])) {
+        console.warn("SEMANTIC FIREWALL HALT");
+        return [{
+            id: "firewall-halt",
+            basePrompt: "QUARANTINED",
+            parameter: AestheticParameter.STYLE,
+            variations: [],
+            images: [],
+            timestamp: new Date().toISOString(),
+            temperature: 0,
+            jur: {
+                geometricDensityScore: 0,
+                ontologicalShear: "Query quarantined by Semantic Firewall (Dynamic Affordance Profiling).",
+                contradictions: ["PROMPT_INJECTION", "UNAUTHORIZED_AFFORDANCE"],
+                goldenRatioApplied: false
+            }
+        }];
+    }
+
+    // [QED] Epistemic Escrow Circuit Breaker check
+    // Simulating retrieval of nodes mapping to the generated paths
+
+    // Simulating retrieval of QualitativeContextBundle based on paths.
+    // We are extracting the 'node' abstraction from path nodes.
+    const retrievedNodes = paths.flatMap(p => p.parameters).map((p, i) => ({
+        node_id: `QEN-00000000-${1000 + i}`,
+        temporal_anchor: new Date().toISOString(),
+        qualitative_payload: { experience_type: "Direct_Trial", raw_observation: p.variation, counterfactual_variance: "N/A" },
+        sensory_causal_indicators: { causal_perturbation_index: 1.0, structural_roughness: Math.random() },
+        ontological_alignments: [],
+        cryptographic_provenance: { agent_did: "unknown", verifiable_signature: "none" }
+    }));
+    const sds = computeSemanticDriftScore(retrievedNodes, []);
+
+    const cfd = 0.1; // Simulated CFD
+    if (triggerEpistemicEscrow(sds, cfd)) {
+        return [{
+            id: "escrow-halt",
+            basePrompt: "EPISTEMIC_ESCROW",
+            parameter: AestheticParameter.STYLE,
+            variations: [],
+            images: [],
+            timestamp: new Date().toISOString(),
+            temperature: 0,
+            jur: {
+                geometricDensityScore: sds,
+                ontologicalShear: "Epistemic Escrow Circuit Breaker tripped.",
+                contradictions: ["SEMANTIC_DRIFT_EXCEEDED"],
+                goldenRatioApplied: false
+            }
+        }];
+    }
+
     const causalSculptor = new GeometricCausalSculptor();
     const oracle = new PlausibilityOracle();
     const provenance = new ProvenanceTracker();
