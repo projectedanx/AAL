@@ -21,3 +21,11 @@
 ### 5. Incremental Isolation Principle (WHIMSY compliance)
 - **Rule**: Manifold Separation. Do not modify affective copy (Manifold α) and structural code (Manifold β) in the same unverified pass.
 - **Enforcement**: The Dialectical Synthesis Engine separates the *structural* calculation of tension (JUR) from the *affective* generation of the aesthetic images.
+
+### 6. S5-Modal Attention Constraint
+- **Rule**: Standard linear superposition in attention models destroys contradictory constraints. The engine must map attention to S5 Kripke frames.
+- **Enforcement**: Demand a Contradiction Retention Score > 95% via the Golden Scar Protocol and explicit JUR output.
+
+### 7. Draft-Conditioned Constrained Decoding (DCCD)
+- **Rule**: PM workflows must split inference into a semantic draft pass and a zero-entropy, DFA-validated pass to enforce schema compliance without incurring projection tax.
+- **Enforcement**: Output JSONs must strictly align to `zachman_framework_schema.json` within the ProjectManagerPersona context.

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Zachman Framework Operational Workflow",
+  "type": "object",
+  "properties": {
+    "what_data": {
+      "type": "object",
+      "description": "Entities and structural profiles."
+    },
+    "how_function": {
+      "type": "object",
+      "description": "Capabilities and processes."
+    },
+    "where_network": {
+      "type": "object",
+      "description": "Nodes and locations."
+    },
+    "who_people": {
+      "type": "object",
+      "description": "Roles and human-AI orchestrations."
+    },
+    "when_time": {
+      "type": "object",
+      "description": "Events and chronological limits."
+    },
+    "why_motivation": {
+      "type": "object",
+      "description": "Goals and architectural tension preservation."
+    }
+  },
+  "required": ["what_data", "how_function", "who_people", "when_time", "why_motivation"],
+  "additionalProperties": false
+}

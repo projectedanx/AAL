@@ -143,6 +143,7 @@ export enum PipelineNodeType {
   VORTEX_DCCD_ENFORCER = 'VortexDccdEnforcer',
   CIPHER_SECURITY_GATE = 'CipherSecurityGate',
   MYCELIAL_SCAR_ROUTER = 'MycelialScarRouter',
+  PROJECT_MANAGER_PERSONA = 'ProjectManagerPersona',
 }
 
 /**
@@ -184,6 +185,10 @@ export interface PipelineNode {
     contradictoryDirectives?: string[]; // PAL2v tension representation
     pdtConstraints?: Array<{ type: string; datum: string; tolerance: string }>;
     spectralTargets?: Array<{ target: string; wavelength: number; fwhm: number }>; // PROJECT AURELIUS: Multispectral MSI conditioning
+    // Project Manager Persona fields
+    interferenceFitScore?: number;
+    zachmanMapping?: boolean;
+    pdtSpecificationBlock?: any;
   };
     // VULCAN specific
     domainName?: string;
