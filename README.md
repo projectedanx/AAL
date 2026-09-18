@@ -81,3 +81,12 @@ This repository implements the **Personal Knowledge Corpus (PKC)** Framework to 
 *   **`pkc_manifest.yml`**: A mathematically and cryptographically bounded YAML schema that serves as an Executable Context Bundle (CxB). It tracks semantic drift, topological integrity, and enforces Meaning Space Anchors.
 *   **Git-Anchored Context Hashing CLI Pipeline**: A `.git/hooks/pre-commit` script automatically seals and computes SHA-256 hashes of markdown files to prevent "data drift".
 *   **Flesh-to-Symbol Ingestion Loop**: The `zotero_ingestion_loop.py` serves as a background OCR engine linking new unstructured PDF content into the structural PKC graph via Llama-3-8B semantic relationships.
+
+## Epistemic Workbench (QED Integration)
+This repository now implements the **Qualitative Experience Database (QED)** architecture. It acts as an Epistemic Workbench, compiling "lived experience" into highly grounded, drift-resistant context payloads adhering to the Minimal Explainability Metadata Schema (MEMS).
+- **Decolonial Ontology Reconciliation**: Prevents aesthetic and cultural flattening via Pluriversal Resonance Filters.
+- **Topological RAG Auditing**: Detects concept leakage using Topological Data Analysis (TDA) and Betti-1 loops.
+- **Algorithmic Kintsugi**: Self-healing pipelines convert retrieval failures into generative priors.
+
+## Architectural Refactoring: MCP Modularization
+Following an Architectural Senescence Audit, the monolithic `mcp_server.ts` "God Object" has been decoupled. All tool registrations have been extracted into the modular `src/mcp_tools/` directory (Agent Tools, Core Tools, and Scar Tools), maintaining JSON-RPC Stdio contract integrity while significantly reducing cognitive complexity.
