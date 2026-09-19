@@ -14,6 +14,13 @@ The application utilizes specialized autonomous agents (represented internally b
 *   **`data/`**: Curated templates and historical prompt data.
 *   **`types.ts`**: Centralized TypeScript definitions for Pipeline nodes, edges, and generation matrices.
 
+
+## Autonomous Adaptive Cognitive Harness (AACH)
+This repository implements an AACH multi-layered hybrid control system:
+1. **Execution Layer**: Optimizes low-cost non-reasoning models for task-irrelevant token selections.
+2. **Deliberative Layer**: Reason orchestrators actively initiating disequilibratory goal updates.
+3. **Metacognitive Layer**: Continuous Falsification Engine employing a Reviewer Agent for Algorithmic Reparation.
+
 ## Developer Setup
 
 **Prerequisites:**

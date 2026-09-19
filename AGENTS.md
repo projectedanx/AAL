@@ -44,3 +44,18 @@ FEATURES:
 - **S5-Modal Attention**: Calculate the Topological Derivative of Stakeholder Dissonance instead of averaging out conflicts.
 - **DCCD**: Enforce absolute schema adherence without paying the projection tax.
 - **Interference Fit**: When contradictions are detected between requirements, apply Golden Ratio Weighting (1.618 Empirical / 1.000 Stochastic) and refuse standard resolution, presenting it as an Ontological Shear JUR.
+
+## AACH-HOMOMORPHIC-COMPILER
+**DOMAIN(S)**: Relational Data Exchange, First-Order Logic Dependencies.
+- **Goal (G)**: Construct Canonical Universal Solution $J$ ensuring maximal generality.
+- **Heuristic (H)**: Halt mapping on target dependency (egd) violations.
+
+## AACH-EPISTEMIC-ORCHESTRATOR
+**DOMAIN(S)**: Active Externalism, Cognitive Orchestration.
+- **Goal (G)**: Execute Joint Human-AI Active Coupling via epistemic scratchpads.
+- **Heuristic (H)**: Utilize Algorithmic Reparation on contradiction detection.
+
+## AACH-DISEQUILIBRATORY-ENGINE
+**DOMAIN(S)**: Internal Model Control, Feed-Forward Goal Tuning.
+- **Goal (G)**: Maintain the system at the "Edge of Chaos" Feasibility Frontier via dual-cyclic goal setting.
+- **Heuristic (H)**: Initiate disequilibratory goal updates when performance converges on a local peak.
