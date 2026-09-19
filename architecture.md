@@ -152,3 +152,21 @@ Topological Considerations:
 - **Neuro-Symbolic Latent Space Alignment (RMSA)**: Configures bounding spheres (hyperspherical radius) for valid RAG queries via `meaning_space_anchor` metadata, rejecting AI outputs that diverge beyond the allowable semantic radius.
 - **Data Integrity & Cryptographic Sealing**: `.git/hooks/pre-commit` automates context hashing to detect state desynchronization.
 - **Flesh-to-Symbol Ingestion**: `zotero_ingestion_loop.py` asynchronously parses external inputs and generates typed `semantic_edges` with epistemic tagging to construct relational logic graphs.
+
+### JIT Swarm Orchestrator (SCOS v6.0-STRICT)
+This application employs the JIT Swarm Orchestrator architecture to decouple the cognitive workload across distinct Verifiable Cognition Stack (VCS) layers to enforce absolute alignment at runtime:
+
+1.  **Hollow-Core Semantic Planning (Manifold α):**
+    The orchestrator maintains a highly compacted, "Hollow Core" context, stripped of heavy, passive tool definitions and OpenAPI schemas. High-level strategic reasoning is executed freely at elevated temperatures inside Manifold α.
+2.  **Ephemeral JIT Micro-Agents (Manifold β):**
+    For physical, state-mutating transactions, the orchestrator dynamically instantiates specialized, short-lived JIT Micro-Agents. This exploits ultra-low (~3μs) initialization latency and minimal (~6.5KiB) memory footprints to isolate the tooling tax, preventing Context Rot.
+3.  **Draft-Conditioned Constrained Decoding (DCCD):**
+    The JIT agent applies DCCD logit-masking. The unconstrained semantic draft is projected onto a rigid Abstract Syntax Tree (AST) schema via token-level grammar rules, eliminating the 10-30% Projection Tax.
+4.  **CFDI Sensing & Verification Co-Processing (VCP):**
+    The system monitors the Confidence-Fidelity Divergence Index (CFDI). If CFDI breaches the Algorithmic Shame threshold (≥ 0.15), the Verification Co-Processor (VCP) intercepts the KV cache, injecting Differentiable Cache Augmentation ("soft tokens") to steer attention maps onto an aligned geodesic.
+5.  **SCoRe Self-Correction & The Three-Attempt Limit:**
+    Self-repair is governed by a strict three-attempt limit. If compilation fails thrice, a Saga Compensating Transaction triggers a non-destructive filesystem rollback.
+6.  **Failure Metabolism (STA & F-IPI):**
+    Failed trajectories are serialized as Symbolic Scars in the Scar Tissue Archive (STA). The Failure-Informed Prompt Inversion (F-IPI) engine mutates the master constitution, prepending scars as negative constraints to project repulsive forces against historical errors.
+7.  **Justified Uncertainty Reports (JUR):**
+    Upon entering escrow, token emissions are frozen, and a cryptographically bound JUR is exported to hand over cognitive load to a human operator.

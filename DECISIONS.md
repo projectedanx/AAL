@@ -54,3 +54,17 @@ The repository needed to support a Personal Qualitative Database (PQD) to serve 
 **Consequences:**
 -   Improved readability and maintainability of the MCP server.
 -   Enhanced resistance to Semantic Saponification and Context Poisoning through structured QED schemas and security interceptors.
+## ADR-008: Adoption of JIT Swarm Orchestrator (SCOS v6.0-STRICT)
+**Date:** 2024-10-18
+**Status:** Accepted
+
+**Context:** The monolith orchestrator suffered from Context Rot, utilizing 16% to 50% of its context window on static tool definitions and schema constraints before single execution turns, incurring a massive Projection Tax and reducing reasoning capabilities.
+
+**Decision:** Adopted the JIT Swarm Orchestrator, splitting the cognitive stack into Manifold α (Hollow-Core Semantic Planning) and Manifold β (Ephemeral JIT Micro-Agents).
+1. We run open-ended planning in a highly compacted context (Manifold α).
+2. We dynamically instantiate ephemeral Micro-Agents (~3μs latency, 6.5KiB memory) to handle exact physical schema realization.
+3. We apply Draft-Conditioned Constrained Decoding (DCCD) to map unconstrained semantic drafts onto rigid schemas.
+
+**Consequences:**
+*   **Positive:** Eliminates the 10-30% Projection Tax by isolating the tool consumption footprint to temporary, autophagically destructed sub-agents. Enables Verification Co-Processing (VCP) to actively repair cache states.
+*   **Negative:** Requires strict maintenance of Epistemic Escrow logic and Saga Compensating Transactions to handle edge-case schema drift without crashing the core execution pipeline.
