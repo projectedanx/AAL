@@ -208,3 +208,25 @@ As the system, I need an autonomous feedback loop to evaluate the physical adher
 *Acceptance Criteria:*
 - Implement `MultispectralConditioningNode` within DAG canvas (`components/NodeCanvas.tsx`).
 - Graph traversing engine (`services/graphExecutor.ts`) binds parameters and constraints into explicit topologies.
+
+### Epic 12: Zero-Trust UASTP Saga Orchestration
+**Description:** Compile Unified Agentic Skill & Tool Protocol (UASTP) Cognitive Contracts into declarative GitHub Actions workflows. Avoid Catastrophic State Drift through an isomorphic AST mapping of Saga Forward and Compensating Transactions.
+
+#### User Stories & Acceptance Criteria
+**US12.1: Isomorphic GitHub Actions AST Compilation**
+As a pipeline orchestrator, I want my UASTP contracts compiled into deterministic GitHub Actions steps so that ephemeral deployments and their rollbacks execute reliably.
+*Acceptance Criteria:*
+- Implement `.github/workflows/uastp-saga-recovery.yml`.
+- Enforce automated constraints (OIDC, commit SHA pinning).
+
+**US12.2: Epistemic Escrow Escaping**
+As a Site Reliability Engineer, I want the CI pipeline to immediately halt and trigger a ChatOps webhook if a Compensating Transaction fails, preventing further state mutation.
+*Acceptance Criteria:*
+- Implement an Epistemic Escrow step bound to `if: failure()`.
+- Ensure output exits with code 1 and writes a JUR block if rollback steps fail.
+
+**US12.3: Harness Simulating**
+As an interpretability researcher, I want to mathematically simulate the Epistemic Latent Heat and SSI decay to ensure the topological architecture holds.
+*Acceptance Criteria:*
+- Implement `scripts/scos_harness_sim.py`.
+- Covers Sheaf Cohomology, Vietoris-Rips beta-1 collapses, and MCP mereology.

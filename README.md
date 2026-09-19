@@ -97,3 +97,11 @@ This repository now implements the **Qualitative Experience Database (QED)** arc
 
 ## Architectural Refactoring: MCP Modularization
 Following an Architectural Senescence Audit, the monolithic `mcp_server.ts` "God Object" has been decoupled. All tool registrations have been extracted into the modular `src/mcp_tools/` directory (Agent Tools, Core Tools, and Scar Tools), maintaining JSON-RPC Stdio contract integrity while significantly reducing cognitive complexity.
+## UASTP Saga Recovery
+This repository enforces an isomorphic mapping from Unified Agentic Skill & Tool Protocol (UASTP) declarative contracts to zero-entropy GitHub Actions ASTs. To prevent Catastrophic State Drift, stateful deviations caused by probabilistic agent decisions are wrapped in **Forward Transactions**, **Verification Gates**, and **Compensating Transactions** (via `.github/workflows/uastp-saga-recovery.yml`). If rollback fails, the Epistemic Escrow Circuit Breaker halts CI/CD.
+
+## Research & Harness Simulations
+The `scripts/scos_harness_sim.py` implements mathematical verification for three research inquiries:
+1. **Topological Manifold Tearing**: Simulating Argocd and GitOps Sheaf Cohomology.
+2. **Persistent Homology of Attention-Sink Cavities**: Analyzing ContextLock mitigations on beta-1 loops.
+3. **Non-Monotonic Saga Compensations**: Belnapian 4-valued logic to track orthogonality during API handshakes.

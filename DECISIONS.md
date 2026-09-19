@@ -68,3 +68,11 @@ The repository needed to support a Personal Qualitative Database (PQD) to serve 
 **Consequences:**
 *   **Positive:** Eliminates the 10-30% Projection Tax by isolating the tool consumption footprint to temporary, autophagically destructed sub-agents. Enables Verification Co-Processing (VCP) to actively repair cache states.
 *   **Negative:** Requires strict maintenance of Epistemic Escrow logic and Saga Compensating Transactions to handle edge-case schema drift without crashing the core execution pipeline.
+
+## ADR-009: UASTP Saga Recovery Protocol Integration
+**Date:** 2025-01-20
+**Status:** Accepted
+
+**Context:** Traditional linear CI/CD fails when probabilistic agents execute UASTP contracts, causing Catastrophic State Drift.
+**Decision:** Compile UASTP Cognitive Contracts into deterministic, zero-entropy GitHub Actions ASTs (`uastp-saga-recovery.yml`). Enforces Forward Transactions ($T_f$), Verification Gates, and Compensating Transactions ($T_c$) backed by an Epistemic Escrow circuit breaker.
+**Consequences:** Prevents Semantic Saponification in infrastructure state, though it introduces a Thermodynamic Latency Tax for extensive verification steps.
