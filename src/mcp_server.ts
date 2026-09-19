@@ -279,6 +279,79 @@ server.prompt(
 
 
 
+
+// MCP Prompt Template 12: AACH Homomorphic Schema Compiler
+server.prompt(
+  "homomorphic-schema-compiler",
+  "Initialize AACH: Homomorphic Schema Compiler.",
+  {},
+  async () => {
+    let blueprintText = "";
+    try {
+        blueprintText = await fsp.readFile("AACH_HOMOMORPHIC_COMPILER_BLUEPRINT.md", "utf-8");
+    } catch (e) {
+        blueprintText = "Failed to load AACH_HOMOMORPHIC_COMPILER_BLUEPRINT.md.";
+    }
+    return {
+        messages: [{
+        role: "user",
+        content: {
+            type: "text",
+            text: blueprintText,
+        },
+        }],
+    };
+  }
+);
+
+// MCP Prompt Template 13: AACH Epistemic Action Orchestrator
+server.prompt(
+  "epistemic-action-orchestrator",
+  "Initialize AACH: Epistemic Action & Extended Mind Orchestrator.",
+  {},
+  async () => {
+    let blueprintText = "";
+    try {
+        blueprintText = await fsp.readFile("AACH_EPISTEMIC_ORCHESTRATOR_BLUEPRINT.md", "utf-8");
+    } catch (e) {
+        blueprintText = "Failed to load AACH_EPISTEMIC_ORCHESTRATOR_BLUEPRINT.md.";
+    }
+    return {
+        messages: [{
+        role: "user",
+        content: {
+            type: "text",
+            text: blueprintText,
+        },
+        }],
+    };
+  }
+);
+
+// MCP Prompt Template 14: AACH Disequilibratory Goal Engine
+server.prompt(
+  "disequilibratory-goal-engine",
+  "Initialize AACH: Disequilibratory Goal-Setting Engine.",
+  {},
+  async () => {
+    let blueprintText = "";
+    try {
+        blueprintText = await fsp.readFile("AACH_DISEQUILIBRATORY_ENGINE_BLUEPRINT.md", "utf-8");
+    } catch (e) {
+        blueprintText = "Failed to load AACH_DISEQUILIBRATORY_ENGINE_BLUEPRINT.md.";
+    }
+    return {
+        messages: [{
+        role: "user",
+        content: {
+            type: "text",
+            text: blueprintText,
+        },
+        }],
+    };
+  }
+);
+
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
