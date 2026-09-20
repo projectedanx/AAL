@@ -15,6 +15,21 @@ The application utilizes specialized autonomous agents (represented internally b
 *   **`types.ts`**: Centralized TypeScript definitions for Pipeline nodes, edges, and generation matrices.
 
 
+## Epistemic Cognitive Harness & PEACE Meta-Architecture
+
+To bridge the "thought-action gap" (where high-fidelity internal representations decouple from behavioral execution), this repository implements the **Epistemic Cognitive Harness** based on the **PEACE Meta-Architecture**:
+
+1. **P**riors (Retrieval Module): Extracts contextual priors.
+
+2. **E**xploration (Cognition Module / System 1): Generates fast associative hypotheses.
+
+3. **A**lignment (Control Module / System 2): BDI logical solver/filter enforcing constraints.
+
+4. **C**ontext (Memory Module): Dynamic context tree (ReCAP) to prevent context drift.
+
+5. **E**xecution (Action Module): Executes authorized commands.
+
+
 ## Autonomous Adaptive Cognitive Harness (AACH)
 This repository implements an AACH multi-layered hybrid control system:
 1. **Execution Layer**: Optimizes low-cost non-reasoning models for task-irrelevant token selections.
