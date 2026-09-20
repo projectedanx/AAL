@@ -1,6 +1,5 @@
-feat: Implement Parsimonious Architecture Protocol (PAP) and Occam Loss Compiler
+fix: Resolve CI failures in Epistemic Guard
 
-- Created `scripts/pap_occam_razor_sim.py` implementing the PAP Occam Loss Compiler, Pareto Optimization, and Bayesian Model Reduction (BMR) modules.
-- Updated `architecture.md` to document the 4-module structure of the Parsimonious Architecture Protocol and the verification matrix.
-- Updated `README.md` to reflect the fortification of the Epistemic Cognitive Harness utilizing the PAP.
-- Added SCAR-PAP-013 to `scars.yaml` to log the 'Ptolemaic Epicyclic Curve-Fitting' (over-fitting) failure mode and mitigation strategy.
+- Added `ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true` to bypass the Node 20 deprecation warning causing errors in GitHub Actions.
+- Set `ubuntu-latest` instead of `ubuntu-24.04`.
+- Disabled specific smells in `dirty-waters-action` which was throwing unrecognized arguments error in Python due to incorrect formatting.
