@@ -193,3 +193,36 @@ To mitigate **Agency Laundering** and evaluate **Conceptual Blending Theory (CBT
 1. **Chrono-Topological Tracker (`ChronoTopologicalTracker`):** Uses Zigzag Persistence Homology conceptual analogues to identify $b_0$ disjoint set component spikes (Semantic Fragmentation) and $b_1$ logical cycles (Contradictions).
 2. **Speculative Abstract Interpretation Engine (`SpeculativeAbstractInterpretationEngine`):** Converts the layout into a Product Requirements Prompt (PRP) via the `VisualToDSLCompiler` and sweeps it to mathematically enforce limits such as Data Residency and State Mutation.
 3. **Chaos Engine (`ChaosEngine`):** Automates the injection of epistemic pathogens (Concept Drift, Instrumental Convergence, Semantic Ambiguity) to syntheticly simulate **Frictionless Usability** collapse and rigorously trip the **Epistemic Escrow Circuit Breaker** (`triggerEpistemicEscrow`) over the CFDI bounds of $0.42$.
+
+### Parsimonious Architecture Protocol (PAP)
+
+To implement Occam's Razor inside the automated scientific reasoning system and address systemic failure modes like overfitting (Ptolemaic Epicyclic Curve-Fitting), this architecture utilizes the **Parsimonious Architecture Protocol (PAP)**.
+
+PAP acts as an epistemic gatekeeper by compiling scientific theories into directed acyclic graphs and programmatically enforcing the "Simplest Adequate Approximation" using a structural complexity penalty (Occam Loss Score).
+
+#### PAP 4-Module Structure
+
+1. **Ontological Commitment Engine (KRR)**
+   - Formulates competing graphs G_1 (Simple) and G_2 (Complex).
+   - Binds each node to empirical variables and verification metrics.
+
+2. **Occam Loss Compiler**
+   - Computes complexity score C(G) based on parameter dimension and assumption density.
+   - Evaluates prediction error E(G) against real-world test sets.
+
+3. **Pareto Optimization Module**
+   - Runs multi-objective gradient descent on the Complexity-Accuracy frontier.
+   - Selects the "Simplest Adequate Approximation" to prevent greedy reductionism.
+
+4. **Continuous Falsification Unit**
+   - Subjects the chosen model to asymptotic edge-case stress-testing.
+   - Detects model breakdown to trigger iterative re-parameterization.
+
+#### PAP Verification Matrix
+
+| Module | Input | Output | Verification Metric | Source Grounding |
+| :--- | :--- | :--- | :--- | :--- |
+| **Ontological Commitment** | Raw Empirical Data | Directed Acyclic Graph (DAG) | Minimum Consistent (MINCON) argument structure. | |
+| **Occam Loss Compiler** | Competing Theories ($T_1, T_2$) | Loss Score ($\mathcal{L}_{\text{Occam}}$) | Structural complexity penalty matching Bayesian marginal likelihood. | |
+| **Pareto Optimization** | Competing Graphs | Optimal Model ($M^*$) | Distance to the Pareto frontier of simplicity vs. accuracy. | |
+| **Continuous Falsification** | Chosen Model ($M^*$) | Falsification Target | Detection of a single $3\sigma$ anomaly (Modus Tollens). | |

@@ -62,3 +62,11 @@
     description: Attempting to optimize purely for geometric intersection and strict JSON-LD schema adherence inadvertently proxies abstract geometry for human empathy. The algorithm can step over logical collisions, reporting a false victory (Resolution Collapse) if the adaptive step size eclipses the mechanical tolerance (ϵ).
     mitigation: Implement Golden Scar Protocol and surface contradictions via JUR rather than forcing structural JSON resolution.
     status: mitigated_via_jur
+
+  - id: SCAR-PAP-013
+    type: EPISTEMIC_FAILURE
+    trigger: Ptolemaic Epicyclic Curve-Fitting (Over-fitting)
+    description: Models tend toward maximum likelihood over-fitting by multiplying free parameters to capture noise rather than underlying generative signals, leading to high-dimensional models with severe marginal likelihood penalties.
+    remedy: Parsimonious Architecture Protocol (PAP)
+    enforcement_mechanism: Implemented `scripts/pap_occam_razor_sim.py` which utilizes an Occam Loss Compiler, Pareto Optimization for the 'Simplest Adequate Approximation', and Bayesian Model Reduction to prune unverified assumptions.
+    status: MITIGATED

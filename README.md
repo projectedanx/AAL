@@ -17,6 +17,8 @@ The application utilizes specialized autonomous agents (represented internally b
 
 ## Epistemic Cognitive Harness & PEACE Meta-Architecture
 
+This harness is further fortified by the **Parsimonious Architecture Protocol (PAP)**, a framework designed to automate theory selection using an Occam Loss Compiler. PAP prevents over-fitting ("Ptolemaic Epicyclic Curve-Fitting") by programmatically enforcing the "Simplest Adequate Approximation" via Pareto optimization, Bayesian Model Reduction (BMR), and Isomorphic Model Travel Validation.
+
 To bridge the "thought-action gap" (where high-fidelity internal representations decouple from behavioral execution), this repository implements the **Epistemic Cognitive Harness** based on the **PEACE Meta-Architecture**:
 
 1. **P**riors (Retrieval Module): Extracts contextual priors.
@@ -124,4 +126,5 @@ This repository enforces an isomorphic mapping from Unified Agentic Skill & Tool
 The `scripts/scos_harness_sim.py` implements mathematical verification for three research inquiries:
 1. **Topological Manifold Tearing**: Simulating Argocd and GitOps Sheaf Cohomology.
 2. **Persistent Homology of Attention-Sink Cavities**: Analyzing ContextLock mitigations on beta-1 loops.
+4. **Parsimonious Architecture Protocol (PAP)**: Utilizing an Occam Loss Compiler for theory selection via `scripts/pap_occam_razor_sim.py` to test Bayesian Model Reduction and Isomorphic Mapping.
 3. **Non-Monotonic Saga Compensations**: Belnapian 4-valued logic to track orthogonality during API handshakes.
