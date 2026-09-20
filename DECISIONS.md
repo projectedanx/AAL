@@ -76,3 +76,11 @@ The repository needed to support a Personal Qualitative Database (PQD) to serve 
 **Context:** Traditional linear CI/CD fails when probabilistic agents execute UASTP contracts, causing Catastrophic State Drift.
 **Decision:** Compile UASTP Cognitive Contracts into deterministic, zero-entropy GitHub Actions ASTs (`uastp-saga-recovery.yml`). Enforces Forward Transactions ($T_f$), Verification Gates, and Compensating Transactions ($T_c$) backed by an Epistemic Escrow circuit breaker.
 **Consequences:** Prevents Semantic Saponification in infrastructure state, though it introduces a Thermodynamic Latency Tax for extensive verification steps.
+
+## ADR-010: Integration of Action-Alignment Loss
+**Date:** 2025-02-15
+**Status:** Accepted
+
+**Context:** Agents modeling sequential games exhibit a "thought-action gap", accurately predicting opponent actions but defaulting to unexploitative Nash equilibria rather than optimal Best Responses.
+**Decision:** Integrate `ActionAlignmentLoss` (PyTorch) to mathematically penalize deviations from the optimal Best Response based on internal predictions. Implemented a Closed-Loop BDI ReCAP harness to symbolically veto non-optimal outputs.
+**Consequences:** Eliminates the Nash trap and ensures functional action alignment, but introduces temperature tuning complexity for gradient smoothing.
