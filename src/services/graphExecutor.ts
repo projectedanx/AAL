@@ -5,6 +5,9 @@ import { generateAestheticImages } from './geminiService';
 import { GeometricCausalSculptor, NonEuclideanTopology, PhantomDimension } from '../../PROJECT_AURELIUS/GeometricCognition';
 import { PlausibilityOracle, ProvenanceTracker, AutonomousPromptOptimizer } from '../../PROJECT_AURELIUS/OracleFeedbackLoop';
 import { applySemanticFirewall, computeSemanticDriftScore, triggerEpistemicEscrow } from './qedSecurityLayer.js';
+import { ChronoTopologicalTracker } from './chronoTopologicalTracker.js';
+import { VisualToDSLCompiler, SpeculativeAbstractInterpretationEngine } from './speculativeAbstractInterpreter.js';
+import { ChaosEngine, EpistemicPathogenType } from './chaosEngine.js';
 
 
 /**
@@ -392,6 +395,74 @@ export const executeGraph = async (nodes: Node[], edges: Edge[]): Promise<Genera
     // --- VORTEX-ARCHITECT Topological Validation ---
     // --- KIRA-7 Topological Validation ---
 
+    // --- CHRONO-TOPOLOGICAL TRACKING (RP1) ---
+    const chronoTracker = new ChronoTopologicalTracker();
+    if (chronoTracker.detectSemanticFragmentation(nodes, edges)) {
+        console.warn("CHRONO-TOPOLOGY VALIDATION FAILED: Semantic Fragmentation detected.");
+        return [{
+            id: "chrono-b0-halt",
+            basePrompt: "EPISTEMIC_ESCROW",
+            parameter: AestheticParameter.STYLE,
+            variations: [],
+            images: [],
+            timestamp: new Date().toISOString(),
+            temperature: 0,
+            jur: {
+                geometricDensityScore: 1.0,
+                ontologicalShear: "Chrono-Topological b_0 spike detected. Map is disjointed.",
+                contradictions: ["SEMANTIC_FRAGMENTATION"],
+                goldenRatioApplied: true
+            }
+        }];
+    }
+
+    if (chronoTracker.detectLogicalContradiction(nodes, edges)) {
+        console.warn("CHRONO-TOPOLOGY VALIDATION FAILED: Logical Contradiction / Cycle detected.");
+        return [{
+            id: "chrono-b1-halt",
+            basePrompt: "EPISTEMIC_ESCROW",
+            parameter: AestheticParameter.STYLE,
+            variations: [],
+            images: [],
+            timestamp: new Date().toISOString(),
+            temperature: 0,
+            jur: {
+                geometricDensityScore: 1.0,
+                ontologicalShear: "Chrono-Topological b_1 cycle detected. Logical deadlock.",
+                contradictions: ["LOGICAL_CONTRADICTION"],
+                goldenRatioApplied: true
+            }
+        }];
+    }
+
+    // --- SPECULATIVE ABSTRACT INTERPRETATION (RP2) ---
+    const dslCompiler = new VisualToDSLCompiler();
+    const saie = new SpeculativeAbstractInterpretationEngine();
+    const prp = dslCompiler.compile(nodes);
+    if (!saie.verifyCompliance(prp)) {
+         return [{
+            id: "saie-compliance-halt",
+            basePrompt: "EPISTEMIC_ESCROW",
+            parameter: AestheticParameter.STYLE,
+            variations: [],
+            images: [],
+            timestamp: new Date().toISOString(),
+            temperature: 0,
+            jur: {
+                geometricDensityScore: 1.0,
+                ontologicalShear: "SAIE Contract Compilation Failed",
+                contradictions: ["COMPLIANCE_VIOLATION"],
+                goldenRatioApplied: true
+            }
+        }];
+    }
+
+    // --- CHAOS ENGINE SIMULATION (RP3) ---
+    const chaosEngine = new ChaosEngine(true);
+    // Inject a pathogen for stress-testing SMM
+    chaosEngine.injectPathogen(EpistemicPathogenType.SEMANTIC_AMBIGUITY, 0.8);
+    const syntheticCfd = chaosEngine.calculateChaosPerturbation();
+
     const mycelialJUR = validateMycelialTopology(nodes);
     if (mycelialJUR) {
         console.warn("MYCELIAL VALIDATION FAILED: ", mycelialJUR.ontologicalShear);
@@ -525,7 +596,7 @@ export const executeGraph = async (nodes: Node[], edges: Edge[]): Promise<Genera
     }));
     const sds = computeSemanticDriftScore(retrievedNodes, []);
 
-    const cfd = 0.1; // Simulated CFD
+    const cfd = 0.1 + syntheticCfd; // Simulated CFD + Chaos
     if (triggerEpistemicEscrow(sds, cfd)) {
         return [{
             id: "escrow-halt",

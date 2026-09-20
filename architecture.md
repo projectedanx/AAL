@@ -185,3 +185,11 @@ This application employs the JIT Swarm Orchestrator architecture to decouple the
     Failed trajectories are serialized as Symbolic Scars in the Scar Tissue Archive (STA). The Failure-Informed Prompt Inversion (F-IPI) engine mutates the master constitution, prepending scars as negative constraints to project repulsive forces against historical errors.
 7.  **Justified Uncertainty Reports (JUR):**
     Upon entering escrow, token emissions are frozen, and a cryptographically bound JUR is exported to hand over cognitive load to a human operator.
+
+### Chaos-Engineered Falsification & The IKEA Effect Harness
+
+To mitigate **Agency Laundering** and evaluate **Conceptual Blending Theory (CBT)** models inside the cognitive harness, the architecture has been expanded with three active verification systems tracking the team's visual SMM (Shared Mental Model):
+
+1. **Chrono-Topological Tracker (`ChronoTopologicalTracker`):** Uses Zigzag Persistence Homology conceptual analogues to identify $b_0$ disjoint set component spikes (Semantic Fragmentation) and $b_1$ logical cycles (Contradictions).
+2. **Speculative Abstract Interpretation Engine (`SpeculativeAbstractInterpretationEngine`):** Converts the layout into a Product Requirements Prompt (PRP) via the `VisualToDSLCompiler` and sweeps it to mathematically enforce limits such as Data Residency and State Mutation.
+3. **Chaos Engine (`ChaosEngine`):** Automates the injection of epistemic pathogens (Concept Drift, Instrumental Convergence, Semantic Ambiguity) to syntheticly simulate **Frictionless Usability** collapse and rigorously trip the **Epistemic Escrow Circuit Breaker** (`triggerEpistemicEscrow`) over the CFDI bounds of $0.42$.

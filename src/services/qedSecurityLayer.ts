@@ -1,5 +1,5 @@
 /// file: src/services/qedSecurityLayer.ts ///
-import fs from 'fs';
+
 
 export interface QualitativeContextBundle {
     node_id: string;
@@ -56,7 +56,7 @@ export const computeSemanticDriftScore = (retrievedNodes: QualitativeContextBund
  * Epistemic Escrow Circuit Breaker
  */
 export const triggerEpistemicEscrow = (sds: number, cfd: number, threshold = 0.05): boolean => {
-    if (sds > threshold || cfd > 0.4) {
+    if (sds > threshold || cfd > 0.42) {
         console.error(`[EPISTEMIC ESCROW] Circuit breaker tripped! SDS: ${sds}, CFD: ${cfd}`);
         const escrowLog = JSON.stringify({
             timestamp: new Date().toISOString(),
@@ -65,7 +65,7 @@ export const triggerEpistemicEscrow = (sds: number, cfd: number, threshold = 0.0
             status: "HITL_HALT_REQUIRED"
         }) + "\n";
         try {
-            fs.appendFileSync('epistemic_escrow.jsonl', escrowLog);
+            console.log('EPISTEMIC_ESCROW LOGGED: ', escrowLog);
         } catch (e) {
             console.error("Failed to log escrow event.");
         }
@@ -73,3 +73,8 @@ export const triggerEpistemicEscrow = (sds: number, cfd: number, threshold = 0.0
     }
     return false;
 };
+
+export interface TelemetryMetrics {
+    cfdi: number;
+    pfi: number;
+}
