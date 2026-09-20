@@ -23,6 +23,21 @@ The data structures have shifted from linear state objects to Directed Acyclic G
 Additionally, `EvolutionaryLineage` models have been implemented to track 'breeding' across nodes, mathematically structuring offspring characteristics using genetic weights.
 
 
+### Epistemic Cognitive Harness (PEACE Meta-Architecture)
+
+The architecture integrates the PEACE Meta-Architecture to resolve the thought-action gap. This harness decouples intuitive proposal generation from deliberative logical validation.
+
+- **Retrieval Module**: Contextual priors (RAG).
+
+- **Cognition Module**: Fast, associative hypothesis generation (System 1).
+
+- **Control Module**: BDI solver enforcing logical consistency via symbolic verification.
+
+- **Memory Module**: Dynamic Context Tree (ReCAP) managing state recursively.
+
+- **Action Module**: Environmental execution.
+
+
 ### PHASE 2 TOPOLOGY: DAG Mapping & KUT Integration
 
 ```mermaid

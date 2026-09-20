@@ -84,3 +84,12 @@ The repository needed to support a Personal Qualitative Database (PQD) to serve 
 **Context:** Agents modeling sequential games exhibit a "thought-action gap", accurately predicting opponent actions but defaulting to unexploitative Nash equilibria rather than optimal Best Responses.
 **Decision:** Integrate `ActionAlignmentLoss` (PyTorch) to mathematically penalize deviations from the optimal Best Response based on internal predictions. Implemented a Closed-Loop BDI ReCAP harness to symbolically veto non-optimal outputs.
 **Consequences:** Eliminates the Nash trap and ensures functional action alignment, but introduces temperature tuning complexity for gradient smoothing.
+
+## Decision: Epistemic Cognitive Harness Implementation
+**Date:** 2024-05-XX (Simulated)
+**Context:** The system suffered from the "thought-action gap," where agents correctly predicted opponent states but failed to execute utility-maximizing policies (collapsing to Nash equilibria). Standard sequential prompting also led to infinite loops during blocked states (Sussman Anomaly).
+**Decision:** We implemented the Epistemic Cognitive Harness governed by the PEACE Meta-Architecture to decouple prediction from action execution.
+1.  **Mechanistic Lookback Circuit Distillation:** Implemented a composite loss (`ActionAlignmentLoss` and `CompositeDistillationLoss`) with CKA representational similarity to force alignment of reasoning algorithms during model distillation.
+2.  **Recursive Context-Aware Planning (ReCAP):** Shifted from linear context windows to Dynamic Context Trees, enabling upward backtracking and symbolic verification to resolve deadlocks.
+3.  **Temporal-Aware Hierarchical Cognitive RL (TimeHC-RL):** Segmented execution into a slow-frequency System 2 (Macro-Policy) and a high-frequency System 1 (Micro-Policy) to prevent the "CoT deliberation penalty" in fast interactions.
+**Consequences:** Resolved the Nash Trap in sequential games, enabled automatic deadlock resolution in simulated environments, and prevented context drift in long-horizon interactions.
