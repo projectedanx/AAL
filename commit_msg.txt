@@ -1,7 +1,6 @@
-feat: Implement PyTorch Action-Alignment Loss and BDI ReCAP harness
+feat: Implement Parsimonious Architecture Protocol (PAP) and Occam Loss Compiler
 
-- Created `ActionAlignmentLoss` PyTorch module to mathematically eliminate the "thought-action gap" in sequential agent simulations by penalizing deviations from oracle Best Responses.
-- Implemented `BDIRecapSimulator` in Python to demonstrate Closed-Loop BDI verification, vetoing non-optimal logic via simulated Clingo interception.
-- Added comprehensive unit testing for the Nash Trap edge case.
-- Logged ADR-010 to `docs/adr/` and `DECISIONS.md`.
-- Updated `README.md` to surface Action-Alignment capabilities to the principal layer.
+- Created `scripts/pap_occam_razor_sim.py` implementing the PAP Occam Loss Compiler, Pareto Optimization, and Bayesian Model Reduction (BMR) modules.
+- Updated `architecture.md` to document the 4-module structure of the Parsimonious Architecture Protocol and the verification matrix.
+- Updated `README.md` to reflect the fortification of the Epistemic Cognitive Harness utilizing the PAP.
+- Added SCAR-PAP-013 to `scars.yaml` to log the 'Ptolemaic Epicyclic Curve-Fitting' (over-fitting) failure mode and mitigation strategy.
