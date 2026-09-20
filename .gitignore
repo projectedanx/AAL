@@ -23,3 +23,4 @@ dist-ssr
 *.sln
 *.sw?
 workspace/scratch/
+src/models/__pycache__

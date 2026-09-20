@@ -21,6 +21,11 @@ This repository implements an AACH multi-layered hybrid control system:
 2. **Deliberative Layer**: Reason orchestrators actively initiating disequilibratory goal updates.
 3. **Metacognitive Layer**: Continuous Falsification Engine employing a Reviewer Agent for Algorithmic Reparation.
 
+## Action-Alignment Loss & BDI Cognitive Scaffolding
+To eliminate the "thought-action gap" (where agents predict the optimal state but fail to execute the utility-maximizing policy, collapsing to a Nash equilibrium), this repository implements:
+1.  **Differentiable Action-Alignment Loss**: A PyTorch module (`src/models/action_alignment_loss.py`) that minimizes the step-wise regret between the agent's policy and the oracle Best Response.
+2.  **Closed-Loop BDI ReCAP**: A neuro-symbolic simulation (`scripts/bdi_recap_sim.py`) demonstrating how Belief-Desire-Intention (BDI) logical vetos trigger Context-Aware Replanning to strictly enforce game-theoretic optimality.
+
 ## Developer Setup
 
 **Prerequisites:**

@@ -1,6 +1,7 @@
-feat: Implement PKC Framework integration (Context Engineering 2.0)
+feat: Implement PyTorch Action-Alignment Loss and BDI ReCAP harness
 
-- Added `pkc_manifest.yml` as the declarative schema boundary.
-- Implemented Git-Anchored Context Hashing CLI Pipeline (`.git/hooks/pre-commit`).
-- Created Automated Flesh-to-Symbol Ingestion Loop (`zotero_ingestion_loop.py`).
-- Updated `README.md` and `architecture.md` with PKC framework concepts.
+- Created `ActionAlignmentLoss` PyTorch module to mathematically eliminate the "thought-action gap" in sequential agent simulations by penalizing deviations from oracle Best Responses.
+- Implemented `BDIRecapSimulator` in Python to demonstrate Closed-Loop BDI verification, vetoing non-optimal logic via simulated Clingo interception.
+- Added comprehensive unit testing for the Nash Trap edge case.
+- Logged ADR-010 to `docs/adr/` and `DECISIONS.md`.
+- Updated `README.md` to surface Action-Alignment capabilities to the principal layer.
