@@ -128,6 +128,8 @@ The `scripts/scos_harness_sim.py` implements mathematical verification for three
 2. **Persistent Homology of Attention-Sink Cavities**: Analyzing ContextLock mitigations on beta-1 loops.
 4. **Parsimonious Architecture Protocol (PAP)**: Utilizing an Occam Loss Compiler for theory selection via `scripts/pap_occam_razor_sim.py` to test Bayesian Model Reduction and Isomorphic Mapping.
 3. **Non-Monotonic Saga Compensations**: Belnapian 4-valued logic to track orthogonality during API handshakes.
+4. **N2E-CED Chrono-Topological Tracking**: Simulating circular contradictions (Betti-1 loops) in asymmetric multi-agent dialogue (`scripts/n2e_ced_sim.py`).
+5. **Möbius Constitutional Verifier (MCV)**: Monitoring Concept-to-Code Decay and topological invariants across recursive refactoring cycles (`scripts/mcv_sim.py`).
 
 ## VCS Layer 3 Research Integrations
 
