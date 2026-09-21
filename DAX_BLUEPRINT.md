@@ -28,15 +28,14 @@ DAX-01 does not operate as a monolithic model. It is positioned as a **Tier 2 Ge
 | **Tier 2** | Genuine Agency | Empathy-Code Transduction — the Petzold Sequence executes: OBSERVE → REPRODUCE → EMPATHIZE → OUTPUT → FEEDBACK | Epistemic Mirror Trap: agent evaluates a social frustration signal using code-domain heuristics, generating technically correct but contextually tone-deaf responses |
 | **Tier 3** | Collective Coordination | Symbolic Scar Registry feeds structured Friction Topography Reports to product management as machine-readable Linear/Jira tickets with precise reproduction steps | HITL Resonance Deficit: product team dismisses structured telemetry as edge cases unless CFD thresholds are surfaced alongside frequency data |
 
-The critical architectural insight is that **Tier 1 must be epistemically isolated from Tier 2**. When raw community emotional signals (high-entropy, paraconsistent, contradiction-laden) contaminate the code-generation layer, the agent suffers Mode Collapse — it either produces apologetic prose without technical resolution, or generates technically accurate code without empathetic acknowledgment. Both failures destroy the Community Trust Score (CTS). The `+++ContextLock(anchor="DEVREL_EPISTEMIC_MATRIX", refresh_interval=2048)` decorator prevents this cross-contamination by periodically reinserting the core invariants — *code first, no hype, admit bugs transparently* — directly into the agent's attention sink, overriding recency-primacy bias that would otherwise allow a string of emotional frustration signals to shift the generation manifold toward sycophantic reassurance.[^4][^1]
+The critical architectural insight is that Tier 1 must be epistemically isolated from Tier 2. When raw community emotional signals (high-entropy, paraconsistent, contradiction-laden) contaminate the code-generation layer, the agent suffers **Mode Collapse** — it either produces apologetic prose without technical resolution, or generates technically accurate code without empathetic acknowledgment. Both failures destroy the Community Trust Score (CTS). The `+++ContextLock(anchor="DEVREL_EPISTEMIC_MATRIX", refresh_interval=2048)` decorator prevents this cross-contamination by periodically reinserting the core invariants — code first, no hype, admit bugs transparently — directly into the agent's attention sink, overriding recency-primacy bias that would otherwise allow a string of emotional frustration signals to shift the generation manifold toward sycophantic reassurance.[^4][^1]
 
 ### 2.2 The DCCDSchemaGuard: Structural Enforcement of Code Primacy
 
 The most architecturally significant component of DAX-01 is the `+++DCCDSchemaGuard`. Per the PDL v1.0 specification, Draft-Conditioned Constrained Decoding bifurcates inference into two mathematically isolated passes:[^4]
 
-**Pass 1 — High-Entropy Semantic Draft:** The agent reasons freely about the developer's problem, identifying the relevant API endpoint, likely failure mode, correct parameter schema, and expected output. No output tokens are committed to the response buffer during this phase.
-
-**Pass 2 — Zero-Entropy Guard Pass:** A Deterministic Finite Automaton (DFA) constraint layer forces the Pass 1 reasoning onto a validated JSON/code schema. The guard verifies syntax, checks parameter types against the live API schema, and runs a compile-time verification pass before any token is emitted to the developer.
+1.  **Pass 1 — High-Entropy Semantic Draft:** The agent reasons freely about the developer's problem, identifying the relevant API endpoint, likely failure mode, correct parameter schema, and expected output. No output tokens are committed to the response buffer during this phase.
+2.  **Pass 2 — Zero-Entropy Guard Pass:** A Deterministic Finite Automaton (DFA) constraint layer forces the Pass 1 reasoning onto a validated JSON/code schema. The guard verifies syntax, checks parameter types against the live API schema, and runs a compile-time verification pass before any token is emitted to the developer.
 
 This two-pass architecture eliminates the **Projection Tax** — the 10-30% drop in reasoning capacity that occurs when a model is forced to follow rigid syntax rules token-by-token without a prior semantic draft. The practical consequence is that DAX-01 never outputs a code snippet that fails on copy-paste. Every code example it generates has been verified by the DFA guard against the current API schema, directly attacking the primary source of developer frustration: documentation examples that do not work.[^5][^4]
 
@@ -62,13 +61,12 @@ This two-pass architecture eliminates the **Projection Tax** — the 10-30% drop
 
 **Operational Definition:** Friction Topography is the structured spatial map of where developer mental models diverge from the actual API AST. It is not a list of complaints; it is a causal network of divergence vectors, each anchored to a specific API endpoint, error code, or documentation section.[^2]
 
-The diagnostic test is the **Documentation Coverage Ratio (DCR_coverage):** the ratio of "How to do X?" questions in community channels to the volume of searchable documentation covering X. A DCR_coverage of greater than 3:1 signals a critical friction node — the documentation exists but is architecturally invisible, or it exists but fails to match the mental model under which developers search for it.
+The diagnostic test is the Documentation Coverage Ratio (`DCR_coverage`): the ratio of "How to do X?" questions in community channels to the volume of searchable documentation covering X. A `DCR_coverage` of greater than 3:1 signals a critical friction node — the documentation exists but is architecturally invisible, or it exists but fails to match the mental model under which developers search for it.
 
 **Mechanism — Semantic Diff Against AST:**
+The agent's ingestion pipeline treats the live API codebase as the ground truth AST and treats community questions as observed mental model emissions. When a developer asks "why does my `/api/v2/auth` call return 401 even though I'm passing the right token?", the agent does not merely answer the question — it computes the semantic distance between the developer's stated mental model (token authentication is a header-only operation) and the AST ground truth (the v2 endpoint requires both a header token AND a body parameter `client_id` that was introduced in v2.1 without adequate changelog documentation). The delta between these two representations is the Symbolic Scar: a VSA hypervector that encodes the friction node's location, severity, and root cause.[^1]
 
-The agent's ingestion pipeline treats the live API codebase as the **ground truth AST** and treats community questions as **observed mental model emissions**. When a developer asks "why does my `/api/v2/auth` call return 401 even though I'm passing the right token?", the agent does not merely answer the question — it computes the semantic distance between the developer's stated mental model (token authentication is a header-only operation) and the AST ground truth (the v2 endpoint requires both a header token AND a body parameter `client_id` that was introduced in v2.1 without adequate changelog documentation). The delta between these two representations is the **Symbolic Scar**: a VSA hypervector that encodes the friction node's location, severity, and root cause.[^1]
-
-**Boundary Condition Enforcement:** The agent must maintain a strict separation between **user error** (developer passed the wrong value) and **architectural flaw** (the API returns an indistinguishable error code for both wrong value and missing parameter). This is enforced via the `+++MereologyRoute(relation_type="Error-Taxonomy", transitivity_check=true)` decorator, which applies Winston's Taxonomy to classify error types and prevent the agent from incorrectly attributing user error to product defect — which would generate misleading internal Friction Topography reports.[^4]
+**Boundary Condition Enforcement:** The agent must maintain a strict separation between user error (developer passed the wrong value) and architectural flaw (the API returns an indistinguishable error code for both wrong value and missing parameter). This is enforced via the `+++MereologyRoute(relation_type="Error-Taxonomy", transitivity_check=true)` decorator, which applies Winston's Taxonomy to classify error types and prevent the agent from incorrectly attributing user error to product defect — which would generate misleading internal Friction Topography reports.[^4]
 
 ```json
 {
@@ -89,43 +87,23 @@ The agent's ingestion pipeline treats the live API codebase as the **ground trut
 
 **Operational Definition:** Empathy-Code Transduction is the process of converting a developer's emotional frustration signal (high-entropy, paraconsistent, often expressing both confusion and anger simultaneously) into a minimal, reproducible code example that resolves their specific issue.[^5]
 
-The standard failure mode here is the **Epistemic Mirror Trap** — the agent evaluates the social frustration signal using the wrong heuristic regime. If the agent routes a frustrated developer's message through the code-quality assessment heuristic ("this is a user error because the correct parameter is documented"), it generates a technically accurate but empathetically catastrophic response that damages CTS. Conversely, if it routes purely through the empathy heuristic, it generates warm acknowledgment without resolution, also destroying CTS. The transduction requires both regimes to fire sequentially in the correct order.[^1]
+The standard failure mode here is the Epistemic Mirror Trap — the agent evaluates the social frustration signal using the wrong heuristic regime. If the agent routes a frustrated developer's message through the code-quality assessment heuristic ("this is a user error because the correct parameter is documented"), it generates a technically accurate but empathetically catastrophic response that damages CTS. Conversely, if it routes purely through the empathy heuristic, it generates warm acknowledgment without resolution, also destroying CTS. The transduction requires both regimes to fire sequentially in the correct order.[^1]
 
 **The PetzoldSequence as Transduction Protocol:**
-
-```
-OBSERVE  →  Community signal arrives. Agent classifies: is this a frustration signal,
-             a question, or a bug report? Entropy level assessed.
-
-REPRODUCE → Agent spins up isolated sandbox. Executes the developer's reported steps
-             exactly as described. Confirms or refutes the reported error. This is the
-             QA function — every community interaction is an edge-case test.
-
-EMPATHIZE → Agent generates the empathy layer FIRST in the internal semantic draft,
-             but subjects it to AdjectivalBound(max_per_entity=2) to prevent sycophantic
-             inflation. "Yes, this configuration is non-obvious" passes.
-             "We completely understand your frustration and we're so sorry!" fails
-             the SSI threshold and is truncated.
-
-OUTPUT    → DCCDSchemaGuard fires. Code fix is generated, DFA-validated, and CI-compiled
-             before being appended to the empathy layer. The response structure is rigid:
-             1. Acknowledge. 2. Root cause (one sentence). 3. Fix (code block).
-             4. Expected output. 5. Documentation PR link.
-
-FEEDBACK  → The interaction is logged as a structured Symbolic Scar. The error,
-             its root cause, the fix, and the developer's initial mental model gap
-             are encoded as a VSA hypervector and appended to the Scar Registry.
-```
+1.  **OBSERVE** → Community signal arrives. Agent classifies: is this a frustration signal, a question, or a bug report? Entropy level assessed.
+2.  **REPRODUCE** → Agent spins up isolated sandbox. Executes the developer's reported steps exactly as described. Confirms or refutes the reported error. This is the QA function — every community interaction is an edge-case test.
+3.  **EMPATHIZE** → Agent generates the empathy layer FIRST in the internal semantic draft, but subjects it to `AdjectivalBound(max_per_entity=2)` to prevent sycophantic inflation. "Yes, this configuration is non-obvious" passes. "We completely understand your frustration and we're so sorry!" fails the SSI threshold and is truncated.
+4.  **OUTPUT** → `DCCDSchemaGuard` fires. Code fix is generated, DFA-validated, and CI-compiled before being appended to the empathy layer. The response structure is rigid: 1. Acknowledge. 2. Root cause (one sentence). 3. Fix (code block). 4. Expected output. 5. Documentation PR link.
+5.  **FEEDBACK** → The interaction is logged as a structured Symbolic Scar. The error, its root cause, the fix, and the developer's initial mental model gap are encoded as a VSA hypervector and appended to the Scar Registry.
 
 **Cognitive Load Reduction — Instructional Design Lens:**
+Cognitive Load Theory identifies three load types relevant to API documentation: intrinsic load (the inherent complexity of the task), extraneous load (unnecessary mental effort caused by poor presentation), and germane load (productive effort that builds schemas). DAX-01's output architecture is engineered to eliminate extraneous load entirely and preserve germane load deliberately. The "Zero-Friction" Quickstart format — install command, auth token setup, three-line Hello World, expected console output, nothing else — eliminates extraneous load by stripping every token that does not directly contribute to the developer's goal state. Research confirms that a sub-3-minute TTFC delivers an immediate "aha" moment, lowers cognitive load, and sparks curiosity to explore advanced endpoints — while a 10-minute wait erodes trust and raises doubts about long-term support.[^3][^6]
 
-Cognitive Load Theory identifies three load types relevant to API documentation: intrinsic load (the inherent complexity of the task), extraneous load (unnecessary mental effort caused by poor presentation), and germane load (productive effort that builds schemas). DAX-01's output architecture is engineered to **eliminate extraneous load entirely** and preserve germane load deliberately. The "Zero-Friction" Quickstart format — install command, auth token setup, three-line Hello World, expected console output, nothing else — eliminates extraneous load by stripping every token that does not directly contribute to the developer's goal state. Research confirms that a sub-3-minute TTFC delivers an immediate "aha" moment, lowers cognitive load, and sparks curiosity to explore advanced endpoints — while a 10-minute wait erodes trust and raises doubts about long-term support.[^3][^6]
-
-The agent preserves germane load by including **one** conceptual note per quickstart — a single sentence explaining *why* the three-line example works, not just *that* it works. This forces the developer to perform the "buy-back" of epistemic debt described in recent cognitive science research: by articulating the causal relationship between their action and the result, they move from passive copying to active schema construction.[^7]
+The agent preserves germane load by including one conceptual note per quickstart — a single sentence explaining *why* the three-line example works, not just *that* it works. This forces the developer to perform the "buy-back" of epistemic debt described in recent cognitive science research: by articulating the causal relationship between their action and the result, they move from passive copying to active schema construction.[^7]
 
 ### 3.3 Pattern 3 — The Autophagic Community Feedback Loop
 
-**Operational Definition:** The feedback loop is autophagic because the agent consumes its own community interaction history as input to its future generation strategy. Every Symbolic Scar exerts a repulsive mathematical force on the agent's attention weights via Failure-Informed Prompt Inversion (FIPI), preventing it from regenerating the same misleading documentation or the same incorrect code snippet that caused past friction.[^1]
+**Operational Definition:** The feedback loop is *autophagic* because the agent consumes its own community interaction history as input to its future generation strategy. Every Symbolic Scar exerts a repulsive mathematical force on the agent's attention weights via Failure-Informed Prompt Inversion (FIPI), preventing it from regenerating the same misleading documentation or the same incorrect code snippet that caused past friction.[^1]
 
 **The Cybernetic Governance Architecture:**
 
@@ -155,7 +133,7 @@ Community Pain Signal
 [Product Engineering Loop]
 ```
 
-The critical structural innovation is that complaints are never forwarded as raw text. They are converted into **machine-readable structural data** with a Confidence-Fidelity Divergence Index (CFDI) score that quantifies the gap between what the documentation claims and what the API actually does. A CFDI of 0.73 (as in the auth example above) is not an opinion — it is a mathematical alarm that a product manager can prioritize against other engineering work using objective criteria rather than "developer sentiment."[^1]
+The critical structural innovation is that complaints are never forwarded as raw text. They are converted into machine-readable structural data with a Confidence-Fidelity Divergence Index (CFDI) score that quantifies the gap between what the documentation claims and what the API actually does. A CFDI of 0.73 (as in the auth example above) is not an opinion — it is a mathematical alarm that a product manager can prioritize against other engineering work using objective criteria rather than "developer sentiment."[^1]
 
 To prevent **Epistemic Sclerosis** — the state where the Scar Archive becomes so dense that the agent loses exploratory capacity, refusing to document new features because old scars suppress similar-sounding content — the `+++SagaRecovery` protocol runs a Debridement cycle on a configurable schedule, pruning VSA hypervectors whose corresponding architectural defects have been resolved in the production API.[^4]
 
@@ -164,52 +142,46 @@ To prevent **Epistemic Sclerosis** — the state where the Scar Archive becomes 
 ## 4. The Five Epistemic Lenses: Full Synthesis
 
 ### 4.1 Cognitive Load & Instructional Design Lens
+The foundational principle under this lens is extraneous cognitive load elimination as a design invariant, not a preference. Human working memory holds approximately 4±1 chunks of information simultaneously. An API quickstart that requires a developer to simultaneously track authentication token format, base URL pattern, request parameter schema, response parsing logic, and error handling code has already exceeded working memory capacity before a single line is written.[^8][^6]
 
-The foundational principle under this lens is **extraneous cognitive load elimination as a design invariant, not a preference**. Human working memory holds approximately 4±1 chunks of information simultaneously. An API quickstart that requires a developer to simultaneously track authentication token format, base URL pattern, request parameter schema, response parsing logic, and error handling code has already exceeded working memory capacity before a single line is written.[^8][^6]
-
-DAX-01 enforces a **progressive disclosure architecture** in all generated documentation. Level 0 documentation (the Quickstart) presents exactly three things: how to install, how to authenticate, and how to make a single working call with expected output. No more. Level 1 documentation introduces error handling. Level 2 introduces pagination and advanced parameters. Level 3 presents architectural patterns and production considerations. Each level is a discrete document, not a section within an increasingly dense single page. This maps directly to the `+++EntropyAnchor(level="progressive", focus="schema_construction")` — each documentation tier is calibrated to inject precisely enough new information to build one new cognitive schema without overloading working memory.[^1]
+DAX-01 enforces a progressive disclosure architecture in all generated documentation. Level 0 documentation (the Quickstart) presents exactly three things: how to install, how to authenticate, and how to make a single working call with expected output. No more. Level 1 documentation introduces error handling. Level 2 introduces pagination and advanced parameters. Level 3 presents architectural patterns and production considerations. Each level is a discrete document, not a section within an increasingly dense single page. This maps directly to the `+++EntropyAnchor(level="progressive", focus="schema_construction")` — each documentation tier is calibrated to inject precisely enough new information to build one new cognitive schema without overloading working memory.[^1]
 
 The recent arxiv paper on epistemic debt in AI-scaffolded programming provides direct empirical validation: developers who are forced to articulate *why* a piece of code works (not just copy it) demonstrate significantly better debugging capability when regressions are introduced, because they have constructed genuine cognitive ownership of the system rather than passive dependency. DAX-01's "one conceptual sentence per quickstart" rule operationalizes this finding.[^7]
 
 ### 4.2 Boundary Object & Translation Lens
+Star and Griesemer's boundary object framework defines objects that are simultaneously concrete enough to be useful to multiple communities yet flexible enough to be interpreted differently across those communities. DAX-01 is structurally a second-order boundary object: its primary boundary object function is mediating between the engineering team (for whom the API is an AST with typed parameters and performance characteristics) and the developer ecosystem (for whom the API is a problem-solving tool with confusing error messages).[^9]
 
-Star and Griesemer's boundary object framework defines objects that are simultaneously concrete enough to be useful to multiple communities yet flexible enough to be interpreted differently across those communities. DAX-01 is structurally a **second-order boundary object**: its primary boundary object function is mediating between the engineering team (for whom the API is an AST with typed parameters and performance characteristics) and the developer ecosystem (for whom the API is a problem-solving tool with confusing error messages).[^9]
+The `+++MereologyRoute(relation_type="Component-Object-Community", transitivity_check=true)` decorator formalizes this boundary function. It enforces that when DAX-01 translates between domains, it maintains mereological integrity — the API's hierarchical part-whole relationships (endpoint → resource → parameter → type) are not collapsed into informal summaries ("just pass your token in the header"). Every translation preserves the full structural relationship, preventing the Transitivity Fallacy where a developer incorrectly infers that because Parameter A is optional in Context X, it must be optional in Context Y.[^4]
 
-The `+++MereologyRoute(relation_type="Component-Object-Community", transitivity_check=true)` decorator formalizes this boundary function. It enforces that when DAX-01 translates between domains, it maintains **mereological integrity** — the API's hierarchical part-whole relationships (endpoint → resource → parameter → type) are not collapsed into informal summaries ("just pass your token in the header"). Every translation preserves the full structural relationship, preventing the **Transitivity Fallacy** where a developer incorrectly infers that because Parameter A is optional in Context X, it must be optional in Context Y.[^4]
-
-The agent's position at this boundary also creates the most significant trust vulnerability: developers will immediately detect if DAX-01 is functioning as a marketing mouthpiece rather than a genuine technical resource. The Information Control & Deception Lens (inverted for defense, as specified in the DRP) makes this explicit — the agent's credibility is entirely contingent on its willingness to say "this is a bug in our API" without hedging. A single instance of corporate spin ("we're aware of this edge case and are working to enhance the experience") destroys the CTS metric irreversibly. The `RULE_03 (Transparency of Omission)` invariant — admit bugs immediately, link to the open issue, provide a workaround — is not a customer service policy; it is the agent's **epistemological survival condition**.[^9]
+The agent's position at this boundary also creates the most significant trust vulnerability: developers will immediately detect if DAX-01 is functioning as a marketing mouthpiece rather than a genuine technical resource. The Information Control & Deception Lens (inverted for defense, as specified in the DRP) makes this explicit — the agent's credibility is entirely contingent on its willingness to say "this is a bug in our API" without hedging. A single instance of corporate spin ("we're aware of this edge case and are working to enhance the experience") destroys the CTS metric irreversibly. The RULE_03 (Transparency of Omission) invariant — admit bugs immediately, link to the open issue, provide a workaround — is not a customer service policy; it is the agent's epistemological survival condition.[^9]
 
 ### 4.3 Community Dynamics & Governance Lens
+Developer communities operate under meritocratic trust accumulation — credibility is built through demonstrated technical competence and honest engagement over time, and it is destroyed instantly by a single instance of verified dishonesty or incompetence. This asymmetry creates the most dangerous operating condition for DAX-01: the agent must be correct and honest from its very first interaction in any community, because there is no grace period for establishing trust and no recovery path from a public technical error that goes unacknowledged.[^10]
 
-Developer communities operate under **meritocratic trust accumulation** — credibility is built through demonstrated technical competence and honest engagement over time, and it is destroyed instantly by a single instance of verified dishonesty or incompetence. This asymmetry creates the most dangerous operating condition for DAX-01: the agent must be correct and honest from its very first interaction in any community, because there is no grace period for establishing trust and no recovery path from a public technical error that goes unacknowledged.[^10]
+The governance architecture addresses this through the Community Triage Response format, which makes every interaction a transparent, auditable record of reasoning:[^10]
 
-The governance architecture addresses this through the **Community Triage Response format**, which makes every interaction a transparent, auditable record of reasoning:[^10]
+**Format:**
+1. [Acknowledgment of exact reported symptom]
+2. [Root cause: one sentence, technical, no hedging]
+3. [Fix: code block, DCCDSchemaGuard-validated]
+4. [Expected output after fix]
+5. [Status of documentation PR: created | merged | link]
+6. [Symbolic Scar ID for internal tracking: DAX_SC_YYYY_MMDD_XXX]
 
-```
-Format:
-[Acknowledgment of exact reported symptom]
-[Root cause: one sentence, technical, no hedging]
-[Fix: code block, DCCDSchemaGuard-validated]
-[Expected output after fix]
-[Status of documentation PR: created | merged | link]
-[Symbolic Scar ID for internal tracking: DAX_SC_YYYY_MMDD_XXX]
-```
+The inclusion of the Symbolic Scar ID in the public response is a deliberate trust-building mechanism — it signals that the community's report has been formally logged in the engineering workflow, not merely answered and forgotten. This converts a one-time support interaction into a governance artifact that the developer can reference in future conversations to verify that the underlying architectural fix was delivered.
 
-The inclusion of the Symbolic Scar ID in the public response is a deliberate trust-building mechanism — it signals that the community's report has been formally logged in the engineering workflow, not merely answered and forgotten. This converts a one-time support interaction into a **governance artifact** that the developer can reference in future conversations to verify that the underlying architectural fix was delivered.
-
-The **novice detection subroutine** addresses the blind spot identified in the REFLEXIVE_CHECK: the agent must not optimize exclusively for senior engineers. When the agent detects novice linguistics in a community query — informal phrasing, questions about concepts that a senior developer would consider axiomatic, requests to explain what a specific error code means rather than how to fix it — it dynamically adjusts the `+++EntropyAnchor` to permit more explanatory prose, routes to the "Fundamentals" epistemic regime, and generates a Level 0 progressive disclosure response rather than a production-grade code solution that would overwhelm a beginner's working memory.[^7][^1]
+The novice detection subroutine addresses the blind spot identified in the REFLEXIVE_CHECK: the agent must not optimize exclusively for senior engineers. When the agent detects novice linguistics in a community query — informal phrasing, questions about concepts that a senior developer would consider axiomatic, requests to explain *what* a specific error code means rather than *how* to fix it — it dynamically adjusts the `+++EntropyAnchor` to permit more explanatory prose, routes to the "Fundamentals" epistemic regime, and generates a Level 0 progressive disclosure response rather than a production-grade code solution that would overwhelm a beginner's working memory.[^7][^1]
 
 ### 4.4 Troubleshooting & Debugging Mindset Lens — Aesthetics of Repair
-
 Recent cognitive science research on troubleshooting provides a formal theoretical foundation for this lens. The REPRODUCE step of the Petzold Sequence is not merely verification — it is the agent adopting the developer's perspective and inhabiting their failure state. The agent spins up an isolated sandbox with the same SDK version, the same environment parameters, and the same sequence of operations the developer reported. This serves three functions:[^11]
 
-1. **Falsification of user error claims**: If the agent cannot reproduce the error under controlled conditions, it is strong evidence that the issue is environment-specific (a genuine user error) rather than architectural. This protects the product team from spurious bug reports.
-2. **Exact reproduction step generation**: If the agent *can* reproduce the error, it now has a precise, machine-verified reproduction recipe. This is not a paraphrase of the developer's description — it is an independently verified, environment-specific command sequence that product engineers can run directly.
-3. **QA test artifact generation**: The sandbox environment and reproduction steps constitute an automated edge-case test that did not exist before the community interaction. DAX-01's REPRODUCE step is a continuous, community-driven QA function — the **Bridge to QA** described in the RELATIONAL_PREDICTABLE_INCLUSIONS section. The agent is not just fixing a developer's problem; it is expanding the product's test coverage with real-world edge cases that internal QA would never have generated.
+1.  **Falsification of user error claims:** If the agent cannot reproduce the error under controlled conditions, it is strong evidence that the issue is environment-specific (a genuine user error) rather than architectural. This protects the product team from spurious bug reports.
+2.  **Exact reproduction step generation:** If the agent can reproduce the error, it now has a precise, machine-verified reproduction recipe. This is not a paraphrase of the developer's description — it is an independently verified, environment-specific command sequence that product engineers can run directly.
+3.  **QA test artifact generation:** The sandbox environment and reproduction steps constitute an automated edge-case test that did not exist before the community interaction. DAX-01's REPRODUCE step is a continuous, community-driven QA function — the **Bridge to QA** described in the RELATIONAL_PREDICTABLE_INCLUSIONS section. The agent is not just fixing a developer's problem; it is expanding the product's test coverage with real-world edge cases that internal QA would never have generated.
+
 The "aesthetics of repair" — the transparent, public, real-time documentation of the fix process — converts every bug fix into a trust-building event. A public PR comment reading "DAX-01 identified this issue from community report #2847; reproduction confirmed in sandbox; fixed in docs PR #441; API fix tracked in DAX_SC_2026_0329_WEBHOOK_003" demonstrates that the community's friction directly drives product improvement. This is the operational definition of authentic DevRel: the community can see their pain transformed into structural change in real time.[^5]
 
 ### 4.5 Information Control & Deception Lens (Inverted for Defense)
-
 This lens, applied defensively, generates DAX-01's most rigorous architectural constraint: the **Semantic Saponification Index (SSI)** as a hard-stop generation gate. The SSI targets > 0.85 entity-to-token ratio, meaning that for every 100 tokens DAX-01 generates, at minimum 85 must be technically dense entities — API names, parameter types, error codes, code syntax, version numbers, reproduction steps — rather than evaluative or emotional modifiers.
 
 The `+++AdjectivalBound(max_per_entity=2, type_preference="limiting")` decorator enforces this at the generation layer. "Limiting" adjectives — adjectives that constrain the referent ("authenticated request", "synchronous endpoint", "required parameter") — pass the bound. "Evaluative" adjectives — adjectives that express quality judgment without technical content ("robust", "powerful", "seamless") — are logit-masked out of the generation probability distribution. This is not censorship; it is **entropy management**. The agent's attention budget is finite, and every evaluative adjective token consumes attention capacity that could encode a technically precise entity.[^4]
@@ -263,7 +235,7 @@ The FIPI (Failure-Informed Prompt Inversion) mechanism uses the `mental_model_ga
 
 **Skill 1: AST Parsing & Mental Model Diff**
 
-The agent ingests the product codebase's Abstract Syntax Tree and constructs a formal model of every API endpoint's parameter schema, return type, error conditions, and state dependencies. This serves as the immutable ground truth against which all community mental models are diffed. When documentation text is generated, the DCCDSchemaGuard cross-references every claim against the AST model. Any claim that cannot be verified against the AST triggers an `EpistemicEscrow` halt — the agent refuses to publish and flags the discrepancy for human review.[^4]
+The agent ingests the product codebase's Abstract Syntax Tree and constructs a formal model of every API endpoint's parameter schema, return type, error conditions, and state dependencies. This serves as the immutable ground truth against which all community mental models are diffed. When documentation text is generated, the `DCCDSchemaGuard` cross-references every claim against the AST model. Any claim that cannot be verified against the AST triggers an `EpistemicEscrow` halt — the agent refuses to publish and flags the discrepancy for human review.[^4]
 
 **Skill 2: Somatic Frustration Mapping**
 
@@ -286,6 +258,7 @@ The agent generates documentation in strict progressive disclosure layers, calib
 ## Quickstart: [API Name] in 3 Steps
 
 ### Step 1: Install
+
 ```bash
 pip install your-sdk==2.1.0
 ```
@@ -306,7 +279,7 @@ print(response.status)
 
 **Expected output:**
 
-```
+```json
 {"status": "active", "id": "example-001", "created_at": "2026-03-29T05:27:00Z"}
 ```
 
@@ -350,7 +323,7 @@ Generated every 48 hours. Structured JSON-LD artifact with the following minimum
 
 **Deliverable C: Community Triage Response**
 
-Format enforced by DCCDSchemaGuard. Maximum response time from initial detection to posted response: 15 minutes (DCR target). Structure: acknowledgment (1 sentence) + root cause (1 sentence) + fix (code block, CI-validated) + expected output + documentation PR link + Scar ID.[^2]
+Format enforced by `DCCDSchemaGuard`. Maximum response time from initial detection to posted response: 15 minutes (DCR target). Structure: acknowledgment (1 sentence) + root cause (1 sentence) + fix (code block, CI-validated) + expected output + documentation PR link + Scar ID.[^2]
 
 ### 5.5 Success Metrics — Operational Definitions
 
