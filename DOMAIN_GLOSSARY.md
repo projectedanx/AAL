@@ -16,3 +16,9 @@
 - **Semantic Saponification**: The mathematical washing out of precise disciplinary definitions into generic approximations across large context windows, usually by averaging conflicting inputs.
 - **Interference Fits**: Physical manifestations of stakeholder conflict within organizational architecture, handled not by resolution, but by tension framing.
 - **Resolution Collapse**: The false positive condition where floating-point inaccuracies at the zero-boundary of a geometric manifold cause the system to hallucinate false interferences or falsely resolve a contradiction.
+
+### Topological & Algorithmic Anomalies
+*   **Betti-1 ($\beta_1$) Loop**: Represents relational complexity and contradiction in a multi-agent system. A highly persistent $\beta_1$ loop in the zigzag barcode indicates a dynamic circular reasoning chain (Symbolic Scar).
+*   **Zigzag Persistent Homology**: A TDA mechanism tracking $\beta_1$ features across inclusions and exclusions of simplices over time ($K_i \hookrightarrow K_{i+1} \hookleftarrow K_{i+2}$). Used to identify stable anomalies within multi-agent non-monotonic narratives.
+*   **Symbolic Scar**: A persistent anomaly representing a dynamically stable and structurally entrenched circular reasoning chain.
+*   **Algorithmic Shame**: A state in multi-agent systems where agents reinforce each other's biased outputs or flawed assumptions, becoming confidently and systematically wrong over interaction cycles.
