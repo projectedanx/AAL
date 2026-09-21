@@ -128,3 +128,10 @@ The `scripts/scos_harness_sim.py` implements mathematical verification for three
 2. **Persistent Homology of Attention-Sink Cavities**: Analyzing ContextLock mitigations on beta-1 loops.
 4. **Parsimonious Architecture Protocol (PAP)**: Utilizing an Occam Loss Compiler for theory selection via `scripts/pap_occam_razor_sim.py` to test Bayesian Model Reduction and Isomorphic Mapping.
 3. **Non-Monotonic Saga Compensations**: Belnapian 4-valued logic to track orthogonality during API handshakes.
+
+## VCS Layer 3 Research Integrations
+
+To further the deterministic boundaries of the Verifiable Cognition Stack (VCS), we have engineered and simulated advanced monitoring harnesses:
+1. **Topological Homology Barcodes (`docs/topological_homology_whitepaper.md`)**: Analyzes internal activation manifolds for Betti-1 (Circular Reasoning) and Betti-2 (Epistemic Hollowness) ruptures.
+2. **Neuro-Symbolic Gateway (`docs/neuro_symbolic_gateway_blueprint.md`)**: A differentiable logic engine for zero-trust tool execution, halting Polysemantic Divergence.
+3. **SEPAO Autopoietic Scanners (`docs/sepao_technical_specification.md`, `scripts/sepao_scanner.py`)**: Environment drift monitoring via AST parsers that auto-generate Failure-Informed Prompt Inversions (F-IPI).
