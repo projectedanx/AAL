@@ -42,3 +42,21 @@
 - **Location:** Repository Root
 - **Tension:** The repository completely lacks automated workflow enforcement (no `.github/workflows/`), relying on high-trust local execution (`npm run dev`, `npx tsx`).
 - **Recommendation:** Document as [CULTURAL_ARTIFACT]. The absence of CI is an entropy vector but represents the current developmental stage (Phase 1/2 localized topology).
+
+### Research Artifacts
+
+> **Integration of High-Value Research Outputs for L3 Integration**
+> Artifacts added during formalization of the Verifiable Cognition Stack (VCS).
+
+#### 1. Topological Homology Barcodes
+- **Document:** `docs/topological_homology_whitepaper.md`
+- **Purpose:** Deconstructing Latent Spaces via Persistent Homology to Detect Topological Voids and Semantic Ruptures in Multi-Agent Memory Architectures. Defines the $\beta_1$ and $\beta_2$ failure modes.
+
+#### 2. Differentiable Logic Engines
+- **Document:** `docs/neuro_symbolic_gateway_blueprint.md`
+- **Purpose:** Engineering a Hybrid Neuro-Symbolic Gatekeeper using Differentiable Logic Programming and Abstract Interpretation for Zero-Trust Tool Execution. Prevents Polysemantic Divergence.
+
+#### 3. Autopoietic Self-Healing Ontologies via SEPAO Scanners
+- **Specification:** `docs/sepao_technical_specification.md`
+- **Implementation:** `scripts/sepao_scanner.py`
+- **Purpose:** Designing an Autopoietic Self-Healing Ontology Engine using Static AST Analysis and Failure-Informed Prompt Inversion. Simulates environmental drift detection and F-IPI generation.
