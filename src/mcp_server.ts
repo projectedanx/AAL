@@ -18,6 +18,7 @@ const createErrorResponse = (code: string, message: string, detail: any) => ({
 import { registerCoreTools } from "./mcp_tools/core_tools.js";
 import { registerAgentTools } from "./mcp_tools/agent_tools.js";
 import { registerScarTools } from "./mcp_tools/scar_tools.js";
+import { registerALATools } from "./mcp_tools/ala_tools.js";
 const server = new McpServer({
   name: "aesthetic-alchemy-mcp",
   version: "2026.4.12",
@@ -27,6 +28,7 @@ const server = new McpServer({
 registerCoreTools(server);
 registerAgentTools(server);
 registerScarTools(server);
+registerALATools(server);
 
 
 
