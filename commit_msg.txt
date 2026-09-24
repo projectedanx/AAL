@@ -1,5 +1,6 @@
-fix: Resolve CI failures in Epistemic Guard
+feat: integrate Temporal Blending Engine and System Assurance Agent (CPI)
 
-- Added `ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true` to bypass the Node 20 deprecation warning causing errors in GitHub Actions.
-- Set `ubuntu-latest` instead of `ubuntu-24.04`.
-- Disabled specific smells in `dirty-waters-action` which was throwing unrecognized arguments error in Python due to incorrect formatting.
+- Drafted ADR 011 documenting the integration of the Temporal Blending Engine (TBE) and Causal Path Integrity (CPI).
+- Implemented `SystemAssuranceAgent` to calculate CPI over discrete traces and enforce the 0.95 threshold, solving the frame problem for unmodified fluents.
+- Implemented `TemporalBlendingEngine` to enforce Lipschitz bounds preventing Chronotopological Drift and evaluate the trade-off between Coherence Overhead and Structural Discovery.
+- Added comprehensive unit tests for both modules.
