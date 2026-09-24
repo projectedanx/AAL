@@ -130,6 +130,8 @@ The `scripts/scos_harness_sim.py` implements mathematical verification for three
 3. **Non-Monotonic Saga Compensations**: Belnapian 4-valued logic to track orthogonality during API handshakes.
 4. **N2E-CED Chrono-Topological Tracking**: Simulating circular contradictions (Betti-1 loops) in asymmetric multi-agent dialogue (`scripts/n2e_ced_sim.py`).
 5. **Möbius Constitutional Verifier (MCV)**: Monitoring Concept-to-Code Decay and topological invariants across recursive refactoring cycles (`scripts/mcv_sim.py`).
+6. **Invariant Verification Harness (IVH)**: Deconstructing scientific myths and formalizing candidate scientific laws via edge-case falsification (`scripts/ivh_scientific_laws_sim.py`).
+6. **Invariant Verification Harness (IVH)**: Deconstructing scientific myths and formalizing candidate scientific laws via edge-case falsification (`scripts/ivh_scientific_laws_sim.py`).
 
 ## VCS Layer 3 Research Integrations
 
