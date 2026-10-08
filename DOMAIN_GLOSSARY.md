@@ -22,3 +22,9 @@
 *   **Zigzag Persistent Homology**: A TDA mechanism tracking $\beta_1$ features across inclusions and exclusions of simplices over time ($K_i \hookrightarrow K_{i+1} \hookleftarrow K_{i+2}$). Used to identify stable anomalies within multi-agent non-monotonic narratives.
 *   **Symbolic Scar**: A persistent anomaly representing a dynamically stable and structurally entrenched circular reasoning chain.
 *   **Algorithmic Shame**: A state in multi-agent systems where agents reinforce each other's biased outputs or flawed assumptions, becoming confidently and systematically wrong over interaction cycles.
+
+### Epistemic Control and Constraints
+
+*   **Friction Engine**: An algorithmic mechanism designed to calculate "Cognitive Parallax" (divergence) between contradictory multi-agent directives. It utilizes a Montage Synthesis approach, mathematically resolving conflict via Golden Ratio weighting (1.618) to output a dialectical vector.
+*   **Sovereign Nexus**: A centralized routing architecture responsible for Swarm Dynamics. It orchestrates execution, logs deterministic provenance, and enforces consensus among multi-agent personas within the Sovereign Cognitive Operating System stack.
+*   **Thermodynamic Auditor**: A containment kernel acting as a Trusted Computing Base (TCB) firewall. It monitors an Entropy Budget by calculating the normalized Shannon Entropy of system state vectors, preemptively halting execution if chaotic influxes threaten system integrity boundaries.
