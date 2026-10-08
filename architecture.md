@@ -226,3 +226,10 @@ PAP acts as an epistemic gatekeeper by compiling scientific theories into direct
 | **Occam Loss Compiler** | Competing Theories ($T_1, T_2$) | Loss Score ($\mathcal{L}_{\text{Occam}}$) | Structural complexity penalty matching Bayesian marginal likelihood. | |
 | **Pareto Optimization** | Competing Graphs | Optimal Model ($M^*$) | Distance to the Pareto frontier of simplicity vs. accuracy. | |
 | **Continuous Falsification** | Chosen Model ($M^*$) | Falsification Target | Detection of a single $3\sigma$ anomaly (Modus Tollens). | |
+
+### L7/L7.5/L3.5 Agentic Infrastructure
+
+The architecture implements deterministic bounds for orchestrating sovereign personas:
+- **Friction Engine**: Resolves Cognitive Parallax between contradictory requirements via Golden Scar Protocol weighted vectors.
+- **Sovereign Nexus**: Routes Swarm Dynamics and enforces consensus across the agent matrix.
+- **Thermodynamic Auditor**: Acts as a TCB firewall tracking an Entropy Budget, halting operations if system state distributions cross maximum probability bounds.
